@@ -11,10 +11,9 @@
         android:id="@+id/button_meio_umido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:background="@drawable/button_meio_umido"
+        android:layout_marginTop="320dp"
+        android:background="@drawable/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
