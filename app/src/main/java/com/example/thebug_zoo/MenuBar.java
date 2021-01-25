@@ -2,13 +2,18 @@ package com.example.thebug_zoo;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.material.navigation.NavigationView;
 
 public class MenuBar extends AppCompatActivity {
 
@@ -17,11 +22,23 @@ public class MenuBar extends AppCompatActivity {
     ImageView icon_meio_umido, icon_seta, icon_seta2, icon_seta3, icon_taxidermizados, icon_osteologia;
     TextView text_meio_umido, text_taxidermizados, text_osteologia;
 
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle drawerToggle;
+    Toolbar toolbar;
+    NavigationView navigationView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_bar);
 
+        icons();
+        drawerMenu();
+
+    }
+
+    void icons(){
         //Importando os ImageButton da activity home
         meio_umido = (ImageButton) findViewById(R.id.button_meio_umido);
         taxidermizados = (ImageButton) findViewById(R.id.button_taxidermizados);
@@ -62,6 +79,21 @@ public class MenuBar extends AppCompatActivity {
         icon_osteologia.setAnimation(frombottom3);
         text_osteologia.setAnimation(frombottom3);
         icon_seta3.setAnimation(frombottom3);
+    }
 
+    void drawerMenu(){
+        //Importando itens para utilização do DrawerMenu
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //Importando layout do DrawerMenu
+        drawerLayout = findViewById(R.id.drawer_menu);
+        navigationView = findViewById(R.id.navigation_view);
+
+        //Setando uso do DrawerMenu
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.setDrawerIndicatorEnabled(true);
+        drawerToggle.syncState();
     }
 }
