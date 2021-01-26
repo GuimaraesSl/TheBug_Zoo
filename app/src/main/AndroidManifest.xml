@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheBug_Zoo">
+        <activity android:name=".Search"></activity>
         <activity
             android:name=".DrawerMenu"
             android:label="@string/title_activity_drawer_menu"
-            android:theme="@style/Theme.TheBug_Zoo.NoActionBar"></activity>
+            android:theme="@style/Theme.TheBug_Zoo.NoActionBar" />
         <activity
             android:name=".MenuBar"
             android:label="@string/title_activity_main"

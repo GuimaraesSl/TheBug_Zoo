@@ -1,5 +1,6 @@
 package com.example.thebug_zoo;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -10,13 +11,17 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.zip.Inflater;
 
 public class MenuBar extends AppCompatActivity {
 
@@ -60,7 +65,7 @@ public class MenuBar extends AppCompatActivity {
         text_taxidermizados = (TextView) findViewById(R.id.text_taxidermizados);
         text_osteologia = (TextView) findViewById(R.id.text_osteologia);
 
-        //Impotando as anmações da activity home
+        //Impotando as animações da activity home
         frombottom = AnimationUtils.loadAnimation(this, R.anim.frombottom);
         frombottom2 = AnimationUtils.loadAnimation(this, R.anim.frombottom2);
         frombottom3 = AnimationUtils.loadAnimation(this, R.anim.frombottom3);
@@ -82,6 +87,25 @@ public class MenuBar extends AppCompatActivity {
         icon_osteologia.setAnimation(frombottom3);
         text_osteologia.setAnimation(frombottom3);
         icon_seta3.setAnimation(frombottom3);
+
+        //setando clicks
+        meio_umido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuBar.this, Search.class);
+                startActivity(intent);
+                Toast.makeText(MenuBar.this, "Click", Toast.LENGTH_LONG);
+            }
+        });
+        icon_seta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuBar.this, Search.class);
+                startActivity(intent);
+                Toast.makeText(MenuBar.this, "Click", Toast.LENGTH_LONG);
+            }
+        });
+
     }
 
     void drawerMenu(){
