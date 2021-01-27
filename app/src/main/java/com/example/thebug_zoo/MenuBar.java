@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import androidx.appcompat.widget.AppCompatImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -91,7 +92,7 @@ public class MenuBar extends AppCompatActivity {
         //setando clicks
         meio_umido.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent intent = new Intent(MenuBar.this, Search.class);
                 startActivity(intent);
                 Toast.makeText(MenuBar.this, "Click", Toast.LENGTH_LONG);
@@ -99,7 +100,7 @@ public class MenuBar extends AppCompatActivity {
         });
         icon_seta.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent intent = new Intent(MenuBar.this, Search.class);
                 startActivity(intent);
                 Toast.makeText(MenuBar.this, "Click", Toast.LENGTH_LONG);
