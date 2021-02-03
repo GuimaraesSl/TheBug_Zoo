@@ -5,41 +5,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background">
-
+    android:background="@color/blue_fort">
 
     <ImageView
-        android:id="@+id/icon_meio_umido_search"
+        android:id="@+id/background_circle"
+        android:layout_width="515dp"
+        android:layout_height="515dp"
+        android:layout_marginBottom="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/background_circle" />
+
+    <ImageView
+        android:id="@+id/icon_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="174dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="174dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_meio_umido_search" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/text_meio_umido_search"
+        android:id="@+id/text_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Meio Úmido"
         android:textSize="30sp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/icon_meio_umido_search" />
+        app:layout_constraintTop_toBottomOf="@+id/icon_search" />
 
     <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
+        app:searchIcon="@drawable/icon_search"
         android:layout_height="wrap_content"
-        app:queryHint="Buscar em meio úmido"
         app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_meio_umido_search">
+        app:layout_constraintTop_toBottomOf="@+id/text_search"
+        app:queryHint="Pesquisar">
 
     </androidx.appcompat.widget.SearchView>
+
+    <ImageView
+        android:id="@+id/image_seta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_icon_seta" />
+
+    <ImageButton
+        android:id="@+id/button_teste"
+        android:layout_width="339.5dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="310dp"
+        android:background="@null"
+        app:srcCompat="@drawable/background_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"/>
+
+    <TextView
+        android:id="@+id/button_teste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teste"
+        android:textColor="@color/white"
+        android:textSize="21sp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/button_meio_umido"
+        app:layout_constraintStart_toStartOf="@+id/button_meio_umido"
+        app:layout_constraintTop_toTopOf="@+id/button_meio_umido" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

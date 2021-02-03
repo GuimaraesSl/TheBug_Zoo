@@ -13,29 +13,5 @@
 
     <include layout="@layout/content_menu_bar" />
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/drawer_menu">
-
-        <include
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            layout="@layout/drawer_toolbar" />
-        <include
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            layout="@layout/content_main"/>
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:menu="@menu/drawer_menu"
-            app:headerLayout="@layout/drawer_header"
-            android:layout_gravity="start">
-        </com.google.android.material.navigation.NavigationView>
-
-    </androidx.drawerlayout.widget.DrawerLayout>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

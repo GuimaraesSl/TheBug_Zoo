@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -30,6 +31,7 @@ public class MenuBar extends AppCompatActivity {
     Animation frombottom, frombottom2, frombottom3;
     ImageView icon_meio_umido, icon_seta, icon_seta2, icon_seta3, icon_taxidermizados, icon_osteologia;
     TextView text_meio_umido, text_taxidermizados, text_osteologia;
+    Search id;
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
@@ -44,10 +46,12 @@ public class MenuBar extends AppCompatActivity {
 
         icons();
         drawerMenu();
-
     }
 
     void icons(){
+        //Inicializando o objeto da classe Search
+        id = new Search();
+
         //Importando os ImageButton da activity home
         meio_umido = (ImageButton) findViewById(R.id.button_meio_umido);
         taxidermizados = (ImageButton) findViewById(R.id.button_taxidermizados);
@@ -89,24 +93,33 @@ public class MenuBar extends AppCompatActivity {
         text_osteologia.setAnimation(frombottom3);
         icon_seta3.setAnimation(frombottom3);
 
-        //setando clicks
-        meio_umido.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MenuBar.this, Search.class);
-                startActivity(intent);
-                Toast.makeText(MenuBar.this, "Click", Toast.LENGTH_LONG);
-            }
-        });
-        icon_seta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MenuBar.this, Search.class);
-                startActivity(intent);
-                Toast.makeText(MenuBar.this, "Click", Toast.LENGTH_LONG);
+        //Setando Clicks
+        meio_umido.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Search.ID = 1;
+                Toast.makeText(getApplicationContext(), ""+id.ID, Toast.LENGTH_LONG).show();
+                Intent it = new Intent(MenuBar.this, Search.class);
+                startActivity(it);
             }
         });
 
+        taxidermizados.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Search.ID = 2;
+                Toast.makeText(getApplicationContext(), ""+id.ID, Toast.LENGTH_LONG).show();
+                Intent it = new Intent(MenuBar.this, Search.class);
+                startActivity(it);
+            }
+        });
+
+        osteologia.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Search.ID = 3;
+                Toast.makeText(getApplicationContext(), ""+id.ID, Toast.LENGTH_LONG).show();
+                Intent it = new Intent(MenuBar.this, Search.class);
+                startActivity(it);
+            }
+        });
     }
 
     void drawerMenu(){
@@ -122,6 +135,7 @@ public class MenuBar extends AppCompatActivity {
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.setDrawerIndicatorEnabled(true);
+        drawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
         drawerToggle.syncState();
     }
 
