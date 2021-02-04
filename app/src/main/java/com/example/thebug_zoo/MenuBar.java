@@ -27,10 +27,10 @@ import java.util.zip.Inflater;
 
 public class MenuBar extends AppCompatActivity {
 
-    ImageButton meio_umido, taxidermizados, osteologia;
+    ImageButton meioUmido, taxidermizados, osteologia;
     Animation frombottom, frombottom2, frombottom3;
-    ImageView icon_meio_umido, icon_seta, icon_seta2, icon_seta3, icon_taxidermizados, icon_osteologia;
-    TextView text_meio_umido, text_taxidermizados, text_osteologia;
+    ImageView iconMeioUmido, iconSeta, iconSeta2, iconSeta3, iconTaxidermizados, iconOsteologia;
+    TextView textMeioUmido, textTaxidermizados, textOsteologia;
     Search id;
 
     DrawerLayout drawerLayout;
@@ -53,22 +53,22 @@ public class MenuBar extends AppCompatActivity {
         id = new Search();
 
         //Importando os ImageButton da activity home
-        meio_umido = (ImageButton) findViewById(R.id.button_meio_umido);
-        taxidermizados = (ImageButton) findViewById(R.id.button_taxidermizados);
-        osteologia = (ImageButton) findViewById(R.id.button_osteologia);
+        meioUmido = (ImageButton) findViewById(R.id.buttonMeioUmido);
+        taxidermizados = (ImageButton) findViewById(R.id.buttonTaxidermizados);
+        osteologia = (ImageButton) findViewById(R.id.buttonOsteologia);
 
         //Importando os icons da activity home
-        icon_meio_umido = (ImageView) findViewById(R.id.icon_meio_umido);
-        icon_seta = (ImageView) findViewById(R.id.icon_seta);
-        icon_seta2 = (ImageView) findViewById(R.id.icon_seta2);
-        icon_seta3 = (ImageView) findViewById(R.id.icon_seta3);
-        icon_taxidermizados = (ImageView) findViewById(R.id.icon_taxidermizados);
-        icon_osteologia = (ImageView) findViewById(R.id.icon_osteologia);
+        iconMeioUmido = (ImageView) findViewById(R.id.iconMeioUmido);
+        iconSeta = (ImageView) findViewById(R.id.iconSeta);
+        iconSeta2 = (ImageView) findViewById(R.id.iconSeta2);
+        iconSeta3 = (ImageView) findViewById(R.id.iconSeta3);
+        iconTaxidermizados = (ImageView) findViewById(R.id.iconTaxidermizados);
+        iconOsteologia = (ImageView) findViewById(R.id.iconOsteologia);
 
         //Importando os TextView da activity home
-        text_meio_umido = (TextView) findViewById(R.id.text_meio_umido);
-        text_taxidermizados = (TextView) findViewById(R.id.text_taxidermizados);
-        text_osteologia = (TextView) findViewById(R.id.text_osteologia);
+        textMeioUmido = (TextView) findViewById(R.id.text_meio_umido);
+        textTaxidermizados = (TextView) findViewById(R.id.textTaxidermizados);
+        textOsteologia = (TextView) findViewById(R.id.textOsteologia);
 
         //Impotando as animações da activity home
         frombottom = AnimationUtils.loadAnimation(this, R.anim.frombottom);
@@ -76,25 +76,25 @@ public class MenuBar extends AppCompatActivity {
         frombottom3 = AnimationUtils.loadAnimation(this, R.anim.frombottom3);
 
         //Animações do button meio_umido
-        meio_umido.setAnimation(frombottom);
-        icon_meio_umido.setAnimation(frombottom);
-        text_meio_umido.setAnimation(frombottom);
-        icon_seta.setAnimation(frombottom);
+        meioUmido.setAnimation(frombottom);
+        iconMeioUmido.setAnimation(frombottom);
+        textMeioUmido.setAnimation(frombottom);
+        iconSeta.setAnimation(frombottom);
 
         //Animações do button taxidermizados
         taxidermizados.setAnimation(frombottom2);
-        icon_taxidermizados.setAnimation(frombottom2);
-        text_taxidermizados.setAnimation(frombottom2);
-        icon_seta2.setAnimation(frombottom2);
+        iconTaxidermizados.setAnimation(frombottom2);
+        textTaxidermizados.setAnimation(frombottom2);
+        iconSeta2.setAnimation(frombottom2);
 
         //Animações do button osteologia
         osteologia.setAnimation(frombottom3);
-        icon_osteologia.setAnimation(frombottom3);
-        text_osteologia.setAnimation(frombottom3);
-        icon_seta3.setAnimation(frombottom3);
+        iconOsteologia.setAnimation(frombottom3);
+        textOsteologia.setAnimation(frombottom3);
+        iconSeta3.setAnimation(frombottom3);
 
         //Setando Clicks
-        meio_umido.setOnClickListener(new View.OnClickListener(){
+        meioUmido.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 Search.ID = 1;
                 Toast.makeText(getApplicationContext(), ""+id.ID, Toast.LENGTH_LONG).show();
@@ -129,7 +129,7 @@ public class MenuBar extends AppCompatActivity {
 
         //Importando layout do DrawerMenu
         drawerLayout = findViewById(R.id.drawer_menu);
-        navigationView = findViewById(R.id.navigation_view);
+        navigationView = findViewById(R.id.navigationView);
 
         //Setando uso do DrawerMenu
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);

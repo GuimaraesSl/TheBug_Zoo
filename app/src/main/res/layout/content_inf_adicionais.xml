@@ -4,34 +4,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/imageteste">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="#000000FF">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar"
+            android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="350dp"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|snap|enterAlwaysCollapsed"
-            app:title="Teste">
+            app:layout_scrollFlags="scroll|snap|enterAlwaysCollapsed">
 
-            <ImageView
+            <com.smarteist.autoimageslider.SliderLayout
+                android:id="@+id/imageSlider"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="0dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/imageteste"
-                app:layout_collapseMode="parallax" />
+                android:layout_height="match_parent">
+
+            </com.smarteist.autoimageslider.SliderLayout>
+
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar2"
@@ -39,32 +35,393 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"/>
 
+            <ImageView
+                android:id="@+id/imageSeta2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_icon_seta" />
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="738dp"
-        android:background="@drawable/layout_border"
+        android:layout_height="match_parent"
+        android:background="@color/blue_fort"
+        app:layout_anchorGravity="center"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="@color/transparent">
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:text="Teste"
-                android:textColor="@color/white"
-                android:textSize="36sp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="-1dp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/layout_border2">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/txtOrdem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:padding="12sp"
+                    android:text="Spirophorida"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtFamilia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:longClickable="true"
+                    android:padding="12dp"
+                    android:text="Tetilidae"
+                    android:textIsSelectable="true"
+                    android:textSize="25sp"
+                    app:layout_constraintLeft_toRightOf="@id/txtOrdem"
+                    app:layout_constraintStart_toEndOf="@+id/txtOrdem"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="ID"
+                    android:textColor="#006FFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtOrdem"/>
+
+                <TextView
+                    android:id="@+id/txtNumId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="9dp"
+                    android:focusable="true"
+                    android:longClickable="true"
+                    android:text="1"
+                    android:textIsSelectable="true"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/txtId"
+                    app:layout_constraintTop_toBottomOf="@+id/txtOrdem"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="83dp" />
+
+                <TextView
+                    android:id="@+id/txtArmario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Armário"
+                    android:textColor="#006FFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtId" />
+
+                <TextView
+                    android:id="@+id/txtNumArmario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:longClickable="true"
+                    android:text="1"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="11dp"
+                    android:textIsSelectable="true"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/txtArmario"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNumId"
+                    tools:layout_editor_absoluteY="83dp" />
+
+                <TextView
+                    android:id="@+id/txtOrdem2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Ordem"
+                    android:textColor="#006FFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtArmario" />
+
+                <TextView
+                    android:id="@+id/txtOrdem3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:longClickable="true"
+                    android:text="Spirophorida"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="11dp"
+                    android:textIsSelectable="true"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/txtOrdem2"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNumArmario"
+                    tools:layout_editor_absoluteY="83dp" />
+
+                <TextView
+                    android:id="@+id/txtFamilia2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Familia"
+                    android:textColor="#006FFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtOrdem2" />
+
+                <TextView
+                    android:id="@+id/textFamilia3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:longClickable="true"
+                    android:text="Tetilidae"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="10dp"
+                    android:textIsSelectable="true"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/txtFamilia2"
+                    app:layout_constraintTop_toBottomOf="@+id/txtOrdem3"
+                    tools:layout_editor_absoluteY="83dp" />
+
+                <TextView
+                    android:id="@+id/txtIdentificacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Identificação"
+                    android:textColor="#006FFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFamilia2" />
+
+                <TextView
+                    android:id="@+id/txtIdentificacao2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:longClickable="true"
+                    android:text="***"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:textIsSelectable="true"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/txtIdentificacao"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFamilia2"
+                    tools:layout_editor_absoluteY="83dp" />
+
+                <ImageView
+                    android:id="@+id/imageRetangle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/rectangle"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintTop_toBottomOf="@+id/txtIdentificacao2"/>
+
+                <TextView
+                    android:id="@+id/txtInformacoesAd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Informações adicionais"
+                    android:textColor="#006FFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageRetangle" />
+
+                <TextView
+                    android:id="@+id/txtInformacoesAd2"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:focusable="true"
+                    android:longClickable="true"
+                    android:text="é uma ordem de esponjas da classe Demospongiae."
+                    android:textIsSelectable="true"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="@+id/txtInformacoesAd"
+                    app:layout_constraintTop_toBottomOf="@+id/txtInformacoesAd"
+                    tools:ignore="MissingConstraints" />
+
+                <TextView
+                    android:id="@+id/txtFonte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Fonte"
+                    android:textColor="#006FFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtInformacoesAd2" />
+
+                <TextView
+                    android:id="@+id/txtFont2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:longClickable="true"
+                    android:text="Desconhecido"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:textIsSelectable="true"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/txtFonte"
+                    app:layout_constraintTop_toBottomOf="@+id/txtInformacoesAd2"
+                    tools:layout_editor_absoluteY="83dp" />
+
+                <TextView
+                    android:id="@+id/txtColetor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Coletor"
+                    android:textColor="#006FFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFonte" />
+
+                <TextView
+                    android:id="@+id/txtColetor2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:longClickable="true"
+                    android:text="Desconhecido"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:textIsSelectable="true"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/txtColetor"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFont2"
+                    tools:layout_editor_absoluteY="83dp" />
+
+                <TextView
+                    android:id="@+id/txtLocal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Local"
+                    android:textColor="#006FFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtColetor" />
+
+                <TextView
+                    android:id="@+id/txtLocal2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:longClickable="true"
+                    android:text="Desconhecido"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:textIsSelectable="true"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/txtLocal"
+                    app:layout_constraintTop_toBottomOf="@+id/txtColetor2"
+                    tools:layout_editor_absoluteY="83dp" />
+
+                <TextView
+                    android:id="@+id/txtData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Data"
+                    android:textColor="#006FFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLocal" />
+
+                <TextView
+                    android:id="@+id/txtData2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:longClickable="true"
+                    android:text="Desconhecido"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:textIsSelectable="true"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/txtData"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLocal2"
+                    tools:layout_editor_absoluteY="83dp" />
+
+                <TextView
+                    android:id="@+id/txtQuant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Quantidade"
+                    android:textColor="#006FFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtData" />
+
+                <TextView
+                    android:id="@+id/txtQaunt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:longClickable="true"
+                    android:text="1"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:textIsSelectable="true"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/txtQuant"
+                    app:layout_constraintTop_toBottomOf="@+id/txtData2"
+                    tools:layout_editor_absoluteY="83dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
 
     </androidx.core.widget.NestedScrollView>
 

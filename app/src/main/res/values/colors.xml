@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#005AE3</color>
     <color name="blue_fort">#00031F</color>#
+    <color name="transparent">#000000FF</color>
+    <color name="blue_text">#006FFF</color>
 </resources>

@@ -17,8 +17,8 @@ import android.widget.Toast;
 
 public class Search extends AppCompatActivity {
 
-    ImageView icon_meio_umido, taxidermizados, osteologia, image_seta;
-    TextView text_meio_umido, text_taxidermizados, text_osteologia;
+    ImageView iconMeioUmido, taxidermizados, osteologia, back;
+    TextView textMeioUmido, textTaxidermizados, textOsteologia;
     SearchView searchView;
     ImageButton teste;
     public static int ID;
@@ -34,31 +34,31 @@ public class Search extends AppCompatActivity {
 
     void icon(){
         if(ID==1) {
-            icon_meio_umido = (ImageView) findViewById(R.id.icon_search);
-            text_meio_umido = (TextView) findViewById(R.id.text_search);
-            icon_meio_umido.setImageResource(R.drawable.icon_meio_umido_search);
-            text_meio_umido.setText("Meio úmido");
+            iconMeioUmido = (ImageView) findViewById(R.id.iconSearch);
+            textMeioUmido = (TextView) findViewById(R.id.textSearch);
+            iconMeioUmido.setImageResource(R.drawable.icon_meio_umido_search);
+            textMeioUmido.setText("Meio úmido");
         } else if (ID==2){
-            taxidermizados = (ImageView) findViewById(R.id.icon_search);
-            text_taxidermizados = (TextView) findViewById(R.id.text_search);
+            taxidermizados = (ImageView) findViewById(R.id.iconSearch);
+            textTaxidermizados = (TextView) findViewById(R.id.textSearch);
             taxidermizados.setImageResource(R.drawable.icon_taxidermizados_search);
-            text_taxidermizados.setText("Taxidermizados");
+            textTaxidermizados.setText("Taxidermizados");
         } else if(ID==3){
-            osteologia = (ImageView) findViewById(R.id.icon_search);
-            text_osteologia = (TextView) findViewById(R.id.text_search);
+            osteologia = (ImageView) findViewById(R.id.iconSearch);
+            textOsteologia = (TextView) findViewById(R.id.textSearch);
             osteologia.setImageResource(R.drawable.icon_osteologia_search);
-            text_osteologia.setText("Osteologia");
+            textOsteologia.setText("Osteologia");
         }
 
-        image_seta = (ImageView) findViewById(R.id.image_seta);
-        image_seta.setOnClickListener(new View.OnClickListener() {
+        back = (ImageView) findViewById(R.id.imageSeta);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
 
-        teste = (ImageButton) findViewById(R.id.button_teste);
+        teste = (ImageButton) findViewById(R.id.buttonTeste);
         teste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
