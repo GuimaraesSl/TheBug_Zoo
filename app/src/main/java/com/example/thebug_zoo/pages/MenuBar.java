@@ -1,29 +1,32 @@
-package com.example.thebug_zoo;
+package com.example.thebug_zoo.pages;
 
 import android.content.Intent;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
-import androidx.appcompat.widget.AppCompatImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thebug_zoo.R;
+import com.example.thebug_zoo.database.BancoController;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.zip.Inflater;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MenuBar extends AppCompatActivity {
 
@@ -32,6 +35,9 @@ public class MenuBar extends AppCompatActivity {
     ImageView iconMeioUmido, iconSeta, iconSeta2, iconSeta3, iconTaxidermizados, iconOsteologia;
     TextView textMeioUmido, textTaxidermizados, textOsteologia;
     Search id;
+    SQLiteDatabase conection;
+    BancoController bancoController;
+    ConstraintLayout layoutMenuBar;
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
@@ -46,6 +52,7 @@ public class MenuBar extends AppCompatActivity {
 
         icons();
         drawerMenu();
+        createConection();
     }
 
     void icons(){
@@ -137,6 +144,26 @@ public class MenuBar extends AppCompatActivity {
         drawerToggle.setDrawerIndicatorEnabled(true);
         drawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
         drawerToggle.syncState();
+    }
+
+    void createConection(){
+        try {
+
+            layoutMenuBar = (ConstraintLayout) findViewById(R.id.layoutMenuBar);
+            bancoController = new BancoController(this);
+            conection = bancoController.getWritableDatabase();
+            Snackbar.make(layoutMenuBar, "Conection", Snackbar.LENGTH_LONG)
+                    .setAction("OK", null).show();
+
+        } catch (SQLException exception){
+
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+            alertDialog.setTitle("Erro");
+            alertDialog.setMessage(exception.getMessage());
+            alertDialog.setNeutralButton("OK", null);
+            alertDialog.show();
+
+        }
     }
 
     @Override

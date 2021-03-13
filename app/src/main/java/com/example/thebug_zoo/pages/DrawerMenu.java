@@ -1,4 +1,4 @@
-package com.example.thebug_zoo;
+package com.example.thebug_zoo.pages;
 
 import android.app.Activity;
 
