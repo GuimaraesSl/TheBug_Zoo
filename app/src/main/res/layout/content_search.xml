@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_fort">
+    android:background="@color/blue_fort"
+    android:id="@+id/layoutSearch">
 
     <ImageView
         android:id="@+id/backgroundCircle2"
@@ -62,53 +63,62 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_icon_seta" />
 
-    <ImageButton
-        android:id="@+id/buttonTeste"
-        android:layout_width="339.5dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="310dp"
-        android:background="@null"
-        app:srcCompat="@drawable/background_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyrcleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/backgroundCircle2"
+        tools:layout_editor_absoluteX="158dp"
+        android:layout_marginTop="230dp"/>
 
-    <TextView
-        android:id="@+id/textTeste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Spirophorida"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/buttonTeste"
-        app:layout_constraintHorizontal_bias="0.386"
-        app:layout_constraintStart_toStartOf="@+id/buttonTeste"
-        app:layout_constraintTop_toTopOf="@+id/buttonTeste" />
+    <!--    <ImageButton-->
+<!--        android:id="@+id/buttonTeste"-->
+<!--        android:layout_width="339.5dp"-->
+<!--        android:layout_height="90dp"-->
+<!--        android:layout_marginTop="310dp"-->
+<!--        android:background="@null"-->
+<!--        app:srcCompat="@drawable/background_button"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:ignore="MissingConstraints"/>-->
 
-    <ImageView
-        android:id="@+id/imageSeta3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/icon_seta"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="26dp"
-        app:layout_constraintStart_toEndOf="@+id/textTeste"
-        app:layout_constraintTop_toTopOf="@+id/buttonTeste" />
+<!--    <TextView-->
+<!--        android:id="@+id/textTeste"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:text="Spirophorida"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="30sp"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/buttonTeste"-->
+<!--        app:layout_constraintHorizontal_bias="0.386"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/buttonTeste"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/buttonTeste" />-->
 
-    <!--    <LinearLayout-->
+<!--    <ImageView-->
+<!--        android:id="@+id/imageSeta3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/icon_seta"-->
+<!--        android:layout_marginLeft="45dp"-->
+<!--        android:layout_marginTop="26dp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/textTeste"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/buttonTeste" />-->
+
+<!--        <LinearLayout-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->
 <!--        android:layout_marginTop="230dp"-->
 <!--        android:orientation="vertical"-->
 <!--        android:padding="8dp">-->
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--        <ListView-->
 <!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/listView">-->
 
-<!--        </androidx.recyclerview.widget.RecyclerView>-->
+<!--        </ListView>-->
 
 <!--    </LinearLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

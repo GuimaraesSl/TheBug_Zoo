@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/buttonTeste"
+            android:layout_width="339.5dp"
+            android:layout_height="90dp"
+            android:background="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/background_button"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textTeste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Spirophorida"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="@+id/buttonTeste"
+            app:layout_constraintHorizontal_bias="0.386"
+            app:layout_constraintStart_toStartOf="@+id/buttonTeste"
+            app:layout_constraintTop_toTopOf="@+id/buttonTeste" />
+
+        <ImageView
+            android:id="@+id/imageSeta3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_seta"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="26dp"
+            app:layout_constraintStart_toEndOf="@+id/textTeste"
+            app:layout_constraintTop_toTopOf="@+id/buttonTeste" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
