@@ -31,14 +31,22 @@ public class DatabaseAcess {
 
     private SQLiteDatabase database;
     private SQLiteOpenHelper openHelper;
+    private static DatabaseAcess instance;
     String[] sqlSelect = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE};
 
     public DatabaseAcess(Context context){
-        openHelper = new BancoController(context);
+        this.openHelper = new BancoController(context);
+    }
+
+    public static DatabaseAcess getInstance(Context context){
+        if (instance == null){
+            instance = new DatabaseAcess(context);
+        }
+        return instance;
     }
 
     public void open(){
-        database = openHelper.getReadableDatabase();
+        this.database = openHelper.getWritableDatabase();
     }
 
     public List<Species> searchAll(){
@@ -64,6 +72,7 @@ public class DatabaseAcess {
                 species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
                 species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                 species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+                result.add(species);
             }while (cursor.moveToNext());
 
             return result;
@@ -87,5 +96,39 @@ public class DatabaseAcess {
                 cursor.getString(9), cursor.getString(10), cursor.getString(11));
 
         return species;
+    }
+
+    public List<String> searchByOrder(String order){
+        List<String> result = new ArrayList<>();
+        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+
+        queryBuilder.setTables(TABLE);
+        Cursor cursor = database.query(TABLE, sqlSelect, COLUMN_ORDER + " = ?", new String[]{order}, null, null, null, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                result.add(cursor.getString(0));
+            }while (cursor.moveToNext());
+                return result;
+        } else {
+            return null;
+        }
+    }
+
+    public List<String> serarchByFamily(String family){
+        List<String> result = new ArrayList<>();
+        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+
+        queryBuilder.setTables(TABLE);
+        Cursor cursor = database.query(TABLE, sqlSelect, COLUMN_FAMILY + " = ?", new String[]{family}, null, null, null, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                result.add(cursor.getString(0));
+            }while (cursor.moveToNext());
+                return result;
+        } else {
+            return null;
+        }
     }
 }

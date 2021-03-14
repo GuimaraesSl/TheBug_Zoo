@@ -12,14 +12,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thebug_zoo.R;
+import com.example.thebug_zoo.database.DatabaseAcess;
+import com.example.thebug_zoo.entity.Species;
 
 public class Search extends AppCompatActivity {
 
     ImageView iconMeioUmido, taxidermizados, osteologia, back;
-    TextView textMeioUmido, textTaxidermizados, textOsteologia;
+    TextView textMeioUmido, textTaxidermizados, textOsteologia, textTeste;
     SearchView searchView;
     ImageButton teste;
     public static int ID;
+    DatabaseAcess database;
+    Species specie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,12 @@ public class Search extends AppCompatActivity {
     }
 
     void icon(){
+        final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this);
+        databaseAcess.open();
+        database = new DatabaseAcess(this);
+        specie = new Species();
+        specie = database.selectSpecie(1);
+
         if(ID==1) {
             iconMeioUmido = (ImageView) findViewById(R.id.iconSearch);
             textMeioUmido = (TextView) findViewById(R.id.textSearch);
@@ -57,6 +67,8 @@ public class Search extends AppCompatActivity {
         });
 
         teste = (ImageButton) findViewById(R.id.buttonTeste);
+        textTeste = (TextView) findViewById(R.id.textTeste);
+        textTeste.setText(specie.ordem);
         teste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
