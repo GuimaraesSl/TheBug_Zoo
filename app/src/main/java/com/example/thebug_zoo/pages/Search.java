@@ -7,10 +7,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,13 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thebug_zoo.R;
-import com.example.thebug_zoo.adapter.SpeciesAdapter;
-import com.example.thebug_zoo.adapter.favSpeciesAdapter;
+import com.example.thebug_zoo.adapter.ClassSpeciesAdapter;
 import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
-import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Search extends AppCompatActivity {
@@ -39,7 +34,7 @@ public class Search extends AppCompatActivity {
     ListView listView;
     ConstraintLayout layoutSearch;
     RecyclerView recyclerView;
-    favSpeciesAdapter adapter;
+    ClassSpeciesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +97,7 @@ public class Search extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyrcleView);
         database = new DatabaseAcess(this);
         specie = database.searchAll();
-        adapter = new favSpeciesAdapter(this, specie);
+        adapter = new ClassSpeciesAdapter(this, specie);
 
 
 

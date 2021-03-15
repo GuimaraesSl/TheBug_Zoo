@@ -16,7 +16,7 @@ import com.example.thebug_zoo.pages.Search;
 
 import java.util.List;
 
-public class favSpeciesAdapter extends RecyclerView.Adapter<SpeciesAdapter>{
+public class ClassSpeciesAdapter extends RecyclerView.Adapter<SpeciesAdapter>{
 
     public Context context;
     public List<Species> species;
@@ -24,7 +24,7 @@ public class favSpeciesAdapter extends RecyclerView.Adapter<SpeciesAdapter>{
     public TextView order;
     public DatabaseAcess database;
 
-    public favSpeciesAdapter(Context context, List<Species> species){
+    public ClassSpeciesAdapter(Context context, List<Species> species){
         this.context = context;
         this.species = species;
     }
