@@ -28,13 +28,13 @@ import com.example.thebug_zoo.database.BancoController;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MenuBar extends AppCompatActivity {
+public class HomeView extends AppCompatActivity {
 
     ImageButton meioUmido, taxidermizados, osteologia;
     Animation frombottom, frombottom2, frombottom3;
     ImageView iconMeioUmido, iconSeta, iconSeta2, iconSeta3, iconTaxidermizados, iconOsteologia;
     TextView textMeioUmido, textTaxidermizados, textOsteologia;
-    Search id;
+    OrderView id;
     SQLiteDatabase conection;
     BancoController bancoController;
     ConstraintLayout layoutMenuBar;
@@ -48,7 +48,7 @@ public class MenuBar extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_bar);
+        setContentView(R.layout.activity_home);
 
         icons();
         drawerMenu();
@@ -57,7 +57,7 @@ public class MenuBar extends AppCompatActivity {
 
     void icons(){
         //Inicializando o objeto da classe Search
-        id = new Search();
+        id = new OrderView();
 
         //Importando os ImageButton da activity home
         meioUmido = (ImageButton) findViewById(R.id.buttonMeioUmido);
@@ -103,27 +103,27 @@ public class MenuBar extends AppCompatActivity {
         //Setando Clicks
         meioUmido.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                Search.ID = 1;
+                OrderView.ID = 1;
                 Toast.makeText(getApplicationContext(), ""+id.ID, Toast.LENGTH_LONG).show();
-                Intent it = new Intent(MenuBar.this, Search.class);
+                Intent it = new Intent(HomeView.this, OrderView.class);
                 startActivity(it);
             }
         });
 
         taxidermizados.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                Search.ID = 2;
+                OrderView.ID = 2;
                 Toast.makeText(getApplicationContext(), ""+id.ID, Toast.LENGTH_LONG).show();
-                Intent it = new Intent(MenuBar.this, Search.class);
+                Intent it = new Intent(HomeView.this, OrderView.class);
                 startActivity(it);
             }
         });
 
         osteologia.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                Search.ID = 3;
+                OrderView.ID = 3;
                 Toast.makeText(getApplicationContext(), ""+id.ID, Toast.LENGTH_LONG).show();
-                Intent it = new Intent(MenuBar.this, Search.class);
+                Intent it = new Intent(HomeView.this, OrderView.class);
                 startActivity(it);
             }
         });

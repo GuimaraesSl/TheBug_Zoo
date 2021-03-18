@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pages.Search">
+    tools:context=".pages.OrderView">
 
-    <include layout="@layout/content_search"/>
+    <include layout="@layout/content_order"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

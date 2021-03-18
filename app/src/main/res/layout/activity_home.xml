@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pages.MenuBar">
+    tools:context=".pages.HomeView">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/Theme.TheBug_Zoo.AppBarOverlay"/>
 
-    <include layout="@layout/content_menu_bar" />
+    <include layout="@layout/content_home" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

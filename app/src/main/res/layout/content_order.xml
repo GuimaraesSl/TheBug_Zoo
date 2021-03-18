@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_fort"
-    android:id="@+id/layoutSearch">
+    android:id="@+id/layoutOrder">
 
     <ImageView
         android:id="@+id/backgroundCircle2"

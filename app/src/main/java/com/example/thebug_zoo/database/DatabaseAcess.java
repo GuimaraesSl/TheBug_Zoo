@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.util.Log;
 
 import com.example.thebug_zoo.entity.Species;
 
@@ -13,6 +14,46 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseAcess {
+
+    //================CONEXÃ0=====================
+    private SQLiteOpenHelper openHelper;
+    private SQLiteDatabase database;
+    private static DatabaseAcess instance;
+    /**
+     * Private constructor to aboid object creation from outside classes.
+     *
+     * @param context
+     */
+    public DatabaseAcess(Context context){
+        this.openHelper = new BancoController(context);
+    }
+    /**
+     * Return a singleton instance of DatabaseAccess.
+     *
+     * @param context the Context
+     * @return the instance of DabaseAccess
+     */
+    public static DatabaseAcess getInstance(Context context){
+        if (instance == null){
+            instance = new DatabaseAcess(context);
+        }
+        return instance;
+    }
+    /**
+     * Open the database connection.
+     */
+    public void open() {
+        this.database = openHelper.getWritableDatabase();
+    }
+    /**
+     * Close the database connection.
+     */
+    public void close(){
+        if(database != null){
+            this.database.close();
+        }
+    }
+    //=======================================================================================
 
     public static final String TABLE = "table_meio_umido";
     public static final String COLUMN__ID = "_id";
@@ -27,39 +68,19 @@ public class DatabaseAcess {
     public static final String COLUMN_COLLECTOR = "coletor";
     public static final String COLUMN_PLACE = "_local";
     public static final String COLUMN_DATE = "_data";
-
-
-    private SQLiteDatabase database;
-    private SQLiteOpenHelper openHelper;
-    private static DatabaseAcess instance;
+    int contador = 0;
     String[] sqlSelect = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE};
 
-    public DatabaseAcess(Context context){
-        this.openHelper = new BancoController(context);
-    }
-
-    public static DatabaseAcess getInstance(Context context){
-        if (instance == null){
-            instance = new DatabaseAcess(context);
-        }
-        return instance;
-    }
-
-    public void open(){
-        this.database = openHelper.getWritableDatabase();
-    }
-
     public List<Species> searchAll(){
-
-        database = openHelper.getReadableDatabase();
+        open();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder.setTables(TABLE);
-        List<Species> result = new ArrayList<>();
         Cursor cursor = queryBuilder.query(database, sqlSelect, null, null, null, null, null);
-        Species species = new Species();
+        List<Species> result = new ArrayList<>();
 
         if(cursor.moveToFirst()){
             do{
+                Species species = new Species();
                 species._id = cursor.getInt((cursor.getColumnIndex(COLUMN__ID)));
                 species.id = cursor.getInt((cursor.getColumnIndex(COLUMN_ID)));
                 species.armario = cursor.getInt((cursor.getColumnIndex(COLUMN_WARDROBE)));
@@ -72,17 +93,26 @@ public class DatabaseAcess {
                 species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
                 species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                 species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+                Log.d("SpeciesOrder", species.ordem);
                 result.add(species);
+                Log.d("Result", result.get(contador).ordem);
+                contador = contador + 1;
             }while (cursor.moveToNext());
+                Log.d("Result=0", result.get(0).ordem);
+                Log.d("Result=1", result.get(1).ordem);
+                Log.d("Result=2", result.get(2).ordem);
 
-            return result;
+                cursor.close();
+                close();
+                return result;
         } else {
+            cursor.close();
+            close();
             return null;
         }
     }
 
     public Species selectSpecie(int code){
-
         database = openHelper.getReadableDatabase();
         Cursor cursor = database.query(TABLE, sqlSelect, COLUMN__ID + "= ?", new String[]{String.valueOf(code)}, null, null, null, null);
 
@@ -101,7 +131,6 @@ public class DatabaseAcess {
     public List<String> searchByOrder(String order){
         List<String> result = new ArrayList<>();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-
         queryBuilder.setTables(TABLE);
         Cursor cursor = database.query(TABLE, sqlSelect, COLUMN_ORDER + " = ?", new String[]{order}, null, null, null, null);
 
@@ -118,7 +147,6 @@ public class DatabaseAcess {
     public List<String> serarchByFamily(String family){
         List<String> result = new ArrayList<>();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-
         queryBuilder.setTables(TABLE);
         Cursor cursor = database.query(TABLE, sqlSelect, COLUMN_FAMILY + " = ?", new String[]{family}, null, null, null, null);
 

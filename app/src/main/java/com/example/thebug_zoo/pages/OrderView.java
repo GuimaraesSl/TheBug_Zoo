@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -16,13 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thebug_zoo.R;
-import com.example.thebug_zoo.adapter.ClassSpeciesAdapter;
+import com.example.thebug_zoo.adapter.SpeciesOrdersAdapter;
 import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
 
 import java.util.List;
 
-public class Search extends AppCompatActivity {
+public class OrderView extends AppCompatActivity {
 
     ImageView iconMeioUmido, taxidermizados, osteologia, back;
     TextView textMeioUmido, textTaxidermizados, textOsteologia, textTeste;
@@ -34,12 +35,12 @@ public class Search extends AppCompatActivity {
     ListView listView;
     ConstraintLayout layoutSearch;
     RecyclerView recyclerView;
-    ClassSpeciesAdapter adapter;
+    SpeciesOrdersAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_order);
         icon();
         setAdapter();
         Toast.makeText(getApplicationContext(), ""+ID, Toast.LENGTH_LONG).show();
@@ -93,15 +94,15 @@ public class Search extends AppCompatActivity {
     }
 
     void setAdapter() {
-        layoutSearch = (ConstraintLayout)findViewById(R.id.layoutSearch);
+        layoutSearch = (ConstraintLayout)findViewById(R.id.layoutOrder);
         recyclerView = (RecyclerView) findViewById(R.id.recyrcleView);
         database = new DatabaseAcess(this);
         specie = database.searchAll();
-        adapter = new ClassSpeciesAdapter(this, specie);
+        adapter = new SpeciesOrdersAdapter(this, specie);
 
 
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);

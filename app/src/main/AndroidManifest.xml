@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TheBug_Zoo.NoActionBar">
         <activity android:name=".pages.InfAdicionais"></activity>
-        <activity android:name=".pages.Search" />
+        <activity android:name=".pages.OrderView" />
         <activity
             android:name=".pages.DrawerMenu"
             android:label="@string/title_activity_drawer_menu"
             android:theme="@style/Theme.TheBug_Zoo.NoActionBar" />
         <activity
-            android:name=".pages.MenuBar"
+            android:name=".pages.HomeView"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.TheBug_Zoo.NoActionBar">
             <intent-filter>
