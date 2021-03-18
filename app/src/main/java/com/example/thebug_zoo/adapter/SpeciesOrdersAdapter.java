@@ -6,13 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thebug_zoo.R;
-import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
 
 import java.util.List;
@@ -21,7 +19,6 @@ public class SpeciesOrdersAdapter extends RecyclerView.Adapter<SpeciesOrdersAdap
 
     Context context;
     List<Species> speciesList;
-    DatabaseAcess database;
 
     public SpeciesOrdersAdapter(Context context, List<Species> speciesList){
         this.context = context;
