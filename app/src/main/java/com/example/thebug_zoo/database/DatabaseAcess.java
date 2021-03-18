@@ -67,7 +67,6 @@ public class DatabaseAcess {
     public static final String COLUMN_COLLECTOR = "coletor";
     public static final String COLUMN_PLACE = "_local";
     public static final String COLUMN_DATE = "_data";
-    int contador = 0;
     String[] sqlSelect = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE};
 
     public List<Species> searchAll(){
@@ -92,18 +91,11 @@ public class DatabaseAcess {
                 species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
                 species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                 species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
-                Log.d("SpeciesOrder", species.ordem);
                 result.add(species);
-                Log.d("Result", result.get(contador).ordem);
-                contador = contador + 1;
             }while (cursor.moveToNext());
-                Log.d("Result=0", result.get(0).ordem);
-                Log.d("Result=1", result.get(1).ordem);
-                Log.d("Result=2", result.get(2).ordem);
-
-                cursor.close();
-                close();
-                return result;
+            cursor.close();
+            close();
+            return result;
         } else {
             cursor.close();
             close();
@@ -112,7 +104,7 @@ public class DatabaseAcess {
     }
 
     public Species selectSpecie(int code){
-        database = openHelper.getReadableDatabase();
+        open();
         Cursor cursor = database.query(TABLE, sqlSelect, COLUMN__ID + "= ?", new String[]{String.valueOf(code)}, null, null, null, null);
 
         if( cursor!= null){
@@ -123,11 +115,13 @@ public class DatabaseAcess {
                 Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)), cursor.getString(4),
                 cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
                 cursor.getString(9), cursor.getString(10), cursor.getString(11));
-
+        cursor.close();
+        close();
         return species;
     }
 
     public List<String> searchByOrder(String order){
+        open();
         List<String> result = new ArrayList<>();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder.setTables(TABLE);
@@ -137,13 +131,18 @@ public class DatabaseAcess {
             do{
                 result.add(cursor.getString(0));
             }while (cursor.moveToNext());
+                cursor.close();
+                close();
                 return result;
         } else {
+            cursor.close();
+            close();
             return null;
         }
     }
 
     public List<String> serarchByFamily(String family){
+        open();
         List<String> result = new ArrayList<>();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder.setTables(TABLE);
@@ -153,8 +152,12 @@ public class DatabaseAcess {
             do{
                 result.add(cursor.getString(0));
             }while (cursor.moveToNext());
+                cursor.close();
+                close();
                 return result;
         } else {
+            cursor.close();
+            close();
             return null;
         }
     }

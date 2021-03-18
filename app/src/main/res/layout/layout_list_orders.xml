@@ -37,10 +37,10 @@
             android:id="@+id/imageSeta3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_seta"
-            android:layout_marginLeft="45dp"
             android:layout_marginTop="26dp"
-            app:layout_constraintStart_toEndOf="@+id/textTeste"
+            android:layout_marginEnd="30dp"
+            android:src="@drawable/icon_seta"
+            app:layout_constraintEnd_toEndOf="@+id/buttonTeste"
             app:layout_constraintTop_toTopOf="@+id/buttonTeste" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

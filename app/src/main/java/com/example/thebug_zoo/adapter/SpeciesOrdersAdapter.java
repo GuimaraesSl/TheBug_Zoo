@@ -1,6 +1,7 @@
 package com.example.thebug_zoo.adapter;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,19 +12,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thebug_zoo.R;
+import com.example.thebug_zoo.components.SizeUtils;
 import com.example.thebug_zoo.entity.Species;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpeciesOrdersAdapter extends RecyclerView.Adapter<SpeciesOrdersAdapter.SpeciesViewHolder> {
 
     Context context;
-    List<Species> speciesList;
+    List<String> ordersAdded;
 
-    public SpeciesOrdersAdapter(Context context, List<Species> speciesList){
+    public SpeciesOrdersAdapter(Context context, List<String> ordersAdded){
         this.context = context;
-        this.speciesList = speciesList;
+        this.ordersAdded = ordersAdded;
     }
+
 
     @NonNull
     @Override
@@ -35,14 +39,12 @@ public class SpeciesOrdersAdapter extends RecyclerView.Adapter<SpeciesOrdersAdap
 
     @Override
     public void onBindViewHolder(@NonNull SpeciesViewHolder holder, int position) {
-        Log.d("Index", String.valueOf(position));
-        Log.d("SpecieOrderIndex", speciesList.get(position).ordem);
-        holder.order.setText(speciesList.get(position).ordem);
+            holder.order.setText(ordersAdded.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return speciesList.size();
+        return ordersAdded.size();
     }
 
     public class SpeciesViewHolder extends RecyclerView.ViewHolder {
@@ -54,4 +56,5 @@ public class SpeciesOrdersAdapter extends RecyclerView.Adapter<SpeciesOrdersAdap
             order = (TextView)itemView.findViewById(R.id.textTeste);
         }
     }
+
 }

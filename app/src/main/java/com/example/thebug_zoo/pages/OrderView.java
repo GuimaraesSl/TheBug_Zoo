@@ -1,41 +1,38 @@
 package com.example.thebug_zoo.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.adapter.SpeciesOrdersAdapter;
+import com.example.thebug_zoo.components.CommonItemSpaceDecoration;
 import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class OrderView extends AppCompatActivity {
 
     ImageView iconMeioUmido, taxidermizados, osteologia, back;
-    TextView textMeioUmido, textTaxidermizados, textOsteologia, textTeste;
-    SearchView searchView;
-    ImageButton teste;
+    TextView textMeioUmido, textTaxidermizados, textOsteologia;
     public static int ID;
     DatabaseAcess database;
     List<Species> specie;
-    ListView listView;
     ConstraintLayout layoutSearch;
     RecyclerView recyclerView;
     SpeciesOrdersAdapter adapter;
+    List<String> orderAdded = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +47,6 @@ public class OrderView extends AppCompatActivity {
     void icon(){
         final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this);
         databaseAcess.open();
-//        database = new DatabaseAcess(this);
-//        specie = new Species();
-//        specie = database.selectSpecie(1);
-//        recyclerView = (RecyclerView)findViewById(R.id.recyrcleView);
 
         if(ID==1) {
             iconMeioUmido = (ImageView) findViewById(R.id.iconSearch);
@@ -79,18 +72,6 @@ public class OrderView extends AppCompatActivity {
                 finish();
             }
         });
-
-//        textTeste = (TextView) findViewById(R.id.textTeste);
-//        textTeste.setText(specie.ordem);
-
-//        teste = (ImageButton) findViewById(R.id.testeButton);
-//        teste.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent it = new Intent(Search.this, InfAdicionais.class);
-//                startActivity(it);
-//            }
-//        });
     }
 
     void setAdapter() {
@@ -98,11 +79,16 @@ public class OrderView extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyrcleView);
         database = new DatabaseAcess(this);
         specie = database.searchAll();
-        adapter = new SpeciesOrdersAdapter(this, specie);
-
-
+        for (int i = 0; i < specie.size(); i++){
+            if (!orderAdded.contains(specie.get(i).ordem)){
+                orderAdded.add(specie.get(i).ordem);
+            }
+        };
+        Collections.sort(orderAdded);
+        adapter = new SpeciesOrdersAdapter(this, orderAdded);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.addItemDecoration(new CommonItemSpaceDecoration(16));
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
