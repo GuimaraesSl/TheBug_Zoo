@@ -38,27 +38,31 @@ public class OrderView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
-        icon();
+        setTypeSearch();
         setAdapter();
-        Toast.makeText(getApplicationContext(), ""+ID, Toast.LENGTH_LONG).show();
-
     }
 
-    void icon(){
-        final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this);
-        databaseAcess.open();
-
+    void setTypeSearch(){
         if(ID==1) {
+            final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this, "table_meio_umido");
+            databaseAcess.open();
+            database = new DatabaseAcess(this, "table_meio_umido");
             iconMeioUmido = (ImageView) findViewById(R.id.iconSearch);
             textMeioUmido = (TextView) findViewById(R.id.textSearch);
             iconMeioUmido.setImageResource(R.drawable.icon_meio_umido_search);
             textMeioUmido.setText("Meio úmido");
         } else if (ID==2){
+            final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this, "table_taxidermizados");
+            databaseAcess.open();
+            database = new DatabaseAcess(this, "table_taxidermizados");
             taxidermizados = (ImageView) findViewById(R.id.iconSearch);
             textTaxidermizados = (TextView) findViewById(R.id.textSearch);
             taxidermizados.setImageResource(R.drawable.icon_taxidermizados_search);
             textTaxidermizados.setText("Taxidermizados");
         } else if(ID==3){
+            final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this, "table_osteologia");
+            databaseAcess.open();
+            database = new DatabaseAcess(this, "table_osteologia");
             osteologia = (ImageView) findViewById(R.id.iconSearch);
             textOsteologia = (TextView) findViewById(R.id.textSearch);
             osteologia.setImageResource(R.drawable.icon_osteologia_search);
@@ -77,7 +81,6 @@ public class OrderView extends AppCompatActivity {
     void setAdapter() {
         layoutSearch = (ConstraintLayout)findViewById(R.id.layoutOrder);
         recyclerView = (RecyclerView) findViewById(R.id.recyrcleView);
-        database = new DatabaseAcess(this);
         specie = database.searchAll();
         for (int i = 0; i < specie.size(); i++){
             if (!orderAdded.contains(specie.get(i).ordem)){

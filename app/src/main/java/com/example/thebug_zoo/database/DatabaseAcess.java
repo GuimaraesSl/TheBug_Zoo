@@ -18,13 +18,15 @@ public class DatabaseAcess {
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase database;
     private static DatabaseAcess instance;
+    public final String TABLE;
     /**
      * Private constructor to aboid object creation from outside classes.
      *
      * @param context
      */
-    public DatabaseAcess(Context context){
+    public DatabaseAcess(Context context, String TABLE){
         this.openHelper = new BancoController(context);
+        this.TABLE = TABLE;
     }
     /**
      * Return a singleton instance of DatabaseAccess.
@@ -32,9 +34,10 @@ public class DatabaseAcess {
      * @param context the Context
      * @return the instance of DabaseAccess
      */
-    public static DatabaseAcess getInstance(Context context){
+    public static DatabaseAcess getInstance(Context context, String TABLE){
+
         if (instance == null){
-            instance = new DatabaseAcess(context);
+            instance = new DatabaseAcess(context, TABLE);
         }
         return instance;
     }
@@ -54,7 +57,6 @@ public class DatabaseAcess {
     }
     //=======================================================================================
 
-    public static final String TABLE = "table_meio_umido";
     public static final String COLUMN__ID = "_id";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_WARDROBE = "armario";
@@ -67,7 +69,8 @@ public class DatabaseAcess {
     public static final String COLUMN_COLLECTOR = "coletor";
     public static final String COLUMN_PLACE = "_local";
     public static final String COLUMN_DATE = "_data";
-    String[] sqlSelect = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE};
+    public static final String COLUMN_FOTO1 = "foto1";
+    String[] sqlSelect = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE, COLUMN_FOTO1};
 
     public List<Species> searchAll(){
         open();
@@ -91,6 +94,7 @@ public class DatabaseAcess {
                 species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
                 species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                 species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+
                 result.add(species);
             }while (cursor.moveToNext());
             cursor.close();
