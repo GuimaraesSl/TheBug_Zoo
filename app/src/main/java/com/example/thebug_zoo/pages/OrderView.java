@@ -1,16 +1,17 @@
 package com.example.thebug_zoo.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.adapter.SpeciesOrdersAdapter;
@@ -40,6 +41,20 @@ public class OrderView extends AppCompatActivity {
         setContentView(R.layout.activity_order);
         setTypeSearch();
         setAdapter();
+        SearchView searchView = (SearchView) findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.d("ENTRADA", "TEXTO MUDOU");
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
     }
 
     void setTypeSearch(){
@@ -81,6 +96,7 @@ public class OrderView extends AppCompatActivity {
     void setAdapter() {
         layoutSearch = (ConstraintLayout)findViewById(R.id.layoutOrder);
         recyclerView = (RecyclerView) findViewById(R.id.recyrcleView);
+
         specie = database.searchAll();
         for (int i = 0; i < specie.size(); i++){
             if (!orderAdded.contains(specie.get(i).ordem)){
@@ -89,7 +105,6 @@ public class OrderView extends AppCompatActivity {
         };
         Collections.sort(orderAdded);
         adapter = new SpeciesOrdersAdapter(this, orderAdded);
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.addItemDecoration(new CommonItemSpaceDecoration(16));
         recyclerView.setLayoutManager(layoutManager);
