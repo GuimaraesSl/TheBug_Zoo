@@ -104,7 +104,6 @@ public class HomeView extends AppCompatActivity {
         meioUmido.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 OrderView.ID = 1;
-                Toast.makeText(getApplicationContext(), ""+id.ID, Toast.LENGTH_LONG).show();
                 Intent it = new Intent(HomeView.this, OrderView.class);
                 startActivity(it);
             }
@@ -113,7 +112,6 @@ public class HomeView extends AppCompatActivity {
         taxidermizados.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 OrderView.ID = 2;
-                Toast.makeText(getApplicationContext(), ""+id.ID, Toast.LENGTH_LONG).show();
                 Intent it = new Intent(HomeView.this, OrderView.class);
                 startActivity(it);
             }
@@ -122,7 +120,6 @@ public class HomeView extends AppCompatActivity {
         osteologia.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 OrderView.ID = 3;
-                Toast.makeText(getApplicationContext(), ""+id.ID, Toast.LENGTH_LONG).show();
                 Intent it = new Intent(HomeView.this, OrderView.class);
                 startActivity(it);
             }
