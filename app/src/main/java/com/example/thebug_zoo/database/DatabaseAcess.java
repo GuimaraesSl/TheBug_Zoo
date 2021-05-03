@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.example.thebug_zoo.entity.Species;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -163,6 +164,168 @@ public class DatabaseAcess {
             cursor.close();
             close();
             return null;
+        }
+    }
+
+    public ArrayList<ArrayList<Integer>> searchByKeyword(ArrayList<List<Species>> list, String keyword){
+        List<Species> aux = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> idsOfSpecies = new ArrayList<>();
+
+        Log.d("KEYWORD", keyword);
+        for(int i = 0; i < list.size(); i++){
+            aux = list.get(i);
+            ArrayList<Integer> ids = new ArrayList<>();
+            for(int l = 0; l < aux.size(); l++){
+                Log.d("ORDENS ", String.valueOf(aux.get(l).ordem));
+                if(aux.get(l).ordem.intern().toLowerCase().indexOf(keyword.intern().toLowerCase()) != -1){
+                    if(!ids.contains(aux.get(l)._id)){
+                        Log.d("IDS", String.valueOf(aux.get(l)._id));
+                        ids.add(aux.get(l)._id);
+                    }
+                }
+                Log.d("FAMILIAS", String.valueOf(aux.get(l).familia));
+                if(aux.get(l).familia.intern().toLowerCase().indexOf(keyword.intern().toLowerCase()) != -1){
+                    if(!ids.contains(aux.get(l)._id)){
+                        Log.d("IDS", String.valueOf(aux.get(l)._id));
+                        ids.add(aux.get(l)._id);
+                    }
+                }
+                Log.d("IDENTIFICAÇÃO", String.valueOf(aux.get(l).identificacao));
+                if(aux.get(l).identificacao.intern().toLowerCase().indexOf(keyword.intern().toLowerCase()) != -1){
+                    if(!ids.contains(aux.get(l)._id)){
+                        Log.d("IDS", String.valueOf(aux.get(l)._id));
+                        ids.add(aux.get(l)._id);
+                    }
+                }
+                Log.d("INFORMAÇÔES", String.valueOf(aux.get(l).inf_adicionais));
+                if(aux.get(l).inf_adicionais.intern().toLowerCase().indexOf(keyword.intern().toLowerCase()) != -1){
+                    if(!ids.contains(aux.get(l)._id)){
+                        Log.d("IDS", String.valueOf(aux.get(l)._id));
+                        ids.add(aux.get(l)._id);
+                    }
+                }
+            }
+            idsOfSpecies.add(ids);
+        }
+
+        return idsOfSpecies;
+    }
+
+    public List<Species> searchByIdList(ArrayList<ArrayList<Integer>> ids){
+        open();
+        List<Species> result = new ArrayList<>();
+        int cont;
+        ArrayList<Integer> aux = new ArrayList<>();
+        aux = ids.get(0);
+        for(int i = 0; i < aux.size(); i++){
+            cont = aux.get(i);
+            Log.d("AQUIIIII", String.valueOf(cont));
+            open();
+            SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+            queryBuilder.setTables("table_meio_umido");
+            Cursor cursor = queryBuilder.query(database, sqlSelect, COLUMN__ID + " = ?", new String[]{String.valueOf(cont)}, null, null, null);
+
+            if(cursor.moveToFirst()){
+                do{
+                    Species species = new Species();
+                    species._id = cursor.getInt((cursor.getColumnIndex(COLUMN__ID)));
+                    species.id = cursor.getInt((cursor.getColumnIndex(COLUMN_ID)));
+                    species.armario = cursor.getInt((cursor.getColumnIndex(COLUMN_WARDROBE)));
+                    species.estante = cursor.getInt((cursor.getColumnIndex(COLUMN_BOOKCASE)));
+                    species.ordem = cursor.getString((cursor.getColumnIndex(COLUMN_ORDER)));
+                    species.familia = cursor.getString((cursor.getColumnIndex(COLUMN_FAMILY)));
+                    species.identificacao = cursor.getString((cursor.getColumnIndex(COLUMN_IDENTIFICATION)));
+                    species.inf_adicionais = cursor.getString((cursor.getColumnIndex(COLUMN_INF)));
+                    species.fonte = cursor.getString((cursor.getColumnIndex(COLUMN_SOURCE)));
+                    species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
+                    species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
+                    species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+
+                    result.add(species);
+                }while (cursor.moveToNext());
+                cursor.close();
+                close();
+            } else {
+                cursor.close();
+                close();
+                return null;
+            }
+        }
+        aux = ids.get(1);
+        for(int i = 0; i < aux.size(); i++){
+            cont = ids.get(1).get(i);
+            open();
+            SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+            queryBuilder.setTables("table_taxidermizados");
+            Cursor cursor = queryBuilder.query(database, sqlSelect, COLUMN__ID + " = ?", new String[]{String.valueOf(cont)}, null, null, null);
+
+            if(cursor.moveToFirst()){
+                do{
+                    Species species = new Species();
+                    species._id = cursor.getInt((cursor.getColumnIndex(COLUMN__ID)));
+                    species.id = cursor.getInt((cursor.getColumnIndex(COLUMN_ID)));
+                    species.armario = cursor.getInt((cursor.getColumnIndex(COLUMN_WARDROBE)));
+                    species.estante = cursor.getInt((cursor.getColumnIndex(COLUMN_BOOKCASE)));
+                    species.ordem = cursor.getString((cursor.getColumnIndex(COLUMN_ORDER)));
+                    species.familia = cursor.getString((cursor.getColumnIndex(COLUMN_FAMILY)));
+                    species.identificacao = cursor.getString((cursor.getColumnIndex(COLUMN_IDENTIFICATION)));
+                    species.inf_adicionais = cursor.getString((cursor.getColumnIndex(COLUMN_INF)));
+                    species.fonte = cursor.getString((cursor.getColumnIndex(COLUMN_SOURCE)));
+                    species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
+                    species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
+                    species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+
+                    result.add(species);
+                }while (cursor.moveToNext());
+                cursor.close();
+                close();
+            } else {
+                cursor.close();
+                close();
+                return null;
+            }
+        }
+        aux = ids.get(2);
+        for(int i = 0; i < aux.size(); i++){
+            cont = ids.get(2).get(i);
+            open();
+            SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+            queryBuilder.setTables("table_osteologia");
+            Cursor cursor = queryBuilder.query(database, sqlSelect, COLUMN__ID + " = ?", new String[]{String.valueOf(cont)}, null, null, null);
+
+            if(cursor.moveToFirst()){
+                do{
+                    Species species = new Species();
+                    species._id = cursor.getInt((cursor.getColumnIndex(COLUMN__ID)));
+                    species.id = cursor.getInt((cursor.getColumnIndex(COLUMN_ID)));
+                    species.armario = cursor.getInt((cursor.getColumnIndex(COLUMN_WARDROBE)));
+                    species.estante = cursor.getInt((cursor.getColumnIndex(COLUMN_BOOKCASE)));
+                    species.ordem = cursor.getString((cursor.getColumnIndex(COLUMN_ORDER)));
+                    species.familia = cursor.getString((cursor.getColumnIndex(COLUMN_FAMILY)));
+                    species.identificacao = cursor.getString((cursor.getColumnIndex(COLUMN_IDENTIFICATION)));
+                    species.inf_adicionais = cursor.getString((cursor.getColumnIndex(COLUMN_INF)));
+                    species.fonte = cursor.getString((cursor.getColumnIndex(COLUMN_SOURCE)));
+                    species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
+                    species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
+                    species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+
+                    result.add(species);
+                }while (cursor.moveToNext());
+                cursor.close();
+                close();
+            } else {
+                cursor.close();
+                close();
+                return null;
+            }
+        }
+
+        return result;
+    }
+
+    public void teste(List<Species> list){
+        for(int i = 0; i < list.size(); i++){
+            Log.d("RESULTAAADO FINAL", list.get(i).ordem);
         }
     }
 }
