@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,8 +26,13 @@ import android.widget.Toast;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.database.BancoController;
+import com.example.thebug_zoo.database.DatabaseAcess;
+import com.example.thebug_zoo.entity.Species;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeView extends AppCompatActivity {
 
@@ -38,12 +44,12 @@ public class HomeView extends AppCompatActivity {
     SQLiteDatabase conection;
     BancoController bancoController;
     ConstraintLayout layoutMenuBar;
+    DatabaseAcess TABLE_MEIO_UMIDO, TABLE_TAXIDERMIZADOS, TABLE_OSTEOLOGIA;
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
     Toolbar toolbar;
     NavigationView navigationView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,6 +177,15 @@ public class HomeView extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                ArrayList<List<Species>> result = new ArrayList<>();
+                TABLE_MEIO_UMIDO = new DatabaseAcess(getApplicationContext(), "table_meio_umido");
+                result.add(TABLE_MEIO_UMIDO.searchAll());
+                TABLE_TAXIDERMIZADOS = new DatabaseAcess(getApplicationContext(), "table_taxidermizados");
+                result.add(TABLE_TAXIDERMIZADOS.searchAll());
+                TABLE_OSTEOLOGIA = new DatabaseAcess(getApplicationContext(), "table_osteologia");
+                result.add(TABLE_OSTEOLOGIA.searchAll());
+
+                TABLE_MEIO_UMIDO.teste(TABLE_MEIO_UMIDO.searchByIdList(TABLE_MEIO_UMIDO.searchByKeyword(result, query)));
                 return false;
             }
 
