@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.adapter.SpeciesOrdersAdapter;
@@ -23,10 +24,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class OrderView extends AppCompatActivity {
+public class OrderView extends AppCompatActivity{
 
     ImageView iconMeioUmido, taxidermizados, osteologia, back;
-    TextView textMeioUmido, textTaxidermizados, textOsteologia;
     public static int ID;
     DatabaseAcess database;
     List<Species> specie;
@@ -34,6 +34,7 @@ public class OrderView extends AppCompatActivity {
     RecyclerView recyclerView;
     SpeciesOrdersAdapter adapter;
     List<String> orderAdded = new ArrayList<>();
+    private SpeciesOrdersAdapter.ClickListenerFeature listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,6 @@ public class OrderView extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Log.d("ENTRADA", "TEXTO MUDOU");
                 adapter.getFilter().filter(newText);
                 return false;
             }
@@ -63,25 +63,19 @@ public class OrderView extends AppCompatActivity {
             databaseAcess.open();
             database = new DatabaseAcess(this, "table_meio_umido");
             iconMeioUmido = (ImageView) findViewById(R.id.iconSearch);
-            textMeioUmido = (TextView) findViewById(R.id.textSearch);
             iconMeioUmido.setImageResource(R.drawable.icon_meio_umido_search);
-            textMeioUmido.setText("Meio úmido");
         } else if (ID==2){
             final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this, "table_taxidermizados");
             databaseAcess.open();
             database = new DatabaseAcess(this, "table_taxidermizados");
             taxidermizados = (ImageView) findViewById(R.id.iconSearch);
-            textTaxidermizados = (TextView) findViewById(R.id.textSearch);
             taxidermizados.setImageResource(R.drawable.icon_taxidermizados_search);
-            textTaxidermizados.setText("Taxidermizados");
         } else if(ID==3){
             final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this, "table_osteologia");
             databaseAcess.open();
             database = new DatabaseAcess(this, "table_osteologia");
             osteologia = (ImageView) findViewById(R.id.iconSearch);
-            textOsteologia = (TextView) findViewById(R.id.textSearch);
             osteologia.setImageResource(R.drawable.icon_osteologia_search);
-            textOsteologia.setText("Osteologia");
         }
 
         back = (ImageView) findViewById(R.id.imageSeta);
@@ -94,8 +88,9 @@ public class OrderView extends AppCompatActivity {
     }
 
     void setAdapter() {
+        setOnClickListener();
         layoutSearch = (ConstraintLayout)findViewById(R.id.layoutOrder);
-        recyclerView = (RecyclerView) findViewById(R.id.recyrcleView);
+        recyclerView = (RecyclerView) findViewById(R.id.recycleOrderView);
 
         specie = database.searchAll();
         for (int i = 0; i < specie.size(); i++){
@@ -104,7 +99,7 @@ public class OrderView extends AppCompatActivity {
             }
         };
         Collections.sort(orderAdded);
-        adapter = new SpeciesOrdersAdapter(this, orderAdded);
+        adapter = new SpeciesOrdersAdapter(this, orderAdded, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.addItemDecoration(new CommonItemSpaceDecoration(16));
         recyclerView.setLayoutManager(layoutManager);
@@ -112,4 +107,16 @@ public class OrderView extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
     }
+
+    private void setOnClickListener() {
+        listener = new SpeciesOrdersAdapter.ClickListenerFeature() {
+            @Override
+            public void onClick(View v, int position) {
+                Intent intent = new Intent(getApplicationContext(), FamilyView.class);
+                intent.putExtra("Order", orderAdded.get(position));
+                startActivity(intent);
+            }
+        };
+    }
+
 }

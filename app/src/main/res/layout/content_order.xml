@@ -7,6 +7,18 @@
     android:background="@color/blue_fort"
     android:id="@+id/layoutOrder">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:id="@+id/recycleOrderView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/backgroundCircle2"
         android:layout_width="515dp"
@@ -15,11 +27,11 @@
         android:adjustViewBounds="true"
         android:cropToPadding="false"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/recyrcleView"
+        app:layout_constraintBottom_toTopOf="@+id/recycleOrderView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/background_circle" />
+        app:srcCompat="@drawable/background_circle"/>
 
     <ImageView
         android:id="@+id/imageSeta"
@@ -29,7 +41,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_icon_seta" />
+        app:srcCompat="@drawable/ic_icon_seta"/>
 
     <ImageView
         android:id="@+id/iconSearch"
@@ -41,9 +53,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-
     <TextView
         android:id="@+id/textSearch"
+        android:text="@string/ordens"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -58,21 +70,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:iconifiedByDefault="false"
-        app:layout_constraintBottom_toTopOf="@+id/recyrcleView"
+        app:layout_constraintBottom_toTopOf="@+id/recycleOrderView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:queryHint="Pesquisar"
+        app:queryHint="@string/pesquisar"
         app:searchIcon="@drawable/icon_search">
-
     </androidx.appcompat.widget.SearchView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyrcleView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="250dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

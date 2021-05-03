@@ -1,8 +1,6 @@
 package com.example.thebug_zoo.adapter;
 
 import android.content.Context;
-import android.graphics.Rect;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thebug_zoo.R;
-import com.example.thebug_zoo.components.SizeUtils;
-import com.example.thebug_zoo.entity.Species;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,11 +22,13 @@ public class SpeciesOrdersAdapter extends RecyclerView.Adapter<SpeciesOrdersAdap
     Context context;
     List<String> ordersAdded;
     List<String> ordersAddedAll;
+    private ClickListenerFeature listener;
 
-    public SpeciesOrdersAdapter(Context context, List<String> ordersAdded){
+    public SpeciesOrdersAdapter(Context context, List<String> ordersAdded, ClickListenerFeature listener){
         this.context = context;
         this.ordersAdded = ordersAdded;
         this.ordersAddedAll = new ArrayList<>(ordersAdded);
+        this.listener = listener;
     }
 
 
@@ -38,7 +36,7 @@ public class SpeciesOrdersAdapter extends RecyclerView.Adapter<SpeciesOrdersAdap
     @Override
     public SpeciesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.layout_list_orders, parent,false);
+        View view = inflater.inflate(R.layout.layout_list, parent,false);
         return new SpeciesViewHolder(view);
     }
 
@@ -54,7 +52,6 @@ public class SpeciesOrdersAdapter extends RecyclerView.Adapter<SpeciesOrdersAdap
 
     @Override
     public Filter getFilter() {
-        Log.d("ENTROU", "GET_FILTER");
         return filter;
     }
 
@@ -62,16 +59,11 @@ public class SpeciesOrdersAdapter extends RecyclerView.Adapter<SpeciesOrdersAdap
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
             List<String> filteredList = new ArrayList<>();
-            Log.d("ENTROU", "FILTER");
             if(charSequence.toString().isEmpty()){
-                Log.d("ENTROU", "EMPTY");
-                Log.d("Ordens:", ordersAddedAll.toString());
                 filteredList.addAll(ordersAddedAll);
             } else {
-                Log.d("ENTROU", "NOT_EMPTY");
                 for (String orders: ordersAddedAll) {
                     if (orders.toLowerCase().contains(charSequence.toString().toLowerCase())){
-                        Log.d("Ordens:", orders);
                         filteredList.add(orders);
                     }
                 }
@@ -89,14 +81,23 @@ public class SpeciesOrdersAdapter extends RecyclerView.Adapter<SpeciesOrdersAdap
         }
     };
 
-    public class SpeciesViewHolder extends RecyclerView.ViewHolder {
+    public class SpeciesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView order;
 
         public SpeciesViewHolder(@NonNull View itemView) {
             super(itemView);
-            order = (TextView)itemView.findViewById(R.id.textTeste);
+            order = (TextView)itemView.findViewById(R.id.textList);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onClick(view, getAdapterPosition());
         }
     }
 
+    public interface ClickListenerFeature{
+        void onClick(View v, int position);
+    }
 }

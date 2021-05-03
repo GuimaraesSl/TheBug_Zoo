@@ -19,6 +19,10 @@
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="search">Pesquisar</string>
+    <string name="ordens">Ordens</string>
+    <string name="title_activity_family_view">FamilyView</string>
+    <string name="familias">Famílias</string>
+    <string name="pesquisar">Pesquisar</string>
 
 
 </resources>

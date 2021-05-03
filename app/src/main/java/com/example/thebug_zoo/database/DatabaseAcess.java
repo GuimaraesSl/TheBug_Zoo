@@ -146,7 +146,7 @@ public class DatabaseAcess {
         }
     }
 
-    public List<String> serarchByFamily(String family){
+    public List<String> searchByFamily(String family){
         open();
         List<String> result = new ArrayList<>();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
