@@ -12,11 +12,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.adapter.SpeciesOrdersAdapter;
-import com.example.thebug_zoo.components.CommonItemSpaceDecoration;
 import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
 
@@ -26,9 +24,9 @@ import java.util.List;
 
 public class OrderView extends AppCompatActivity{
 
-    ImageView iconMeioUmido, taxidermizados, osteologia, back;
+    public static ImageView defaultIcon, back;
     public static int ID;
-    DatabaseAcess database;
+    public static DatabaseAcess database;
     List<Species> specie;
     ConstraintLayout layoutSearch;
     RecyclerView recyclerView;
@@ -62,29 +60,24 @@ public class OrderView extends AppCompatActivity{
             final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this, "table_meio_umido");
             databaseAcess.open();
             database = new DatabaseAcess(this, "table_meio_umido");
-            iconMeioUmido = (ImageView) findViewById(R.id.iconSearch);
-            iconMeioUmido.setImageResource(R.drawable.icon_meio_umido_search);
+            defaultIcon = (ImageView) findViewById(R.id.iconSearch);
+            defaultIcon.setImageResource(R.drawable.icon_meio_umido);
         } else if (ID==2){
             final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this, "table_taxidermizados");
             databaseAcess.open();
             database = new DatabaseAcess(this, "table_taxidermizados");
-            taxidermizados = (ImageView) findViewById(R.id.iconSearch);
-            taxidermizados.setImageResource(R.drawable.icon_taxidermizados_search);
+            defaultIcon = (ImageView) findViewById(R.id.iconSearch);
+            defaultIcon.setImageResource(R.drawable.icon_taxidermizados);
         } else if(ID==3){
             final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this, "table_osteologia");
             databaseAcess.open();
             database = new DatabaseAcess(this, "table_osteologia");
-            osteologia = (ImageView) findViewById(R.id.iconSearch);
-            osteologia.setImageResource(R.drawable.icon_osteologia_search);
+            defaultIcon = (ImageView) findViewById(R.id.iconSearch);
+            defaultIcon.setImageResource(R.drawable.icon_osteologia);
         }
 
         back = (ImageView) findViewById(R.id.imageSeta);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        back.setOnClickListener(v -> finish());
     }
 
     void setAdapter() {
@@ -97,11 +90,10 @@ public class OrderView extends AppCompatActivity{
             if (!orderAdded.contains(specie.get(i).ordem)){
                 orderAdded.add(specie.get(i).ordem);
             }
-        };
+        }
         Collections.sort(orderAdded);
         adapter = new SpeciesOrdersAdapter(this, orderAdded, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.addItemDecoration(new CommonItemSpaceDecoration(16));
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
@@ -109,13 +101,10 @@ public class OrderView extends AppCompatActivity{
     }
 
     private void setOnClickListener() {
-        listener = new SpeciesOrdersAdapter.ClickListenerFeature() {
-            @Override
-            public void onClick(View v, int position) {
-                Intent intent = new Intent(getApplicationContext(), FamilyView.class);
-                intent.putExtra("Order", orderAdded.get(position));
-                startActivity(intent);
-            }
+        listener = (v, position) -> {
+            Intent intent = new Intent(getApplicationContext(), FamilyView.class);
+            intent.putExtra("selected_order", orderAdded.get(position));
+            startActivity(intent);
         };
     }
 
