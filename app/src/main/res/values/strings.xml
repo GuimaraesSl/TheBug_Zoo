@@ -23,6 +23,21 @@
     <string name="title_activity_family_view">FamilyView</string>
     <string name="familias">Famílias</string>
     <string name="pesquisar">Pesquisar</string>
+    <string name="default_circle">Default Circle</string>
+    <string name="backarrow">BackArrow</string>
+    <string name="search_icon">Search Icon</string>
+    <string name="taxidermizados">Taxidermizados</string>
+    <string name="forward_arrow">Forward Arrow</string>
+    <string name="meio_umido">Meio Úmido</string>
+    <string name="damp_button">Damp button</string>
+    <string name="taxidermized_button">Taxidermized button</string>
+    <string name="taxidermized_icon">Taxidermized icon</string>
+    <string name="osteology_button">Osteology button</string>
+    <string name="damp_icon">Damp icon</string>
+    <string name="osteology_icon">Osteology icon</string>
+    <string name="osteologia">Osteologia</string>
+    <string name="home_background">Home background</string>
+    <string name="teste">TESTE</string>
 
 
 </resources>

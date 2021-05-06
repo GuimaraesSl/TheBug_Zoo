@@ -20,11 +20,7 @@ public class DatabaseAcess {
     private SQLiteDatabase database;
     private static DatabaseAcess instance;
     public final String TABLE;
-    /**
-     * Private constructor to aboid object creation from outside classes.
-     *
-     * @param context
-     */
+
     public DatabaseAcess(Context context, String TABLE){
         this.openHelper = new BancoController(context);
         this.TABLE = TABLE;
@@ -108,23 +104,6 @@ public class DatabaseAcess {
         }
     }
 
-    public Species selectSpecie(int code){
-        open();
-        Cursor cursor = database.query(TABLE, sqlSelect, COLUMN__ID + "= ?", new String[]{String.valueOf(code)}, null, null, null, null);
-
-        if( cursor!= null){
-            cursor.moveToFirst();
-        }
-
-        Species species = new Species(Integer.parseInt(cursor.getString(0)), Integer.parseInt(cursor.getString(1)),
-                Integer.parseInt(cursor.getString(2)), Integer.parseInt(cursor.getString(3)), cursor.getString(4),
-                cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8),
-                cursor.getString(9), cursor.getString(10), cursor.getString(11));
-        cursor.close();
-        close();
-        return species;
-    }
-
     public List<String> searchByOrder(String order){
         open();
         List<String> result = new ArrayList<>();
@@ -134,7 +113,7 @@ public class DatabaseAcess {
 
         if(cursor.moveToFirst()){
             do{
-                result.add(cursor.getString(0));
+                result.add(cursor.getString(5));
             }while (cursor.moveToNext());
                 cursor.close();
                 close();
@@ -168,7 +147,7 @@ public class DatabaseAcess {
     }
 
     public ArrayList<ArrayList<Integer>> searchByKeyword(ArrayList<List<Species>> list, String keyword){
-        List<Species> aux = new ArrayList<>();
+        List<Species> aux;
         ArrayList<ArrayList<Integer>> idsOfSpecies = new ArrayList<>();
 
         Log.d("KEYWORD", keyword);
@@ -215,7 +194,7 @@ public class DatabaseAcess {
         open();
         List<Species> result = new ArrayList<>();
         int cont;
-        ArrayList<Integer> aux = new ArrayList<>();
+        ArrayList<Integer> aux;
         aux = ids.get(0);
         for(int i = 0; i < aux.size(); i++){
             cont = aux.get(i);

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.util.Log;
@@ -107,28 +108,22 @@ public class HomeView extends AppCompatActivity {
         iconSeta3.setAnimation(frombottom3);
 
         //Setando Clicks
-        meioUmido.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                OrderView.ID = 1;
-                Intent it = new Intent(HomeView.this, OrderView.class);
-                startActivity(it);
-            }
+        meioUmido.setOnClickListener(view -> {
+            OrderView.ID = 1;
+            Intent it = new Intent(HomeView.this, OrderView.class);
+            startActivity(it);
         });
 
-        taxidermizados.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                OrderView.ID = 2;
-                Intent it = new Intent(HomeView.this, OrderView.class);
-                startActivity(it);
-            }
+        taxidermizados.setOnClickListener(view -> {
+            OrderView.ID = 2;
+            Intent it = new Intent(HomeView.this, OrderView.class);
+            startActivity(it);
         });
 
-        osteologia.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                OrderView.ID = 3;
-                Intent it = new Intent(HomeView.this, OrderView.class);
-                startActivity(it);
-            }
+        osteologia.setOnClickListener(view -> {
+            OrderView.ID = 3;
+            Intent it = new Intent(HomeView.this, OrderView.class);
+            startActivity(it);
         });
     }
 
@@ -145,14 +140,14 @@ public class HomeView extends AppCompatActivity {
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.setDrawerIndicatorEnabled(true);
-        drawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
+        drawerToggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(this, R.color.white));
         drawerToggle.syncState();
     }
 
     void createConection(){
         try {
 
-            layoutMenuBar = (ConstraintLayout) findViewById(R.id.layoutMenuBar);
+            layoutMenuBar = (ConstraintLayout) findViewById(R.id.layoutHome);
             bancoController = new BancoController(this);
             conection = bancoController.getWritableDatabase();
             Snackbar.make(layoutMenuBar, "Conection", Snackbar.LENGTH_LONG)
