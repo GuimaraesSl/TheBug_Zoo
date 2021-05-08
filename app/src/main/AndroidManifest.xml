@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheBug_Zoo.NoActionBar">
+        <activity android:name=".pages.SpeciesView"></activity>
         <activity
             android:name=".pages.FamilyView"
             android:label="@string/title_activity_family_view"
-            android:theme="@style/Theme.TheBug_Zoo.NoActionBar.NoActionBar"></activity>
+            android:theme="@style/Theme.TheBug_Zoo.NoActionBar.NoActionBar" />
         <activity android:name=".pages.InfAdicionais" />
         <activity
             android:name=".pages.OrderView"
