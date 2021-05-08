@@ -1,6 +1,9 @@
 package com.example.thebug_zoo.entity;
 
-public class Species {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Species implements Parcelable {
 
     public int _id;
     public int id;
@@ -35,4 +38,51 @@ public class Species {
 
     }
 
+    protected Species(Parcel in) {
+        _id = in.readInt();
+        id = in.readInt();
+        armario = in.readInt();
+        estante = in.readInt();
+        ordem = in.readString();
+        familia = in.readString();
+        identificacao = in.readString();
+        inf_adicionais = in.readString();
+        fonte = in.readString();
+        coletor = in.readString();
+        _local = in.readString();
+        _data = in.readString();
+    }
+
+    public static final Creator<Species> CREATOR = new Creator<Species>() {
+        @Override
+        public Species createFromParcel(Parcel in) {
+            return new Species(in);
+        }
+
+        @Override
+        public Species[] newArray(int size) {
+            return new Species[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(_id);
+        dest.writeInt(id);
+        dest.writeInt(armario);
+        dest.writeInt(estante);
+        dest.writeString(ordem);
+        dest.writeString(familia);
+        dest.writeString(identificacao);
+        dest.writeString(inf_adicionais);
+        dest.writeString(fonte);
+        dest.writeString(coletor);
+        dest.writeString(_local);
+        dest.writeString(_data);
+    }
 }

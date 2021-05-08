@@ -6,8 +6,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.example.thebug_zoo.R;
@@ -21,7 +22,7 @@ public class FamilyView extends AppCompatActivity {
     ImageView back, icon;
     public static int ID;
     String order;
-    ConstraintLayout layoutSearch;
+    ConstraintLayout layoutFamily;
     RecyclerView recyclerView;
     SpeciesFamilyAdapter adapter;
     List<String> familyAdded;
@@ -49,7 +50,7 @@ public class FamilyView extends AppCompatActivity {
     }
 
     void setSearch(){
-        layoutSearch = (ConstraintLayout)findViewById(R.id.layoutFamily);
+        layoutFamily = (ConstraintLayout)findViewById(R.id.layoutFamily);
         icon = (ImageView) findViewById(R.id.iconFamilySearch);
         icon.setImageDrawable(OrderView.defaultIcon.getDrawable());
         back = (ImageView) findViewById(R.id.imageSeta);
@@ -57,6 +58,7 @@ public class FamilyView extends AppCompatActivity {
     }
 
     void setAdapter() {
+        setOnClickListener();
         recyclerView = (RecyclerView) findViewById(R.id.recycleViewFamily);
         order = getIntent().getStringExtra("selected_order");
         familyAdded = OrderView.database.searchByOrder(order);
@@ -66,5 +68,13 @@ public class FamilyView extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
+    }
+
+    private void setOnClickListener() {
+        listener = (v, position) -> {
+            Intent intent = new Intent(getApplicationContext(), SpeciesView.class);
+            intent.putExtra("selected_family", familyAdded.get(position));
+            startActivity(intent);
+        };
     }
 }

@@ -67,7 +67,7 @@ public class DatabaseAcess {
     public static final String COLUMN_PLACE = "_local";
     public static final String COLUMN_DATE = "_data";
     public static final String COLUMN_FOTO1 = "foto1";
-    String[] sqlSelect = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE, COLUMN_FOTO1};
+    String[] sqlSelect = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE};
 
     public List<Species> searchAll(){
         open();
@@ -113,7 +113,9 @@ public class DatabaseAcess {
 
         if(cursor.moveToFirst()){
             do{
-                result.add(cursor.getString(5));
+                if(!result.contains(cursor.getString(5))) {
+                    result.add(cursor.getString(5));
+                }
             }while (cursor.moveToNext());
                 cursor.close();
                 close();
@@ -125,20 +127,38 @@ public class DatabaseAcess {
         }
     }
 
-    public List<String> searchByFamily(String family){
+    public List<Species> searchByFamily(String family){
         open();
-        List<String> result = new ArrayList<>();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder.setTables(TABLE);
         Cursor cursor = database.query(TABLE, sqlSelect, COLUMN_FAMILY + " = ?", new String[]{family}, null, null, null, null);
 
+        List<Species> result = new ArrayList<>();
+
         if(cursor.moveToFirst()){
             do{
-                result.add(cursor.getString(0));
+                Species species = new Species();
+                species._id = cursor.getInt((cursor.getColumnIndex(COLUMN__ID)));
+                species.id = cursor.getInt((cursor.getColumnIndex(COLUMN_ID)));
+                species.armario = cursor.getInt((cursor.getColumnIndex(COLUMN_WARDROBE)));
+                species.estante = cursor.getInt((cursor.getColumnIndex(COLUMN_BOOKCASE)));
+                species.ordem = cursor.getString((cursor.getColumnIndex(COLUMN_ORDER)));
+                species.familia = cursor.getString((cursor.getColumnIndex(COLUMN_FAMILY)));
+                species.identificacao = cursor.getString((cursor.getColumnIndex(COLUMN_IDENTIFICATION)));
+                species.inf_adicionais = cursor.getString((cursor.getColumnIndex(COLUMN_INF)));
+                species.fonte = cursor.getString((cursor.getColumnIndex(COLUMN_SOURCE)));
+                species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
+                species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
+                species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+
+                if (!result.contains(species)) {
+                    result.add(species);
+                }
+
             }while (cursor.moveToNext());
-                cursor.close();
-                close();
-                return result;
+            cursor.close();
+            close();
+            return result;
         } else {
             cursor.close();
             close();
@@ -307,4 +327,30 @@ public class DatabaseAcess {
             Log.d("RESULTAAADO FINAL", list.get(i).ordem);
         }
     }
+
+
+    public byte[] GetImageByID(String ID) {
+        open();
+        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+        queryBuilder.setTables(TABLE);
+
+        String[] sqlSelect1 = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE, COLUMN_FOTO1};
+        Cursor cursor = queryBuilder.query(database, sqlSelect1, COLUMN__ID + "= ?", new String[]{String.valueOf(ID)}, null, null, null);
+
+        byte[] result;
+        if (cursor.moveToFirst()) {
+            do {
+                result = cursor.getBlob(12);
+            } while (cursor.moveToNext());
+            cursor.close();
+            close();
+        } else {
+            cursor.close();
+            close();
+            return null;
+        }
+        return result;
+    }
+
+
 }
