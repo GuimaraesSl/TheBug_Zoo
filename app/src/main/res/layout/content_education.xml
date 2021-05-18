@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue_fort"
+        app:layout_anchorGravity="center"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_marginTop="10dp"
+            app:cardBackgroundColor="@color/transparent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/layout_border2">
+
+                <TextView
+                    android:id="@+id/caracteristicas"
+                    android:text="@string/caracteristicas"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iconFamilySearch" />
+
+                <TextView
+                    android:id="@+id/poriferos"
+                    android:text="1º Príferos:"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textSize="30sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/caracteristicas" />
+
+                <TextView
+                    android:id="@+id/poriferosCaracteristicas"
+                    android:text="  - São animais primitivos de água doce ou salgada.
+                    \n  - Eles são organismos que não possuem órgãos, nem capacidade de locomoção.
+                    \n  - Maioria pequenos.
+                    \n  - Alguns moles e outros rígidos.
+                    \n  - Maioria assimétricos.
+                    \n  - Alguns com simetria radial.
+                    \n  - Várias cores.
+                    \n  - Reprodução pode ser sexuada ou assexuada.
+                    \n  - Exemplos: esponjas."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="25sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/poriferos" />
+
+                <TextView
+                    android:id="@+id/celenterados"
+                    android:text="2º Celenterados:"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textSize="30sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/poriferosCaracteristicas"/>
+
+                <TextView
+                    android:id="@+id/celenteradosCaracteristicas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="start"
+                    android:text="  - Cerca de 10 mil espécies.
+                    \n  - Maioria marinhos.
+                    \n  - Alguns deles possuem capacidade de locomoção enquanto outros são sésseis.
+                    \n  - Presença de um tipo celular específico, os cnidócitos.
+                    \n  - Tamanhos variados.
+                    \n  - Geralmente carnívoros.
+                    \n  - Diblásticos.
+                    \n  - Reprodução pode ser sexuada ou assexuada.
+                    \n  - São exemplos: águas-vivas, os corais, as anêmonas-do-mar, as hidras e as caravelas."
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/celenterados" />
+
+                <TextView
+                    android:id="@+id/platelmintos"
+                    android:text="3º Platelmintos:"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textSize="30sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/celenteradosCaracteristicas"/>
+
+                <TextView
+                    android:id="@+id/platelmintosCaracteristicas"
+                    android:text="  - Mais de 25 mil espécies.
+                    \n  - Possuem corpo achatado.
+                    \n  - Podem ser de vida livre ou parasitas.
+                    \n  - Triblásticos, acelomados, sistema digestivo incompleto.
+                    \n  - Reprodução assexuada e sexuada.
+                    \n  - São exemplos: as tênias, solitárias, esquistossomos e planárias."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="25sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/platelmintos" />
+
+                <TextView
+                    android:id="@+id/nematelmintos"
+                    android:text="4º Nematelmintos:"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textSize="30sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/platelmintosCaracteristicas"/>
+
+                <TextView
+                    android:id="@+id/nematelmintosCaracteristicas"
+                    android:text="  - Mais de 20 mil espécies.
+                    \n  - Corpo cilíndrico, alongado e afilado.
+                    \n  - Maioria mede 2,5mm.
+                    \n  - Podem ser de vida livre ou parasitas de humanos e plantas.
+                    \n  - Reprodução sexuada.
+                    \n  - Maioria dióica.
+                    \n  - Machos tem coacla e fêmea tem vagina.
+                    \n  - São exemplos: lombrigas, oxiúros e outros vermes."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="25sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nematelmintos" />
+
+                <TextView
+                    android:id="@+id/anelideos"
+                    android:text="5º Anelídeos:"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textSize="30sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nematelmintosCaracteristicas"/>
+
+                <TextView
+                    android:id="@+id/anelideosCaracteristicas"
+                    android:text="  - Cerca de 16,5 mil espécies descritas.
+                    \n  - Corpo alongado e segmentado composto por anéis.
+                    \n  - Vivem em habitats úmidos na terra e nas águas doces ou salgadas.
+                    \n  - Reprodução sexuada. Algumas se reproduzem assexuadamente.
+                    \n  - Reprodução sexuada.
+                    \n  - São exemplos: minhocas, poliquetas e sanguessugas."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="25sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/anelideos" />
+
+                <TextView
+                    android:id="@+id/moluscos"
+                    android:text="6º Moluscos:"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textSize="30sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/anelideosCaracteristicas"/>
+
+                <TextView
+                    android:id="@+id/moluscosCaracteristicas"
+                    android:text="  - Mais de 100 mil espécies.
+                    \n  - Corpo mole.
+                    \n  - Não segmentados.
+                    \n  - Geralmente com concha calcária.
+                    \n  - Exoesqueleto incompleto.
+                    \n  - Maioria vive no mar, mas existem espécies de água doce e terra.
+                    \n  - Reprodução sexuada.
+                    \n  - São exemplos de moluscos, mexilhões, polvos, lulas, lesmas, ostras e caramujos."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="25sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/moluscos" />
+
+                <TextView
+                    android:id="@+id/artropodes"
+                    android:text="7º Artrópodes:"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textSize="30sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/moluscosCaracteristicas"/>
+
+                <TextView
+                    android:id="@+id/artropodesCaracteristicas"
+                    android:text="  - Quase 1 milhão de espécies descobertas.
+                    \n  - Corpo metamerizado.
+                    \n  - Exoesqueleto quitinoso.
+                    \n  - Apêndices articulados.
+                    \n  - Tagmas: formado pela fusão dos apêndices.
+                    \n  - Ecdise: troca do exoesqueleto.
+                    \n  - Reprodução sexuada e alguns podem se reproduzir por partenogênese.
+                    \n  - Grupo diversificado.
+                    \n  - Os principais grupos são:
+                    \n  -> Insetos: borboletas, abelhas, baratas, moscas;
+                    \n  -> Aracnídeos: aranhas, ácaros, escorpiões, carrapato;
+                    \n  -> Miriápodes: centopeia, lacraias, gongolos;
+                    \n  -> Crustáceos: lagostas, caranguejos, siris, camarões."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="25sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/artropodes" />
+
+                <TextView
+                    android:id="@+id/equinodermos"
+                    android:text="8º Equinodermos:"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textSize="30sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/artropodesCaracteristicas"/>
+
+                <TextView
+                    android:id="@+id/equinodermosCaracteristicas"
+                    android:text="  - Cerca de 7 mil espécies.
+                    \n  - Cerca de 7 mil espécies.
+                    \n  - Epiderme fina.
+                    \n  - Esqueleto interno de CaCO3.
+                    \n  - Sistema hidrovascular.
+                    \n  - Simetria pentarradial.
+                    \n  - Reprodução sexuada, mas alguns como as estrelas-do-mar podem se reproduzir assexuadamente por regeneração."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="25sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/equinodermos"/>
+
+                <TextView
+                    android:id="@+id/cordados"
+                    android:text="9º Cordados:"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textSize="30sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/equinodermosCaracteristicas"/>
+
+                <TextView
+                    android:id="@+id/cordadosCaracteristicas"
+                    android:text="  - Compreendem cerca de 63 mil espécies.
+                    \n  - Notocorda.
+                    \n  - Tubo nervoso dorsal.
+                    \n  - Fendas faringianas.
+                    \n  - Cauda pós-anal.
+                    \n  - Reprodução sexuada.
+                    \n  - Divididos em 3 grupos:
+                    \n  -> Tunicados/Urocordados (Protocordados – Exemplo: Ascídia);
+                    \n  -> Cefalocordados (Protocordados – Exemplo: Anfioxo);
+                    \n  -> Craniados ou Vertebrados (Peixes, Anfíbios, Répteis, Aves e Mamíferos)."
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="25sp"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cordados" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
