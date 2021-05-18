@@ -5,6 +5,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,6 +52,7 @@ public class HomeView extends AppCompatActivity {
     ActionBarDrawerToggle drawerToggle;
     Toolbar toolbar;
     NavigationView navigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,6 +144,22 @@ public class HomeView extends AppCompatActivity {
         drawerToggle.setDrawerIndicatorEnabled(true);
         drawerToggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(this, R.color.white));
         drawerToggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId())
+                {
+                    case R.id.menu_educacao:
+                        Intent it = new Intent(HomeView.this, EducationView.class);
+                        startActivity(it);
+                        return true;
+                }
+
+                return true;
+            }
+        });
     }
 
     void createConection(){
