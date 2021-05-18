@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.adapter.SpeciesViewAdapter;
@@ -19,6 +20,7 @@ import java.util.List;
 
 public class SpeciesView extends AppCompatActivity {
 
+    public static ImageView defaultIcon, back;
     private RecyclerView SpeciesRecycler;
     private List<Species> speciesAdded;
     private SpeciesViewAdapter adapter;
@@ -30,6 +32,7 @@ public class SpeciesView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_species_view);
         setAdapter();
+        setBackButton();
     }
 
 
@@ -52,5 +55,10 @@ public class SpeciesView extends AppCompatActivity {
             Log.d("Name", speciesAdded.get(position).identificacao);
             startActivity(intent);
         };
+    }
+
+    void setBackButton(){
+        back = (ImageView) findViewById(R.id.imageSeta);
+        back.setOnClickListener(v -> finish());
     }
 }
