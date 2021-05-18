@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheBug_Zoo.NoActionBar">
-        <activity android:name=".pages.SpeciesView"></activity>
+        <activity android:name=".pages.EducationView"></activity>
+        <activity android:name=".pages.SpeciesView" />
         <activity
             android:name=".pages.FamilyView"
             android:label="@string/title_activity_family_view"
@@ -18,10 +19,6 @@
         <activity
             android:name=".pages.OrderView"
             android:windowSoftInputMode="stateVisible|adjustPan" />
-        <activity
-            android:name=".pages.DrawerMenu"
-            android:label="@string/title_activity_drawer_menu"
-            android:theme="@style/Theme.TheBug_Zoo.NoActionBar" />
         <activity
             android:name=".pages.HomeView"
             android:label="@string/title_activity_main"
