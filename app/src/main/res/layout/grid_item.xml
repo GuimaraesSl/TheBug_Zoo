@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
+            android:background="@color/blue"
             android:layout_gravity="center_vertical|center_horizontal"
             >
 
@@ -41,7 +42,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:id="@+id/speciesTitle"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="22sp"
                 android:text="@string/imagem1"
                 android:textStyle="bold" />
