@@ -64,334 +64,400 @@
             android:layout_marginTop="10dp"
             app:cardBackgroundColor="@color/transparent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/layout_border2">
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/txtOrdem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginLeft="7dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:padding="12sp"
-                    android:text="Spirophorida"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/txtFamilia"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:longClickable="true"
-                    android:padding="12dp"
-                    android:text="Tetilidae"
-                    android:textIsSelectable="true"
-                    android:textSize="25sp"
-                    app:layout_constraintLeft_toRightOf="@id/txtOrdem"
-                    app:layout_constraintStart_toEndOf="@+id/txtOrdem"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/txtId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:text="ID"
-                    android:textColor="#006FFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtOrdem"/>
-
-                <TextView
-                    android:id="@+id/txtNumId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="9dp"
-                    android:focusable="true"
-                    android:longClickable="true"
-                    android:text="1"
-                    android:textIsSelectable="true"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@+id/txtId"
-                    app:layout_constraintTop_toBottomOf="@+id/txtOrdem"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteY="83dp" />
-
-                <TextView
-                    android:id="@+id/txtArmario"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Armário"
-                    android:textColor="#006FFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtId" />
-
-                <TextView
-                    android:id="@+id/txtNumArmario"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:longClickable="true"
-                    android:text="1"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="11dp"
-                    android:textIsSelectable="true"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@+id/txtArmario"
-                    app:layout_constraintTop_toBottomOf="@+id/txtNumId"
-                    tools:layout_editor_absoluteY="83dp" />
-
-                <TextView
-                    android:id="@+id/txtOrdem2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Ordem"
-                    android:textColor="#006FFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtArmario" />
-
-                <TextView
-                    android:id="@+id/txtOrdem3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:longClickable="true"
-                    android:text="Spirophorida"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="11dp"
-                    android:textIsSelectable="true"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@+id/txtOrdem2"
-                    app:layout_constraintTop_toBottomOf="@+id/txtNumArmario"
-                    tools:layout_editor_absoluteY="83dp" />
-
-                <TextView
-                    android:id="@+id/txtFamilia2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Familia"
-                    android:textColor="#006FFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtOrdem2" />
-
-                <TextView
-                    android:id="@+id/textFamilia3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:longClickable="true"
-                    android:text="Tetilidae"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="10dp"
-                    android:textIsSelectable="true"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@+id/txtFamilia2"
-                    app:layout_constraintTop_toBottomOf="@+id/txtOrdem3"
-                    tools:layout_editor_absoluteY="83dp" />
-
-                <TextView
-                    android:id="@+id/txtIdentificacao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Identificação"
-                    android:textColor="#006FFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtFamilia2" />
-
-                <TextView
-                    android:id="@+id/txtIdentificacao2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:longClickable="true"
-                    android:text="***"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"
-                    android:textIsSelectable="true"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@+id/txtIdentificacao"
-                    app:layout_constraintTop_toBottomOf="@+id/txtFamilia2"
-                    tools:layout_editor_absoluteY="83dp" />
-
-                <ImageView
-                    android:id="@+id/imageRetangle"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/rectangle"
-                    android:layout_marginTop="12dp"
-                    app:layout_constraintTop_toBottomOf="@+id/txtIdentificacao2"/>
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/txtInformacoesAd"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/txtOrdem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:padding="12sp"
+                        android:text="Spirophorida"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtFamilia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:padding="12dp"
+                        android:text="Tetilidae"
+                        android:textIsSelectable="true"
+                        android:textSize="25sp"
+                        app:layout_constraintLeft_toRightOf="@id/txtOrdem"
+                        app:layout_constraintStart_toEndOf="@+id/txtOrdem"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="12dp"
-                    android:text="Informações adicionais"
-                    android:textColor="#006FFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageRetangle" />
+                    android:layout_marginTop="10dp">
 
-                <TextView
-                    android:id="@+id/txtInformacoesAd2"
-                    android:layout_width="300dp"
+                    <TextView
+                        android:id="@+id/txtId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="ID"
+                        android:textColor="#006FFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/txtNumId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="9dp"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:text="1"
+                        android:textIsSelectable="true"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/txtId"
+                        tools:ignore="MissingConstraints"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:focusable="true"
-                    android:longClickable="true"
-                    android:text="é uma ordem de esponjas da classe Demospongiae."
-                    android:textIsSelectable="true"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="@+id/txtInformacoesAd"
-                    app:layout_constraintTop_toBottomOf="@+id/txtInformacoesAd"
-                    tools:ignore="MissingConstraints" />
+                    android:layout_marginTop="10dp">
 
-                <TextView
-                    android:id="@+id/txtFonte"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/txtArmario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Armário"
+                        android:textColor="#006FFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/txtNumArmario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:text="1"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="11dp"
+                        android:textIsSelectable="true"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/txtArmario"
+                        tools:ignore="MissingConstraints" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="12dp"
-                    android:text="Fonte"
-                    android:textColor="#006FFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtInformacoesAd2" />
+                    android:layout_marginTop="10dp">
 
-                <TextView
-                    android:id="@+id/txtFont2"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/txtOrdem2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Ordem"
+                        android:textColor="#006FFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/txtOrdem3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:text="Spirophorida"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="11dp"
+                        android:textIsSelectable="true"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/txtOrdem2"
+                        tools:ignore="MissingConstraints" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:longClickable="true"
-                    android:text="Desconhecido"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"
-                    android:textIsSelectable="true"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@+id/txtFonte"
-                    app:layout_constraintTop_toBottomOf="@+id/txtInformacoesAd2"
-                    tools:layout_editor_absoluteY="83dp" />
+                    android:layout_marginTop="10dp">
 
-                <TextView
-                    android:id="@+id/txtColetor"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/txtFamilia2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Familia"
+                        android:textColor="#006FFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/textFamilia3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:text="Tetilidae"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="10dp"
+                        android:textIsSelectable="true"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/txtFamilia2"
+                        tools:ignore="MissingConstraints" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="12dp"
-                    android:text="Coletor"
-                    android:textColor="#006FFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtFonte" />
+                    android:layout_marginTop="10dp">
 
-                <TextView
-                    android:id="@+id/txtColetor2"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/txtIdentificacao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Identificação"
+                        android:textColor="#006FFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/txtIdentificacao2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:text="***"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="12dp"
+                        android:textIsSelectable="true"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/txtIdentificacao"
+                        tools:ignore="MissingConstraints" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:longClickable="true"
-                    android:text="Desconhecido"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"
-                    android:textIsSelectable="true"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@+id/txtColetor"
-                    app:layout_constraintTop_toBottomOf="@+id/txtFont2"
-                    tools:layout_editor_absoluteY="83dp" />
+                    android:layout_marginTop="12dp">
 
-                <TextView
-                    android:id="@+id/txtLocal"
-                    android:layout_width="wrap_content"
+                    <ImageView
+                        android:id="@+id/imageRetangle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/rectangle"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="12dp"
-                    android:text="Local"
-                    android:textColor="#006FFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtColetor" />
+                    android:layout_marginTop="12dp">
 
-                <TextView
-                    android:id="@+id/txtLocal2"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/txtInformacoesAd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Informações adicionais"
+                        android:textColor="#006FFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/txtInformacoesAd2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="20dp"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:text="é uma ordem de esponjas da classe Demospongiae."
+                        android:textIsSelectable="true"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@+id/txtInformacoesAd"
+                        app:layout_constraintTop_toBottomOf="@+id/txtInformacoesAd"
+                        tools:ignore="MissingConstraints" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:longClickable="true"
-                    android:text="Desconhecido"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"
-                    android:textIsSelectable="true"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@+id/txtLocal"
-                    app:layout_constraintTop_toBottomOf="@+id/txtColetor2"
-                    tools:layout_editor_absoluteY="83dp" />
+                    android:layout_marginTop="12dp">
 
-                <TextView
-                    android:id="@+id/txtData"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/txtFonte"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Fonte"
+                        android:textColor="#006FFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/txtFont2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="20dp"
+                        android:text="Desconhecido"
+                        android:textIsSelectable="true"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="@+id/txtFonte"
+                        app:layout_constraintTop_toBottomOf="@+id/txtFonte"
+                        tools:ignore="MissingConstraints" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="12dp"
-                    android:text="Data"
-                    android:textColor="#006FFF"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtLocal" />
+                    android:layout_marginTop="12dp">
 
-                <TextView
-                    android:id="@+id/txtData2"
-                    android:layout_width="wrap_content"
+
+                    <TextView
+                        android:id="@+id/txtColetor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Coletor"
+                        android:textColor="#006FFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/txtColetor2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:text="Desconhecido"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="12dp"
+                        android:textIsSelectable="true"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/txtColetor"
+                        tools:ignore="MissingConstraints" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:longClickable="true"
-                    android:text="Desconhecido"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"
-                    android:textIsSelectable="true"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@+id/txtData"
-                    app:layout_constraintTop_toBottomOf="@+id/txtLocal2"
-                    tools:layout_editor_absoluteY="83dp" />
+                    android:layout_marginTop="12dp">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/txtLocal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Local"
+                        android:textColor="#006FFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/txtLocal2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:text="Desconhecido"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="12dp"
+                        android:textIsSelectable="true"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/txtLocal"
+                        tools:ignore="MissingConstraints" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:id="@+id/txtData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Data"
+                        android:textColor="#006FFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/txtData2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:text="Desconhecido"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="12dp"
+                        android:textIsSelectable="true"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/txtData"
+                        tools:ignore="MissingConstraints" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.cardview.widget.CardView>
 
