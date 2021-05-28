@@ -47,6 +47,119 @@
     <string name="species_background">Species Background</string>
     <string name="species_image">Species Image</string>
     <string name="imagem1">Imagem1</string>
+    <string name="family_background">family_background</string>
+    <string name="poriferos_title">Poríferos</string>
+    <string name="poriferos_desc">
+        - São animais primitivos de água doce ou salgada.
+        \n  - Eles são organismos que não possuem órgãos, nem capacidade de locomoção.
+        \n  - Maioria pequenos.
+        \n  - Alguns moles e outros rígidos.
+        \n  - Maioria assimétricos.
+        \n  - Alguns com simetria radial.
+        \n  - Várias cores.
+        \n  - Reprodução pode ser sexuada ou assexuada.
+        \n  - Exemplos: esponjas."
+    </string>
+
+    <string name="celenterados_title">Cnidários (Celenterados)</string>
+    <string name="celenterados_desc">
+        - Cerca de 10 mil espécies.
+        \n  - Maioria marinhos.
+        \n  - Alguns deles possuem capacidade de locomoção enquanto outros são sésseis.
+        \n  - Presença de um tipo celular específico, os cnidócitos.
+        \n  - Tamanhos variados.
+        \n  - Geralmente carnívoros.
+        \n  - Diblásticos.
+        \n  - Reprodução pode ser sexuada ou assexuada.
+        \n  - São exemplos: águas-vivas, os corais, as anêmonas-do-mar, as hidras e as caravelas.
+    </string>
+
+    <string name="platelmintos_title">Platelmintos</string>
+    <string name="platelmintos_desc">
+        - Mais de 25 mil espécies.
+        \n  - Possuem corpo achatado.
+        \n  - Podem ser de vida livre ou parasitas.
+        \n  - Triblásticos, acelomados, sistema digestivo incompleto.
+        \n  - Reprodução assexuada e sexuada.
+        \n  - São exemplos: as tênias, solitárias, esquistossomos e planárias.
+    </string>
+
+    <string name="nematelmintos_title">Nematelmintos</string>
+    <string name="nematelmintos_desc">
+         - Mais de 20 mil espécies.
+        \n  - Corpo cilíndrico, alongado e afilado.
+        \n  - Maioria mede 2,5mm.
+        \n  - Podem ser de vida livre ou parasitas de humanos e plantas.
+        \n  - Reprodução sexuada.
+        \n  - Maioria dióica.
+        \n  - Machos tem coacla e fêmea tem vagina.
+        \n  - São exemplos: lombrigas, oxiúros e outros vermes.
+    </string>
+
+    <string name="anelideos_title">Anelídeos</string>
+    <string name="anelideos_desc">
+         - Cerca de 16,5 mil espécies descritas.
+        \n  - Corpo alongado e segmentado composto por anéis.
+        \n  - Vivem em habitats úmidos na terra e nas águas doces ou salgadas.
+        \n  - Reprodução sexuada. Algumas se reproduzem assexuadamente.
+        \n  - Reprodução sexuada.
+        \n  - São exemplos: minhocas, poliquetas e sanguessugas.
+    </string>
+
+    <string name="moluscos_title">Moluscos</string>
+    <string name="moluscos_desc">
+        - Mais de 100 mil espécies.
+        \n  - Corpo mole.
+        \n  - Não segmentados.
+        \n  - Geralmente com concha calcária.
+        \n  - Exoesqueleto incompleto.
+        \n  - Maioria vive no mar, mas existem espécies de água doce e terra.
+        \n  - Reprodução sexuada.
+        \n  - São exemplos de moluscos, mexilhões, polvos, lulas, lesmas, ostras e caramujos.
+    </string>
+
+    <string name="artropodes_title">Artrópodes</string>
+    <string name="artropodes_desc">
+        - Quase 1 milhão de espécies descobertas.
+        \n  - Corpo metamerizado.
+        \n  - Exoesqueleto quitinoso.
+        \n  - Apêndices articulados.
+        \n  - Tagmas: formado pela fusão dos apêndices.
+        \n  - Ecdise: troca do exoesqueleto.
+        \n  - Reprodução sexuada e alguns podem se reproduzir por partenogênese.
+        \n  - Grupo diversificado.
+        \n  - Os principais grupos são:
+        \n  -> Insetos: borboletas, abelhas, baratas, moscas;
+        \n  -> Aracnídeos: aranhas, ácaros, escorpiões, carrapato;
+        \n  -> Miriápodes: centopeia, lacraias, gongolos;
+        \n  -> Crustáceos: lagostas, caranguejos, siris, camarões.
+    </string>
+
+    <string name="equinodermos_title">Equinodermos</string>
+    <string name="equinodermos_desc">
+        - Cerca de 7 mil espécies.
+        \n  - Cerca de 7 mil espécies.
+        \n  - Epiderme fina.
+        \n  - Esqueleto interno de CaCO3.
+        \n  - Sistema hidrovascular.
+        \n  - Simetria pentarradial.
+        \n  - Reprodução sexuada, mas alguns como as estrelas-do-mar podem se reproduzir assexuadamente por regeneração.
+    </string>
+
+    <string name="cordados_title">Cordados</string>
+    <string name="cordados_desc">
+        - Compreendem cerca de 63 mil espécies.
+        \n  - Notocorda.
+        \n  - Tubo nervoso dorsal.
+        \n  - Fendas faringianas.
+        \n  - Cauda pós-anal.
+        \n  - Reprodução sexuada.
+        \n  - Divididos em 3 grupos:
+        \n  -> Tunicados/Urocordados (Protocordados – Exemplo: Ascídia);
+        \n  -> Cefalocordados (Protocordados – Exemplo: Anfioxo);
+        \n  -> Craniados ou Vertebrados (Peixes, Anfíbios, Répteis, Aves e Mamíferos).
+    </string>
+
 
 
 </resources>

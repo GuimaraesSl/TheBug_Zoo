@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="@string/home_background"
+        android:contentDescription="@string/family_background"
         android:scaleType="centerCrop"
         android:src="@drawable/back_default"
         app:layout_constraintBottom_toBottomOf="parent"
