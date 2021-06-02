@@ -155,6 +155,11 @@ public class HomeView extends AppCompatActivity {
                         Intent it = new Intent(HomeView.this, EducationView.class);
                         startActivity(it);
                         return true;
+
+                    case R.id.menu_acervo:
+                        Intent it2 = new Intent(HomeView.this, CollectionView.class);
+                        startActivity(it2);
+                        return true;
                 }
 
                 return true;

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheBug_Zoo.NoActionBar">
-        <activity android:name=".pages.EducationView"></activity>
+        <activity android:name=".pages.CollectionView"></activity>
+        <activity android:name=".pages.EducationView" />
         <activity android:name=".pages.SpeciesView" />
         <activity
             android:name=".pages.FamilyView"
