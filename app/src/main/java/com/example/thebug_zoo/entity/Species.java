@@ -17,12 +17,13 @@ public class Species implements Parcelable {
     public String coletor;
     public String _local;
     public String _data;
+    public String table;
 
     public Species(){
 
     }
 
-    public Species(int _id, int id, int armario, int estante, String ordem, String familia, String identificacao, String inf_adicionais, String fonte, String coletor, String _local, String _data){
+    public Species(int _id, int id, int armario, int estante, String ordem, String familia, String identificacao, String inf_adicionais, String fonte, String coletor, String _local, String _data, String table){
 
         this._id = _id;
         this.id = id;
@@ -32,9 +33,11 @@ public class Species implements Parcelable {
         this.familia = familia;
         this.identificacao = identificacao;
         this.inf_adicionais = inf_adicionais;
+        this.coletor = coletor;
         this.fonte = fonte;
         this._local = _local;
         this._data = _data;
+        this.table = table;
 
     }
 
@@ -51,6 +54,7 @@ public class Species implements Parcelable {
         coletor = in.readString();
         _local = in.readString();
         _data = in.readString();
+        table = in.readString();
     }
 
     public static final Creator<Species> CREATOR = new Creator<Species>() {
@@ -84,5 +88,6 @@ public class Species implements Parcelable {
         dest.writeString(coletor);
         dest.writeString(_local);
         dest.writeString(_data);
+        dest.writeString(table);
     }
 }

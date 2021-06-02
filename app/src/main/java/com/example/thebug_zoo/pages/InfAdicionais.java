@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thebug_zoo.R;
+import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
 import com.smarteist.autoimageslider.DefaultSliderView;
 import com.smarteist.autoimageslider.IndicatorAnimations;
@@ -73,8 +75,13 @@ public class InfAdicionais extends AppCompatActivity {
             DefaultSliderView sliderView = new DefaultSliderView(this);
             switch (i){
                 case 0:
-                    byte[] imagem = (OrderView.database.GetImageByID(String.valueOf(specie._id)));
-                    Bitmap bt = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
+                    byte[] imagem = new byte[]{};
+                    try {
+                        imagem = (OrderView.database.GetImageByID(String.valueOf(specie._id)));
+                    } catch (Exception e){
+                        DatabaseAcess database = new DatabaseAcess (this, specie.table);
+                        imagem = (database.GetImageByID(String.valueOf(specie._id)));
+                    }
                     sliderView.setImageByte(imagem);
                     break;
                 case 1:

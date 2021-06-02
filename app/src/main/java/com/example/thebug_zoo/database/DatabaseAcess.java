@@ -127,11 +127,11 @@ public class DatabaseAcess {
         }
     }
 
-    public List<Species> searchByFamily(String family){
+    public List<Species> searchByFamily(String family, String order){
         open();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder.setTables(TABLE);
-        Cursor cursor = database.query(TABLE, sqlSelect, COLUMN_FAMILY + " = ?", new String[]{family}, null, null, null, null);
+        Cursor cursor = database.query(TABLE, sqlSelect, COLUMN_FAMILY + " = ? and " + COLUMN_ORDER + " = ?", new String[]{family, order}, null, null, null, null);
 
         List<Species> result = new ArrayList<>();
 
@@ -170,36 +170,27 @@ public class DatabaseAcess {
         List<Species> aux;
         ArrayList<ArrayList<Integer>> idsOfSpecies = new ArrayList<>();
 
-        Log.d("KEYWORD", keyword);
         for(int i = 0; i < list.size(); i++){
             aux = list.get(i);
             ArrayList<Integer> ids = new ArrayList<>();
             for(int l = 0; l < aux.size(); l++){
-                Log.d("ORDENS ", String.valueOf(aux.get(l).ordem));
                 if(aux.get(l).ordem.intern().toLowerCase().indexOf(keyword.intern().toLowerCase()) != -1){
                     if(!ids.contains(aux.get(l)._id)){
-                        Log.d("IDS", String.valueOf(aux.get(l)._id));
                         ids.add(aux.get(l)._id);
                     }
                 }
-                Log.d("FAMILIAS", String.valueOf(aux.get(l).familia));
                 if(aux.get(l).familia.intern().toLowerCase().indexOf(keyword.intern().toLowerCase()) != -1){
                     if(!ids.contains(aux.get(l)._id)){
-                        Log.d("IDS", String.valueOf(aux.get(l)._id));
                         ids.add(aux.get(l)._id);
                     }
                 }
-                Log.d("IDENTIFICAÇÃO", String.valueOf(aux.get(l).identificacao));
                 if(aux.get(l).identificacao.intern().toLowerCase().indexOf(keyword.intern().toLowerCase()) != -1){
                     if(!ids.contains(aux.get(l)._id)){
-                        Log.d("IDS", String.valueOf(aux.get(l)._id));
                         ids.add(aux.get(l)._id);
                     }
                 }
-                Log.d("INFORMAÇÔES", String.valueOf(aux.get(l).inf_adicionais));
                 if(aux.get(l).inf_adicionais.intern().toLowerCase().indexOf(keyword.intern().toLowerCase()) != -1){
                     if(!ids.contains(aux.get(l)._id)){
-                        Log.d("IDS", String.valueOf(aux.get(l)._id));
                         ids.add(aux.get(l)._id);
                     }
                 }
@@ -218,7 +209,6 @@ public class DatabaseAcess {
         aux = ids.get(0);
         for(int i = 0; i < aux.size(); i++){
             cont = aux.get(i);
-            Log.d("AQUIIIII", String.valueOf(cont));
             open();
             SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
             queryBuilder.setTables("table_meio_umido");
@@ -239,6 +229,7 @@ public class DatabaseAcess {
                     species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
                     species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                     species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+                    species.table = "table_meio_umido";
 
                     result.add(species);
                 }while (cursor.moveToNext());
@@ -273,6 +264,7 @@ public class DatabaseAcess {
                     species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
                     species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                     species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+                    species.table = "table_taxidermizados";
 
                     result.add(species);
                 }while (cursor.moveToNext());
@@ -307,6 +299,7 @@ public class DatabaseAcess {
                     species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
                     species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                     species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+                    species.table = "table_osteologia";
 
                     result.add(species);
                 }while (cursor.moveToNext());
@@ -318,16 +311,8 @@ public class DatabaseAcess {
                 return null;
             }
         }
-
         return result;
     }
-
-    public void teste(List<Species> list){
-        for(int i = 0; i < list.size(); i++){
-            Log.d("RESULTAAADO FINAL", list.get(i).ordem);
-        }
-    }
-
 
     public byte[] GetImageByID(String ID) {
         open();

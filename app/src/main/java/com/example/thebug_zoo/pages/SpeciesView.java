@@ -6,16 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.widget.ImageView;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.adapter.SpeciesViewAdapter;
+import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class SpeciesView extends AppCompatActivity {
@@ -26,6 +24,7 @@ public class SpeciesView extends AppCompatActivity {
     private SpeciesViewAdapter adapter;
     private String family;
     private SpeciesViewAdapter.ClickListenerFeature listener;
+    private DatabaseAcess database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +37,25 @@ public class SpeciesView extends AppCompatActivity {
 
     void setAdapter() {
         setOnClickListener();
-        family = getIntent().getStringExtra("selected_family");
-        speciesAdded = OrderView.database.searchByFamily(family);
-        SpeciesRecycler = findViewById(R.id.speciesRecycler);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
-        SpeciesRecycler.setLayoutManager(gridLayoutManager);
-        SpeciesRecycler.setHasFixedSize(true);
-        adapter = new SpeciesViewAdapter(this, speciesAdded, listener);
-        SpeciesRecycler.setAdapter(adapter);
+        try {
+            family = getIntent().getStringExtra("selected_family");
+            speciesAdded = OrderView.database.searchByFamily(family, FamilyView.order);
+            SpeciesRecycler = findViewById(R.id.speciesRecycler);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
+            SpeciesRecycler.setLayoutManager(gridLayoutManager);
+            SpeciesRecycler.setHasFixedSize(true);
+            adapter = new SpeciesViewAdapter(this, speciesAdded, listener, "normal");
+            SpeciesRecycler.setAdapter(adapter);
+        } catch (Exception e){
+            speciesAdded = getIntent().getParcelableArrayListExtra("species_home");
+            SpeciesRecycler = findViewById(R.id.speciesRecycler);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
+            SpeciesRecycler.setLayoutManager(gridLayoutManager);
+            SpeciesRecycler.setHasFixedSize(true);
+            database = new DatabaseAcess(this, null);
+            adapter = new SpeciesViewAdapter(this, speciesAdded, listener, "home");
+            SpeciesRecycler.setAdapter(adapter);
+        }
     }
 
     private void setOnClickListener() {

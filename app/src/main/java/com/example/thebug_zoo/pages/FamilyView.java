@@ -21,7 +21,7 @@ public class FamilyView extends AppCompatActivity {
 
     ImageView back, icon;
     public static int ID;
-    String order;
+    static String order;
     ConstraintLayout layoutFamily;
     RecyclerView recyclerView;
     SpeciesFamilyAdapter adapter;

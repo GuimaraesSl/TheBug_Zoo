@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -196,14 +197,22 @@ public class HomeView extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 ArrayList<List<Species>> result = new ArrayList<>();
+                List<Species> finalResult = new ArrayList<>();
                 TABLE_MEIO_UMIDO = new DatabaseAcess(getApplicationContext(), "table_meio_umido");
                 result.add(TABLE_MEIO_UMIDO.searchAll());
+                TABLE_MEIO_UMIDO.close();
                 TABLE_TAXIDERMIZADOS = new DatabaseAcess(getApplicationContext(), "table_taxidermizados");
                 result.add(TABLE_TAXIDERMIZADOS.searchAll());
+                TABLE_TAXIDERMIZADOS.close();
                 TABLE_OSTEOLOGIA = new DatabaseAcess(getApplicationContext(), "table_osteologia");
                 result.add(TABLE_OSTEOLOGIA.searchAll());
-
-                TABLE_MEIO_UMIDO.teste(TABLE_MEIO_UMIDO.searchByIdList(TABLE_MEIO_UMIDO.searchByKeyword(result, query)));
+                TABLE_OSTEOLOGIA.close();
+                finalResult = TABLE_MEIO_UMIDO.searchByIdList(TABLE_MEIO_UMIDO.searchByKeyword(result, query));
+                TABLE_MEIO_UMIDO.close();
+                Intent intent = new Intent(getApplicationContext(), SpeciesView.class);
+                Log.d("ENTRADA1", "ENTROU");
+                intent.putParcelableArrayListExtra("species_home", (ArrayList<? extends Parcelable>) finalResult);
+                startActivity(intent);
                 return false;
             }
 
