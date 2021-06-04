@@ -45,7 +45,6 @@ public class SpeciesView extends AppCompatActivity {
             SpeciesRecycler.setLayoutManager(gridLayoutManager);
             SpeciesRecycler.setHasFixedSize(true);
             adapter = new SpeciesViewAdapter(this, speciesAdded, listener, "normal");
-            SpeciesRecycler.setAdapter(adapter);
         } catch (Exception e){
             speciesAdded = getIntent().getParcelableArrayListExtra("species_home");
             SpeciesRecycler = findViewById(R.id.speciesRecycler);
@@ -54,8 +53,8 @@ public class SpeciesView extends AppCompatActivity {
             SpeciesRecycler.setHasFixedSize(true);
             database = new DatabaseAcess(this, null);
             adapter = new SpeciesViewAdapter(this, speciesAdded, listener, "home");
-            SpeciesRecycler.setAdapter(adapter);
         }
+        SpeciesRecycler.setAdapter(adapter);
     }
 
     private void setOnClickListener() {
