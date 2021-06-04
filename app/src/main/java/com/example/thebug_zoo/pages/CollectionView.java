@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.adapter.CollectionAdapter;
@@ -22,7 +23,6 @@ public class CollectionView extends AppCompatActivity {
     DatabaseAcess databaseAcess;
     List<String> orders = new ArrayList<>();
     List<Integer> numbers = new ArrayList<>();
-    List<String> allOrders = new ArrayList<>();
     DatabaseAcess TABLE_MEIO_UMIDO, TABLE_TAXIDERMIZADOS, TABLE_OSTEOLOGIA;
 
     @Override
@@ -30,27 +30,23 @@ public class CollectionView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collection_view);
         ArrayList<List<Species>> result = new ArrayList<>();
-        TABLE_MEIO_UMIDO = new DatabaseAcess(getApplicationContext(), "table_meio_umido");
+        TABLE_MEIO_UMIDO = new DatabaseAcess(this, "table_meio_umido");
         result.add(TABLE_MEIO_UMIDO.searchAll());
-        TABLE_TAXIDERMIZADOS = new DatabaseAcess(getApplicationContext(), "table_taxidermizados");
+        TABLE_MEIO_UMIDO.close();
+        TABLE_TAXIDERMIZADOS = new DatabaseAcess(this, "table_taxidermizados");
         result.add(TABLE_TAXIDERMIZADOS.searchAll());
-        TABLE_OSTEOLOGIA = new DatabaseAcess(getApplicationContext(), "table_osteologia");
+        TABLE_TAXIDERMIZADOS.close();
+        TABLE_OSTEOLOGIA = new DatabaseAcess(this, "table_osteologia");
         result.add(TABLE_OSTEOLOGIA.searchAll());
-        orders = TABLE_TAXIDERMIZADOS.getAllOrders(TABLE_MEIO_UMIDO.searchAll());
-        numbers = TABLE_MEIO_UMIDO.getAllNumbersSpeciesOfOrders(orders);
+        TABLE_OSTEOLOGIA.close();
+        orders = TABLE_OSTEOLOGIA.getAllOrders(result);
+        numbers = TABLE_OSTEOLOGIA.getAllNumbersSpeciesOfOrders(orders);
 
         RecyclerView recyclerView = findViewById(R.id.recyrcleTeste);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(new CollectionAdapter(numbers, orders, this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        expandableTextView = (ExpandableTextView) findViewById(R.id.descTextViewCollection);
-        expandableTextView.setOnStateChangeListener(new ExpandableTextView.OnStateChangeListener() {
-            @Override
-            public void onStateChange(boolean isShrink) {
-
-            }
-        });
     }
 
 }

@@ -32,7 +32,7 @@ public class OrderView extends AppCompatActivity{
     RecyclerView recyclerView;
     SpeciesOrdersAdapter adapter;
     List<String> orderAdded = new ArrayList<>();
-        private SpeciesOrdersAdapter.ClickListenerFeature listener;
+    private SpeciesOrdersAdapter.ClickListenerFeature listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

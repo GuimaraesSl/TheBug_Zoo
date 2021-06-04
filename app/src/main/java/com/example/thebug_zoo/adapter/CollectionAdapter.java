@@ -35,8 +35,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
     public void onBindViewHolder(@NonNull CollectionAdapter.ViewHolder holder, int position) {
         final String item = orders.get(position);
         final Integer number = numbersOfSpecies.get(position);
-        holder.orders.setText(item);
-        holder.numbersOfSpecies.setText(String.valueOf(number));
+        holder.orders.setText(item+": "+String.valueOf(number));
     }
 
     @Override
@@ -51,7 +50,6 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             orders = itemView.findViewById(R.id.textOrders);
-            numbersOfSpecies = itemView.findViewById(R.id.textNumbersOrders);
         }
     }
 }
