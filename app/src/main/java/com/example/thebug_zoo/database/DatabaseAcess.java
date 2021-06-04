@@ -361,69 +361,27 @@ public class DatabaseAcess {
 
         List<Integer> numbersSpecies = new ArrayList<>();
 
-        for(int i = 0; i < list.size(); i++){
-            open();
-            SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-            queryBuilder.setTables("table_meio_umido");
-            Cursor cursor = queryBuilder.query(database, sqlSelect, COLUMN_ORDER + " = ?", new String[]{String.valueOf(list.get(i))}, null, null, null);
-            int cont = 0;
-            if(cursor.moveToFirst()){
-                do{
-                    cont++;
-                }while (cursor.moveToNext());
-                cursor.close();
-                close();
-            } else {
-                cursor.close();
-                close();
-            }
-            if(cont != 0){
-                numbersSpecies.add(cont);
-                Log.d("cont1", String.valueOf(numbersSpecies.get(i)));
-            }
-        }
-
-        for(int i = 0; i < list.size(); i++){
-            open();
-            SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-            queryBuilder.setTables("table_taxidermizados");
-            Cursor cursor = queryBuilder.query(database, sqlSelect, COLUMN_ORDER + " = ?", new String[]{String.valueOf(list.get(i))}, null, null, null);
-            int cont = 0;
-            if(cursor.moveToFirst()){
-                do{
-                    cont++;
-                }while (cursor.moveToNext());
-                cursor.close();
-                close();
-            } else {
-                cursor.close();
-                close();
-            }
-            if(cont != 0){
-                numbersSpecies.add(cont);
-                Log.d("cont1", String.valueOf(numbersSpecies.get(i)));
-            }
-        }
-
-        for(int i = 0; i < list.size(); i++){
-            open();
-            SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-            queryBuilder.setTables("table_osteologia");
-            Cursor cursor = queryBuilder.query(database, sqlSelect, COLUMN_ORDER + " = ?", new String[]{String.valueOf(list.get(i))}, null, null, null);
-            int cont = 0;
-            if(cursor.moveToFirst()){
-                do{
-                    cont++;
-                }while (cursor.moveToNext());
-                cursor.close();
-                close();
-            } else {
-                cursor.close();
-                close();
-            }
-            if(cont != 0){
-                numbersSpecies.add(cont);
-                Log.d("cont1", String.valueOf(numbersSpecies.get(i)));
+        for(int i = 0; i < tables.size(); i++){
+            for(int j = 0; j < list.size(); j++){
+                open();
+                SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+                queryBuilder.setTables(tables.get(i));
+                Cursor cursor = queryBuilder.query(database, sqlSelect, COLUMN_ORDER + " = ?", new String[]{String.valueOf(list.get(j))}, null, null, null);
+                int cont = 0;
+                if(cursor.moveToFirst()){
+                    do{
+                        cont++;
+                    }while (cursor.moveToNext());
+                    cursor.close();
+                    close();
+                } else {
+                    cursor.close();
+                    close();
+                }
+                if(cont != 0){
+                    numbersSpecies.add(cont);
+                    Log.d("cont1", String.valueOf(numbersSpecies.get(i)));
+                }
             }
         }
 

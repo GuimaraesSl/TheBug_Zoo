@@ -44,7 +44,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView orders, numbersOfSpecies;
+        TextView orders;
 
 
         public ViewHolder(@NonNull View itemView) {
