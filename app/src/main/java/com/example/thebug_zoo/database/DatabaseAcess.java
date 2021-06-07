@@ -388,4 +388,51 @@ public class DatabaseAcess {
         return numbersSpecies;
     }
 
+    public List<String> getAllFamilys(ArrayList<List<Species>> list){
+
+        List<String> allFamilys = new ArrayList<>();
+
+        for(int i = 0; i < list.size(); i++){
+            for(int j = 0; j < list.get(i).size(); j++){
+                if(!allFamilys.contains(list.get(i).get(j).familia)){
+                    allFamilys.add(list.get(i).get(j).familia);
+                    Log.d("ordens", list.get(i).get(j).familia);
+                }
+            }
+        }
+
+        return allFamilys;
+    }
+
+    public List<Integer> getAllNumbersSpeciesOfFamilys(List<String> list){
+
+        List<Integer> numbersSpecies = new ArrayList<>();
+
+        for(int i = 0; i < tables.size(); i++){
+            for(int j = 0; j < list.size(); j++){
+                open();
+                SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+                queryBuilder.setTables(tables.get(i));
+                Cursor cursor = queryBuilder.query(database, sqlSelect, COLUMN_FAMILY + " = ?", new String[]{String.valueOf(list.get(j))}, null, null, null);
+                int cont = 0;
+                if(cursor.moveToFirst()){
+                    do{
+                        cont++;
+                    }while (cursor.moveToNext());
+                    cursor.close();
+                    close();
+                } else {
+                    cursor.close();
+                    close();
+                }
+                if(cont != 0){
+                    numbersSpecies.add(cont);
+                    Log.d("cont1", String.valueOf(numbersSpecies.get(i)));
+                }
+            }
+        }
+
+        return numbersSpecies;
+    }
+
 }

@@ -4,8 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.adapter.CollectionAdapter;
@@ -19,34 +24,56 @@ import ru.embersoft.expandabletextview.ExpandableTextView;
 
 public class CollectionView extends AppCompatActivity {
 
-    ExpandableTextView expandableTextView;
     DatabaseAcess databaseAcess;
-    List<String> orders = new ArrayList<>();
-    List<Integer> numbers = new ArrayList<>();
-    DatabaseAcess TABLE_MEIO_UMIDO, TABLE_TAXIDERMIZADOS, TABLE_OSTEOLOGIA;
+    TextView textCollection;
+    ImageButton orders, familys;
+    ImageView back;
+    int cont = 0;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collection_view);
-        ArrayList<List<Species>> result = new ArrayList<>();
-        TABLE_MEIO_UMIDO = new DatabaseAcess(this, "table_meio_umido");
-        result.add(TABLE_MEIO_UMIDO.searchAll());
-        TABLE_MEIO_UMIDO.close();
-        TABLE_TAXIDERMIZADOS = new DatabaseAcess(this, "table_taxidermizados");
-        result.add(TABLE_TAXIDERMIZADOS.searchAll());
-        TABLE_TAXIDERMIZADOS.close();
-        TABLE_OSTEOLOGIA = new DatabaseAcess(this, "table_osteologia");
-        result.add(TABLE_OSTEOLOGIA.searchAll());
-        TABLE_OSTEOLOGIA.close();
-        orders = TABLE_OSTEOLOGIA.getAllOrders(result);
-        numbers = TABLE_OSTEOLOGIA.getAllNumbersSpeciesOfOrders(orders);
 
-        RecyclerView recyclerView = findViewById(R.id.recyrcleTeste);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new CollectionAdapter(numbers, orders, this));
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        setBackButton();
+        databaseAcess = new DatabaseAcess(this, "table_meio_umido");
+        cont = databaseAcess.searchAll().size();
+        databaseAcess.close();
+        databaseAcess = new DatabaseAcess(this, "table_taxidermizados");
+        cont += databaseAcess.searchAll().size();
+        databaseAcess.close();
+        databaseAcess = new DatabaseAcess(this, "table_osteologia");
+        cont += databaseAcess.searchAll().size();
+        databaseAcess.close();
+        textCollection = (TextView) findViewById(R.id.textCollection);
+        orders = (ImageButton) findViewById(R.id.buttonAllOrders);
+        familys = (ImageButton) findViewById(R.id.buttonAllFamilys);
 
+        textCollection.setText("Acervo Atual: "+cont+" Espécies");
+
+        orders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(CollectionView.this, AllOrders.class);
+                startActivity(it);
+            }
+        });
+
+        familys.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(CollectionView.this, AllFamilys.class);
+                startActivity(it);
+            }
+        });
+
+    }
+
+    void setBackButton(){
+        back = (ImageView) findViewById(R.id.imageSeta);
+        back.setOnClickListener(v -> finish());
     }
 
 }
