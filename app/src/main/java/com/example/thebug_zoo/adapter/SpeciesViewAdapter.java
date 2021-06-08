@@ -48,9 +48,9 @@ public class SpeciesViewAdapter extends RecyclerView.Adapter<SpeciesViewAdapter.
         byte[] image = new byte[]{};
         if (typeAcess == "home") {
             DatabaseAcess database = new DatabaseAcess(context, speciesResult.get(position).table);
-            image = (database.GetImageByID(String.valueOf(speciesResult.get(position)._id)));
+            image = (database.GetImageByID(String.valueOf(speciesResult.get(position)._id), "first"));
         } else if (typeAcess == "normal"){
-            image = (OrderView.database.GetImageByID(String.valueOf(speciesResult.get(position)._id)));
+            image = (OrderView.database.GetImageByID(String.valueOf(speciesResult.get(position)._id), "first"));
         }
         Bitmap bt = BitmapFactory.decodeByteArray(image, 0, image.length);
         holder.speciesImage.setImageBitmap(bt);

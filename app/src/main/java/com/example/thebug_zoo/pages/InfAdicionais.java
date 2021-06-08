@@ -2,14 +2,11 @@ package com.example.thebug_zoo.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.database.DatabaseAcess;
@@ -34,12 +31,10 @@ public class InfAdicionais extends AppCompatActivity {
         //Fazendo referência e chamando as funções do SliderView
         sliderLayout = (SliderLayout) findViewById(R.id.imageSlider);
         sliderLayout.setIndicatorAnimation(IndicatorAnimations.FILL);
-        sliderLayout.setScrollTimeInSec(2);
-
+        sliderLayout.setAutoScrolling(false);
         setInformation();
         setSliderViwes();
         icons();
-
     }
 
     void setInformation(){
@@ -70,39 +65,22 @@ public class InfAdicionais extends AppCompatActivity {
     };
 
     void setSliderViwes(){
-        for(int i = 0; i<=2; i++){
-
-            DefaultSliderView sliderView = new DefaultSliderView(this);
-            switch (i){
-                case 0:
-                    byte[] imagem = new byte[]{};
-                    try {
-                        imagem = (OrderView.database.GetImageByID(String.valueOf(specie._id)));
-                    } catch (Exception e){
-                        DatabaseAcess database = new DatabaseAcess (this, specie.table);
-                        imagem = (database.GetImageByID(String.valueOf(specie._id)));
-                    }
-                    sliderView.setImageByte(imagem);
-                    break;
-                case 1:
-                    sliderView.setImageDrawable(R.drawable.image2);
-                    break;
-                case 2:
-                    sliderView.setImageDrawable(R.drawable.image3);
+        for (int i = 0; i<=1; i++){
+            byte[] imagem;
+            try {
+                imagem = (OrderView.database.GetImageByID(String.valueOf(specie._id), i==0?"first":"second"));
+            } catch (Exception e) {
+                DatabaseAcess database = new DatabaseAcess(this, specie.table);
+                imagem = (database.GetImageByID(String.valueOf(specie._id), i==0?"first":"second"));
             }
-
-            sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
-            sliderView.setDescription("setDescription"+(i+1));
-            final int finalI = i;
-            sliderView.setOnSliderClickListener(new SliderView.OnSliderClickListener() {
-                @Override
-                public void onSliderClick(SliderView sliderView) {
-                    Toast.makeText(InfAdicionais.this, "This is slider"+(finalI+1), Toast.LENGTH_LONG).show();
-                }
-            });
-
-            sliderLayout.addSliderView(sliderView);
+            if (imagem != null){
+                DefaultSliderView sliderView = new DefaultSliderView(this);
+                sliderView.setImageByte(imagem);
+                sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
+                sliderLayout.addSliderView(sliderView);
+            }
         }
+//      sliderView.setOnSliderClickListener
     }
 
     void icons(){

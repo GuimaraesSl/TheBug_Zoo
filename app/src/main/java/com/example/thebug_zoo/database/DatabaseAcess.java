@@ -67,6 +67,7 @@ public class DatabaseAcess {
     public static final String COLUMN_PLACE = "_local";
     public static final String COLUMN_DATE = "_data";
     public static final String COLUMN_FOTO1 = "foto1";
+    public static final String COLUMN_FOTO2 = "foto2";
     String[] sqlSelect = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE};
 
     public List<Species> searchAll(){
@@ -314,27 +315,35 @@ public class DatabaseAcess {
         return result;
     }
 
-    public byte[] GetImageByID(String ID) {
+    public byte[] GetImageByID(String ID, String type) {
         open();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder.setTables(TABLE);
 
-        String[] sqlSelect1 = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE, COLUMN_FOTO1};
+        String[] sqlSelect1 = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE, COLUMN_FOTO1, COLUMN_FOTO2};
         Cursor cursor = queryBuilder.query(database, sqlSelect1, COLUMN__ID + "= ?", new String[]{String.valueOf(ID)}, null, null, null);
 
-        byte[] result;
-        if (cursor.moveToFirst()) {
-            do {
-                result = cursor.getBlob(12);
-            } while (cursor.moveToNext());
-            cursor.close();
-            close();
-        } else {
-            cursor.close();
-            close();
+        byte[] result = new byte[]{};
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    if (type == "first") {
+                        result = cursor.getBlob(12);
+                    } else if (type == "second") {
+                        result = cursor.getBlob(13);
+                    }
+                } while (cursor.moveToNext());
+                cursor.close();
+                close();
+            } else {
+                cursor.close();
+                close();
+                return null;
+            }
+            return result;
+        } catch (Exception e){
             return null;
         }
-        return result;
     }
 
     public List<String> getAllOrders(List<Species> list){
