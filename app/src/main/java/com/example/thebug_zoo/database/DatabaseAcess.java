@@ -19,10 +19,14 @@ public class DatabaseAcess {
     private SQLiteDatabase database;
     private static DatabaseAcess instance;
     public final String TABLE;
+    public List<String> tables = new ArrayList<>();
 
     public DatabaseAcess(Context context, String TABLE){
         this.openHelper = new BancoController(context);
         this.TABLE = TABLE;
+        tables.add("table_meio_umido");
+        tables.add("table_taxidermizados");
+        tables.add("table_osteologia");
     }
 
     /**
@@ -346,25 +350,16 @@ public class DatabaseAcess {
         }
     }
 
-    public List<String> getAllOrders(List<Species> list){
-
-//        List<String> aux = new ArrayList<>();
-//        List<String> allOrders = new ArrayList<>();
-//
-//        for(int i = 0; i < list.size(); i++){
-//            for(int j = 0; j < list.get(i).size(); j++){
-//                if(!allOrders.contains(list.get(i).get(j).ordem)){
-//                    allOrders.add(list.get(i).get(j).ordem);
-//                    Log.d("ordens", list.get(i).get(j).ordem);
-//                }
-//            }
-//        }
+    public List<String> getAllOrders(ArrayList<List<Species>> list){
 
         List<String> allOrders = new ArrayList<>();
 
         for(int i = 0; i < list.size(); i++){
-            if(!allOrders.contains(list.get(i).ordem)){
-                allOrders.add(list.get(i).ordem);
+            for(int j = 0; j < list.get(i).size(); j++){
+                if(!allOrders.contains(list.get(i).get(j).ordem)){
+                    allOrders.add(list.get(i).get(j).ordem);
+                    Log.d("ordens", list.get(i).get(j).ordem);
+                }
             }
         }
 
@@ -373,160 +368,79 @@ public class DatabaseAcess {
 
     public List<Integer> getAllNumbersSpeciesOfOrders(List<String> list){
 
-//        List<Integer> numbersSpecies = new ArrayList<>();
-//        List<String> aux = new ArrayList<>();
-//        for(int i = 0; i < list.size(); i++){
-//            open();
-//            List<Species> result = new ArrayList<>();
-//            String order = list.get(i);
-//            Cursor cursor = database.query("table_meio_umido", sqlSelect, COLUMN_ORDER + " = ?", new String[]{order}, null, null, null, null);
-//            if(cursor.moveToFirst()){
-//                do{
-//                    Species species = new Species();
-//                    species._id = cursor.getInt((cursor.getColumnIndex(COLUMN__ID)));
-//                    species.id = cursor.getInt((cursor.getColumnIndex(COLUMN_ID)));
-//                    species.armario = cursor.getInt((cursor.getColumnIndex(COLUMN_WARDROBE)));
-//                    species.estante = cursor.getInt((cursor.getColumnIndex(COLUMN_BOOKCASE)));
-//                    species.ordem = cursor.getString((cursor.getColumnIndex(COLUMN_ORDER)));
-//                    species.familia = cursor.getString((cursor.getColumnIndex(COLUMN_FAMILY)));
-//                    species.identificacao = cursor.getString((cursor.getColumnIndex(COLUMN_IDENTIFICATION)));
-//                    species.inf_adicionais = cursor.getString((cursor.getColumnIndex(COLUMN_INF)));
-//                    species.fonte = cursor.getString((cursor.getColumnIndex(COLUMN_SOURCE)));
-//                    species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
-//                    species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
-//                    species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
-//
-//                    if (!result.contains(species)) {
-//                        result.add(species);
-//                    }
-//
-//                }while (cursor.moveToNext());
-//                cursor.close();
-//                close();
-//            } else {
-//                cursor.close();
-//                close();
-//                return null;
-//            }
-//            Log.d("AQUI", aux.get(i));
-//            numbersSpecies.add(result.size());
-//        }
-//
-//        for(int i = 0; i < list.size(); i++){
-//            open();
-//            String order = aux.get(i);
-//            List<Species> result = new ArrayList<>();
-//            Cursor cursor = database.query("table_taxidermizados", sqlSelect, COLUMN_ORDER + " = ?", new String[]{order}, null, null, null, null);
-//            if(cursor.moveToFirst()){
-//                do{
-//                    Species species = new Species();
-//                    species._id = cursor.getInt((cursor.getColumnIndex(COLUMN__ID)));
-//                    species.id = cursor.getInt((cursor.getColumnIndex(COLUMN_ID)));
-//                    species.armario = cursor.getInt((cursor.getColumnIndex(COLUMN_WARDROBE)));
-//                    species.estante = cursor.getInt((cursor.getColumnIndex(COLUMN_BOOKCASE)));
-//                    species.ordem = cursor.getString((cursor.getColumnIndex(COLUMN_ORDER)));
-//                    species.familia = cursor.getString((cursor.getColumnIndex(COLUMN_FAMILY)));
-//                    species.identificacao = cursor.getString((cursor.getColumnIndex(COLUMN_IDENTIFICATION)));
-//                    species.inf_adicionais = cursor.getString((cursor.getColumnIndex(COLUMN_INF)));
-//                    species.fonte = cursor.getString((cursor.getColumnIndex(COLUMN_SOURCE)));
-//                    species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
-//                    species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
-//                    species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
-//
-//                    if (!result.contains(species)) {
-//                        result.add(species);
-//                    }
-//
-//                }while (cursor.moveToNext());
-//                cursor.close();
-//                close();
-//            } else {
-//                cursor.close();
-//                close();
-//                return null;
-//            }
-//            Log.d("AQUI", aux.get(i));
-//            numbersSpecies.add(result.size());
-//        }
-//
-//        for(int i = 0; i < list.size(); i++){
-//            open();
-//            List<Species> result = new ArrayList<>();
-//            String order = aux.get(i);
-//            Cursor cursor = database.query("table_osteologia", sqlSelect, COLUMN_ORDER + " = ?", new String[]{order}, null, null, null, null);
-//            if(cursor.moveToFirst()){
-//                do{
-//                    Species species = new Species();
-//                    species._id = cursor.getInt((cursor.getColumnIndex(COLUMN__ID)));
-//                    species.id = cursor.getInt((cursor.getColumnIndex(COLUMN_ID)));
-//                    species.armario = cursor.getInt((cursor.getColumnIndex(COLUMN_WARDROBE)));
-//                    species.estante = cursor.getInt((cursor.getColumnIndex(COLUMN_BOOKCASE)));
-//                    species.ordem = cursor.getString((cursor.getColumnIndex(COLUMN_ORDER)));
-//                    species.familia = cursor.getString((cursor.getColumnIndex(COLUMN_FAMILY)));
-//                    species.identificacao = cursor.getString((cursor.getColumnIndex(COLUMN_IDENTIFICATION)));
-//                    species.inf_adicionais = cursor.getString((cursor.getColumnIndex(COLUMN_INF)));
-//                    species.fonte = cursor.getString((cursor.getColumnIndex(COLUMN_SOURCE)));
-//                    species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
-//                    species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
-//                    species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
-//
-//                    if (!result.contains(species)) {
-//                        result.add(species);
-//                    }
-//
-//                }while (cursor.moveToNext());
-//                cursor.close();
-//                close();
-//            } else {
-//                cursor.close();
-//                close();
-//                return null;
-//            }
-//            Log.d("AQUI", aux.get(i));
-//            numbersSpecies.add(result.size());
-//        }
-
-
-
-        open();
-        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-        queryBuilder.setTables(TABLE);
         List<Integer> numbersSpecies = new ArrayList<>();
-        for(int i = 0; i < list.size(); i++){
-            open();
-            List<Species> result = new ArrayList<>();
-            String order = list.get(i);
-            Cursor cursor = database.query(TABLE, sqlSelect, COLUMN_ORDER + " = ?", new String[]{order}, null, null, null, null);
-            if(cursor.moveToFirst()){
-                do{
-                    Species species = new Species();
-                    species._id = cursor.getInt((cursor.getColumnIndex(COLUMN__ID)));
-                    species.id = cursor.getInt((cursor.getColumnIndex(COLUMN_ID)));
-                    species.armario = cursor.getInt((cursor.getColumnIndex(COLUMN_WARDROBE)));
-                    species.estante = cursor.getInt((cursor.getColumnIndex(COLUMN_BOOKCASE)));
-                    species.ordem = cursor.getString((cursor.getColumnIndex(COLUMN_ORDER)));
-                    species.familia = cursor.getString((cursor.getColumnIndex(COLUMN_FAMILY)));
-                    species.identificacao = cursor.getString((cursor.getColumnIndex(COLUMN_IDENTIFICATION)));
-                    species.inf_adicionais = cursor.getString((cursor.getColumnIndex(COLUMN_INF)));
-                    species.fonte = cursor.getString((cursor.getColumnIndex(COLUMN_SOURCE)));
-                    species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
-                    species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
-                    species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
 
-                    if (!result.contains(species)) {
-                        result.add(species);
-                    }
-
-                }while (cursor.moveToNext());
-                cursor.close();
-                close();
-            } else {
-                cursor.close();
-                close();
-                return null;
+        for(int i = 0; i < tables.size(); i++){
+            for(int j = 0; j < list.size(); j++){
+                open();
+                SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+                queryBuilder.setTables(tables.get(i));
+                Cursor cursor = queryBuilder.query(database, sqlSelect, COLUMN_ORDER + " = ?", new String[]{String.valueOf(list.get(j))}, null, null, null);
+                int cont = 0;
+                if(cursor.moveToFirst()){
+                    do{
+                        cont++;
+                    }while (cursor.moveToNext());
+                    cursor.close();
+                    close();
+                } else {
+                    cursor.close();
+                    close();
+                }
+                if(cont != 0){
+                    numbersSpecies.add(cont);
+                    Log.d("cont1", String.valueOf(numbersSpecies.get(i)));
+                }
             }
-            numbersSpecies.add(result.size());
         }
+
+        return numbersSpecies;
+    }
+
+    public List<String> getAllFamilys(ArrayList<List<Species>> list){
+
+        List<String> allFamilys = new ArrayList<>();
+
+        for(int i = 0; i < list.size(); i++){
+            for(int j = 0; j < list.get(i).size(); j++){
+                if(!allFamilys.contains(list.get(i).get(j).familia)){
+                    allFamilys.add(list.get(i).get(j).familia);
+                    Log.d("ordens", list.get(i).get(j).familia);
+                }
+            }
+        }
+
+        return allFamilys;
+    }
+
+    public List<Integer> getAllNumbersSpeciesOfFamilys(List<String> list){
+
+        List<Integer> numbersSpecies = new ArrayList<>();
+
+        for(int i = 0; i < tables.size(); i++){
+            for(int j = 0; j < list.size(); j++){
+                open();
+                SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+                queryBuilder.setTables(tables.get(i));
+                Cursor cursor = queryBuilder.query(database, sqlSelect, COLUMN_FAMILY + " = ?", new String[]{String.valueOf(list.get(j))}, null, null, null);
+                int cont = 0;
+                if(cursor.moveToFirst()){
+                    do{
+                        cont++;
+                    }while (cursor.moveToNext());
+                    cursor.close();
+                    close();
+                } else {
+                    cursor.close();
+                    close();
+                }
+                if(cont != 0){
+                    numbersSpecies.add(cont);
+                    Log.d("cont1", String.valueOf(numbersSpecies.get(i)));
+                }
+            }
+        }
+
         return numbersSpecies;
     }
 

@@ -159,6 +159,14 @@
         \n  -> Cefalocordados (Protocordados – Exemplo: Anfioxo);
         \n  -> Craniados ou Vertebrados (Peixes, Anfíbios, Répteis, Aves e Mamíferos).
     </string>
+    <string name="btallorders">Relação em ordens</string>
+    <string name="relacao_em_ordens">Relaçao em ordens</string>
+    <string name="btallfamilys">Todas as familias</string>
+    <string name="relacao_em_familias">Relação em famílias</string>
+    <string name="acervo_geral">Acervo geral</string>
+    <string name="OrdersOBS">Ordem: quantidade de especies</string>
+    <string name="familys">Familias</string>
+    <string name="FamillysOBS">Familia: quantidade de especies</string>
 
 
 </resources>
