@@ -47,7 +47,7 @@ public class HomeView extends AppCompatActivity {
     SQLiteDatabase conection;
     BancoController bancoController;
     ConstraintLayout layoutMenuBar;
-    DatabaseAcess TABLE_MEIO_UMIDO, TABLE_TAXIDERMIZADOS, TABLE_OSTEOLOGIA;
+    DatabaseAcess databaseAcess;
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
@@ -193,17 +193,17 @@ public class HomeView extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 ArrayList<List<Species>> result = new ArrayList<>();
                 List<Species> finalResult = new ArrayList<>();
-                TABLE_MEIO_UMIDO = new DatabaseAcess(getApplicationContext(), "table_meio_umido");
-                result.add(TABLE_MEIO_UMIDO.searchAll());
-                TABLE_MEIO_UMIDO.close();
-                TABLE_TAXIDERMIZADOS = new DatabaseAcess(getApplicationContext(), "table_taxidermizados");
-                result.add(TABLE_TAXIDERMIZADOS.searchAll());
-                TABLE_TAXIDERMIZADOS.close();
-                TABLE_OSTEOLOGIA = new DatabaseAcess(getApplicationContext(), "table_osteologia");
-                result.add(TABLE_OSTEOLOGIA.searchAll());
-                TABLE_OSTEOLOGIA.close();
-                finalResult = TABLE_MEIO_UMIDO.searchByIdList(TABLE_MEIO_UMIDO.searchByKeyword(result, query));
-                TABLE_MEIO_UMIDO.close();
+                databaseAcess = new DatabaseAcess(getApplicationContext(), "table_meio_umido");
+                result.add(databaseAcess.searchAll());
+                databaseAcess.close();
+                databaseAcess = new DatabaseAcess(getApplicationContext(), "table_taxidermizados");
+                result.add(databaseAcess.searchAll());
+                databaseAcess.close();
+                databaseAcess = new DatabaseAcess(getApplicationContext(), "table_osteologia");
+                result.add(databaseAcess.searchAll());
+                databaseAcess.close();
+                finalResult = databaseAcess.searchByIdList(databaseAcess.searchByKeyword(result, query));
+                databaseAcess.close();
                 Intent intent = new Intent(getApplicationContext(), SpeciesView.class);
                 intent.putParcelableArrayListExtra("species_home", (ArrayList<? extends Parcelable>) finalResult);
                 startActivity(intent);

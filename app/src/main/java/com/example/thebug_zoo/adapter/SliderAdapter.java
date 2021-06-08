@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.thebug_zoo.R;
-import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
-import com.example.thebug_zoo.pages.OrderView;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
 import java.util.ArrayList;

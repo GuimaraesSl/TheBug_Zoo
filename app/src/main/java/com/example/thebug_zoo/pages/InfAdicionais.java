@@ -40,6 +40,9 @@ public class InfAdicionais extends AppCompatActivity {
         specie = getIntent().getParcelableExtra("selected_specie");
         //Fazendo referência e chamando as funções do SliderView
         sliderView = (SliderView) findViewById(R.id.imageSlider);
+
+
+
         setInformation();
         setSliderViews();
         icons();
