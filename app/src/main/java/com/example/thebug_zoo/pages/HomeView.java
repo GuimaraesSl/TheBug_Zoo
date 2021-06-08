@@ -149,20 +149,15 @@ public class HomeView extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId())
-                {
-                    case R.id.menu_educacao:
-                        Intent it = new Intent(HomeView.this, EducationView.class);
-                        startActivity(it);
-                        return true;
-
-                    case R.id.menu_acervo:
-                        Intent it2 = new Intent(HomeView.this, CollectionView.class);
-                        startActivity(it2);
-                        return true;
+                if (item.getItemId() == R.id.menu_educacao){
+                    Intent it = new Intent(HomeView.this, EducationView.class);
+                    startActivity(it);
+                    return true;
+                } else if (item.getItemId() == R.id.menu_acervo) {
+                    Intent it2 = new Intent(HomeView.this, CollectionView.class);
+                    startActivity(it2);
+                    return true;
                 }
-
                 return true;
             }
         });
@@ -210,7 +205,6 @@ public class HomeView extends AppCompatActivity {
                 finalResult = TABLE_MEIO_UMIDO.searchByIdList(TABLE_MEIO_UMIDO.searchByKeyword(result, query));
                 TABLE_MEIO_UMIDO.close();
                 Intent intent = new Intent(getApplicationContext(), SpeciesView.class);
-                Log.d("ENTRADA1", "ENTROU");
                 intent.putParcelableArrayListExtra("species_home", (ArrayList<? extends Parcelable>) finalResult);
                 startActivity(intent);
                 return false;

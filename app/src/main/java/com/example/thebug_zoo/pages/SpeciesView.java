@@ -18,7 +18,7 @@ import java.util.List;
 
 public class SpeciesView extends AppCompatActivity {
 
-    public static ImageView defaultIcon, back;
+    public ImageView back;
     private RecyclerView SpeciesRecycler;
     private List<Species> speciesAdded;
     private SpeciesViewAdapter adapter;

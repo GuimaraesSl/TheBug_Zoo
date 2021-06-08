@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class EducationView extends AppCompatActivity {
 
-    public static ImageView back;
+    public ImageView back;
     private ArrayList<EducationItem> items = new ArrayList<>();
 
     @Override

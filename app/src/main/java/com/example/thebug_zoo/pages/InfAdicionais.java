@@ -1,24 +1,34 @@
 package com.example.thebug_zoo.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.dynamicanimation.animation.DynamicAnimation;
+import androidx.viewpager.widget.ViewPager;
 
+import android.animation.LayoutTransition;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowInsetsAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.thebug_zoo.R;
+import com.example.thebug_zoo.adapter.SliderAdapter;
 import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
-import com.smarteist.autoimageslider.DefaultSliderView;
-import com.smarteist.autoimageslider.IndicatorAnimations;
-import com.smarteist.autoimageslider.SliderLayout;
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
+import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
+
+import java.util.ArrayList;
 
 public class InfAdicionais extends AppCompatActivity {
 
-    SliderLayout sliderLayout;
+    SliderView sliderView;
+    ArrayList<byte[]> images = new ArrayList<>();
+    SliderAdapter sliderAdapter;
     ImageView imageSeta;
     Species specie;
     TextView txtOrdem, txtFamilia, txtNumId, txtNumArmario, txtOrdem3, textFamilia3, txtIdentificacao2, txtInformacoesAd2, txtFont2, txtColetor2, txtLocal2, txtData2;
@@ -29,11 +39,9 @@ public class InfAdicionais extends AppCompatActivity {
         setContentView(R.layout.activity_inf_adicionais);
         specie = getIntent().getParcelableExtra("selected_specie");
         //Fazendo referência e chamando as funções do SliderView
-        sliderLayout = (SliderLayout) findViewById(R.id.imageSlider);
-        sliderLayout.setIndicatorAnimation(IndicatorAnimations.FILL);
-        sliderLayout.setAutoScrolling(false);
+        sliderView = (SliderView) findViewById(R.id.imageSlider);
         setInformation();
-        setSliderViwes();
+        setSliderViews();
         icons();
     }
 
@@ -64,23 +72,32 @@ public class InfAdicionais extends AppCompatActivity {
       txtData2.setText(specie._data);
     };
 
-    void setSliderViwes(){
+    void setSliderViews(){
         for (int i = 0; i<=1; i++){
-            byte[] imagem;
+            byte[] image;
             try {
-                imagem = (OrderView.database.GetImageByID(String.valueOf(specie._id), i==0?"first":"second"));
+                image = (OrderView.database.GetImageByID(String.valueOf(specie._id), i==0?"first":"second"));
             } catch (Exception e) {
                 DatabaseAcess database = new DatabaseAcess(this, specie.table);
-                imagem = (database.GetImageByID(String.valueOf(specie._id), i==0?"first":"second"));
+                image = (database.GetImageByID(String.valueOf(specie._id), i==0?"first":"second"));
             }
-            if (imagem != null){
-                DefaultSliderView sliderView = new DefaultSliderView(this);
-                sliderView.setImageByte(imagem);
-                sliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
-                sliderLayout.addSliderView(sliderView);
-            }
+            images.add(image);
         }
-//      sliderView.setOnSliderClickListener
+
+        if (images.get(1)==null){
+            sliderAdapter = new SliderAdapter(specie, this, "single", images);
+        } else {
+            sliderAdapter = new SliderAdapter(specie, this, "double", images);
+        }
+
+        sliderView.setSliderAdapter(sliderAdapter);
+        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
+        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+        sliderView.setIndicatorAnimationDuration(800);
+        sliderView.setSliderAnimationDuration(800);
+        sliderView.setScrollTimeInSec(4);
+        sliderView.startAutoCycle();
     }
 
     void icons(){

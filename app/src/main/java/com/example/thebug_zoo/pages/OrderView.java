@@ -24,7 +24,8 @@ import java.util.List;
 
 public class OrderView extends AppCompatActivity{
 
-    public static ImageView defaultIcon, back;
+    public static ImageView defaultIcon;
+    public ImageView back;
     public static int ID;
     public static DatabaseAcess database;
     List<Species> specie;
