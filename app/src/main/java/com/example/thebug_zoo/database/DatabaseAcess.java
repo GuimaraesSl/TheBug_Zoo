@@ -96,6 +96,7 @@ public class DatabaseAcess {
                 species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
                 species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                 species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+                species.table = TABLE;
 
                 result.add(species);
             }while (cursor.moveToNext());
@@ -155,6 +156,7 @@ public class DatabaseAcess {
                 species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
                 species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                 species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+                species.table = TABLE;
 
                 if (!result.contains(species)) {
                     result.add(species);

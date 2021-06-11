@@ -60,7 +60,6 @@
             android:textColor="@color/white"
             android:textSize="21sp"
             app:layout_constraintEnd_toStartOf="@+id/iconSeta"
-            app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toEndOf="@+id/iconMeioUmido"
             app:layout_constraintTop_toTopOf="@+id/buttonMeioUmido" />
 

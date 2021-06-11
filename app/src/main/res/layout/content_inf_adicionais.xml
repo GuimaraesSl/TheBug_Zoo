@@ -78,11 +78,14 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/layout_border2"
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp">
 
                     <TextView
                         android:id="@+id/txtOrdem"
@@ -118,7 +121,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp">
 
                     <TextView
                         android:id="@+id/txtId"
@@ -130,29 +134,30 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <TextView
                         android:id="@+id/txtNumId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="9dp"
                         android:focusable="true"
                         android:longClickable="true"
                         android:text="@string/_1"
                         android:textIsSelectable="true"
                         android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/txtId"
-                        tools:ignore="MissingConstraints"/>
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp">
 
                     <TextView
                         android:id="@+id/txtArmario"
@@ -164,7 +169,8 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <TextView
                         android:id="@+id/txtNumArmario"
@@ -174,19 +180,46 @@
                         android:longClickable="true"
                         android:text="@string/_1"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="11dp"
                         android:textIsSelectable="true"
                         android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/txtArmario"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/txtPrat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:text="Prateleira"
+                        android:textColor="#006FFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/txtNumArmario"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/txtNumPrat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:text="1"
+                        android:layout_marginStart="12dp"
+                        android:textIsSelectable="true"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toEndOf="@+id/txtPrat"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp">
 
                     <TextView
                         android:id="@+id/txtOrdem2"
@@ -198,7 +231,8 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <TextView
                         android:id="@+id/txtOrdem3"
@@ -208,11 +242,11 @@
                         android:longClickable="true"
                         android:text="@string/spirophorida"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="11dp"
                         android:textIsSelectable="true"
                         android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/txtOrdem2"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -220,7 +254,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp">
 
                     <TextView
                         android:id="@+id/txtFamilia2"
@@ -232,7 +267,8 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <TextView
                         android:id="@+id/textFamilia3"
@@ -242,19 +278,19 @@
                         android:longClickable="true"
                         android:text="@string/tetilidae"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="10dp"
                         android:textIsSelectable="true"
                         android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/txtFamilia2"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp">
 
                     <TextView
                         android:id="@+id/txtIdentificacao"
@@ -266,7 +302,8 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <TextView
                         android:id="@+id/txtIdentificacao2"
@@ -274,11 +311,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:focusable="true"
+                        android:text="Alguma Coisa"
                         android:longClickable="true"
                         android:textIsSelectable="true"
                         android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/txtIdentificacao"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -300,7 +339,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp">
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="10dp">
 
                     <TextView
                         android:id="@+id/txtInformacoesAd"
@@ -312,7 +352,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/txtInformacoesAd2"
@@ -326,15 +366,15 @@
                         android:textIsSelectable="true"
                         android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="@+id/txtInformacoesAd"
-                        app:layout_constraintTop_toBottomOf="@+id/txtInformacoesAd"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toBottomOf="@+id/txtInformacoesAd"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp">
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="10dp">
 
                     <TextView
                         android:id="@+id/txtFonte"
@@ -346,7 +386,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/txtFont2"
@@ -361,15 +401,15 @@
                         android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="@+id/txtFonte"
                         app:layout_constraintTop_toBottomOf="@+id/txtFonte"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp">
-
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="10dp">
 
                     <TextView
                         android:id="@+id/txtColetor"
@@ -381,7 +421,9 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/txtColetor2"
@@ -391,18 +433,19 @@
                         android:longClickable="true"
                         android:text="@string/desconhecido"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="12dp"
                         android:textIsSelectable="true"
                         android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/txtColetor"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp">
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="10dp">
 
                     <TextView
                         android:id="@+id/txtLocal"
@@ -414,7 +457,8 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                     <TextView
                         android:id="@+id/txtLocal2"
@@ -427,14 +471,16 @@
                         android:textIsSelectable="true"
                         android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/txtLocal"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp">
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="10dp">
 
                     <TextView
                         android:id="@+id/txtData"
@@ -446,7 +492,9 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/txtData2"
@@ -459,7 +507,9 @@
                         android:textIsSelectable="true"
                         android:textSize="20sp"
                         app:layout_constraintStart_toEndOf="@+id/txtData"
-                        tools:ignore="MissingConstraints" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

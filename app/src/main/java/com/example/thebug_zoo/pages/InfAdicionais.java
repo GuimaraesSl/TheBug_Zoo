@@ -31,7 +31,7 @@ public class InfAdicionais extends AppCompatActivity {
     SliderAdapter sliderAdapter;
     ImageView imageSeta;
     Species specie;
-    TextView txtOrdem, txtFamilia, txtNumId, txtNumArmario, txtOrdem3, textFamilia3, txtIdentificacao2, txtInformacoesAd2, txtFont2, txtColetor2, txtLocal2, txtData2;
+    TextView txtOrdem, txtFamilia, txtNumId, txtNumArmario, txtOrdem3, textFamilia3, txtIdentificacao2, txtInformacoesAd2, txtFont2, txtColetor2, txtLocal2, txtData2, txtArmario, txtPrat, txtNumPrat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,30 +49,46 @@ public class InfAdicionais extends AppCompatActivity {
     }
 
     void setInformation(){
-      txtOrdem = findViewById(R.id.txtOrdem);
-      txtOrdem.setText(specie.ordem);
-      txtFamilia = findViewById(R.id.txtFamilia);
-      txtFamilia.setText(specie.familia);
-      txtNumId = findViewById(R.id.txtNumId);
-      txtNumId.setText(String.valueOf(specie.id));
-      txtNumArmario = findViewById(R.id.txtNumArmario);
-      txtNumArmario.setText(String.valueOf(specie.armario));
-      txtOrdem3 = findViewById(R.id.txtOrdem3);
-      txtOrdem3.setText(specie.ordem);
-      textFamilia3 = findViewById(R.id.textFamilia3);
-      textFamilia3.setText(specie.familia);
-      txtIdentificacao2 = findViewById(R.id.txtIdentificacao2);
-      txtIdentificacao2.setText(specie.identificacao);
-      txtInformacoesAd2 = findViewById(R.id.txtInformacoesAd2);
-      txtInformacoesAd2.setText(specie.inf_adicionais);
-      txtFont2 = findViewById(R.id.txtFont2);
-      txtFont2.setText(specie.fonte);
-      txtColetor2 = findViewById(R.id.txtColetor2);
-      txtColetor2.setText(specie.coletor);
-      txtLocal2 = findViewById(R.id.txtLocal2);
-      txtLocal2.setText(specie._local);
-      txtData2 = findViewById(R.id.txtData2);
-      txtData2.setText(specie._data);
+        Log.d("TBLE", specie.table);
+        txtOrdem = findViewById(R.id.txtOrdem);
+        txtOrdem.setText(specie.ordem);
+        txtFamilia = findViewById(R.id.txtFamilia);
+        txtFamilia.setText(specie.familia);
+        txtNumId = findViewById(R.id.txtNumId);
+        txtNumId.setText(String.valueOf(specie.id));
+        txtNumArmario = findViewById(R.id.txtNumArmario);
+        txtNumArmario.setText(String.valueOf(specie.armario));
+        txtNumPrat = findViewById(R.id.txtNumPrat);
+        txtNumPrat.setText(String.valueOf(specie.estante));
+        txtOrdem3 = findViewById(R.id.txtOrdem3);
+        txtOrdem3.setText(specie.ordem);
+        textFamilia3 = findViewById(R.id.textFamilia3);
+        textFamilia3.setText(specie.familia);
+        txtIdentificacao2 = findViewById(R.id.txtIdentificacao2);
+        txtIdentificacao2.setText(specie.identificacao);
+        txtInformacoesAd2 = findViewById(R.id.txtInformacoesAd2);
+        txtInformacoesAd2.setText(specie.inf_adicionais);
+        txtFont2 = findViewById(R.id.txtFont2);
+        txtFont2.setText(specie.fonte);
+        txtColetor2 = findViewById(R.id.txtColetor2);
+        txtColetor2.setText(specie.coletor);
+        txtLocal2 = findViewById(R.id.txtLocal2);
+        txtLocal2.setText(specie._local);
+        txtData2 = findViewById(R.id.txtData2);
+        txtData2.setText(specie._data);
+
+        if(specie.table.equals("table_taxidermizados")) {
+            Log.d("ENTROU", "SOU IGUAL");
+            txtArmario = findViewById(R.id.txtArmario);
+            txtArmario.setText("Bancada");
+
+            txtPrat = findViewById(R.id.txtPrat);
+            txtPrat.setText("");
+
+            txtNumPrat = findViewById(R.id.txtNumPrat);
+            txtNumPrat.setText("");
+        }
+
     };
 
     void setSliderViews(){
