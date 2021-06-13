@@ -3,6 +3,7 @@ package com.example.thebug_zoo.pages;
 import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -157,6 +158,9 @@ public class HomeView extends AppCompatActivity {
                     Intent it2 = new Intent(HomeView.this, CollectionView.class);
                     startActivity(it2);
                     return true;
+                } else if(item.getItemId() == R.id.menu_avaliar){
+                    String url = "https://forms.gle/3UxGzdJ3iy5GvRCt7";
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                 }
                 return true;
             }
