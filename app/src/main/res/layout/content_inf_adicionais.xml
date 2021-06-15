@@ -289,7 +289,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -312,7 +312,7 @@
                         android:id="@+id/txtIdentificacao2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="150dp"
+                        android:layout_marginStart="12sp"
                         android:focusable="true"
                         android:text="Alguma Coisa"
                         android:longClickable="true"
@@ -322,7 +322,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"/>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
