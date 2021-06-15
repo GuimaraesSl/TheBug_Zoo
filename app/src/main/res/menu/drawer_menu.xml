@@ -13,4 +13,7 @@
         android:id="@+id/menu_educacao"
         android:icon="@drawable/ic_icon_educacao"
         android:title="Educação"/>
+    <item
+        android:id="@+id/menu_avaliar"
+        android:title="Avaliar"/>
 </menu>

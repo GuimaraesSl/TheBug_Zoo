@@ -89,6 +89,18 @@ public class InfAdicionais extends AppCompatActivity {
             txtNumPrat.setText("");
         }
 
+        if(specie.table.equals("table_osteologia")) {
+            Log.d("ENTROU", "SOU IGUAL");
+            txtArmario = findViewById(R.id.txtArmario);
+            txtArmario.setText("Localização");
+
+            txtPrat = findViewById(R.id.txtPrat);
+            txtPrat.setText("");
+
+            txtNumPrat = findViewById(R.id.txtNumPrat);
+            txtNumPrat.setText("");
+        }
+
     };
 
     void setSliderViews(){
