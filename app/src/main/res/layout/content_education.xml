@@ -35,7 +35,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:text="Características de Cada Filo"
+        android:text="@string/filos"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@id/educationRecycler"
         app:layout_constraintEnd_toEndOf="parent"
