@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:contentDescription="@string/slider_image"
-        android:scaleType="centerCrop" />
+        android:scaleType="fitXY" />
 
     <RelativeLayout
         android:layout_width="match_parent"

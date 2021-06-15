@@ -82,10 +82,11 @@
                 android:background="@drawable/layout_border2"
                 >
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp">
+                    android:layout_marginHorizontal="10dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/txtOrdem"
@@ -93,7 +94,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="7dp"
                         android:layout_marginEnd="8dp"
-                        android:padding="12sp"
+                        android:paddingLeft="12sp"
+                        android:paddingTop="12sp"
                         android:text="@string/spirophorida"
                         android:textSize="25sp"
                         android:textStyle="bold"
@@ -104,8 +106,9 @@
 
                     <TextView
                         android:id="@+id/txtFamilia"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="7dp"
                         android:focusable="true"
                         android:longClickable="true"
                         android:padding="12dp"
@@ -116,7 +119,7 @@
                         app:layout_constraintStart_toEndOf="@+id/txtOrdem"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -307,9 +310,9 @@
 
                     <TextView
                         android:id="@+id/txtIdentificacao2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="150dp"
                         android:focusable="true"
                         android:text="Alguma Coisa"
                         android:longClickable="true"
