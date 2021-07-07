@@ -1,13 +1,10 @@
 package com.example.thebug_zoo.entity;
 
 public class EducationItem {
-    private int imageResourse;
-    private String title;
-    private String desc;
+    private final int imageResourse;
+    private final String title;
+    private final String desc;
     private boolean isShrink = true;
-
-    public EducationItem() {
-    }
 
     public EducationItem(int imageResourse, String title, String desc) {
         this.imageResourse = imageResourse;
@@ -19,24 +16,12 @@ public class EducationItem {
         return imageResourse;
     }
 
-    public void setImageResourse(int imageResourse) {
-        this.imageResourse = imageResourse;
-    }
-
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDesc() {
         return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
     }
 
     public boolean isShrink() {

@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,16 +16,13 @@ import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Parcelable;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.database.BancoController;
@@ -147,23 +143,20 @@ public class HomeView extends AppCompatActivity {
         drawerToggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(this, R.color.white));
         drawerToggle.syncState();
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.menu_educacao){
-                    Intent it = new Intent(HomeView.this, EducationView.class);
-                    startActivity(it);
-                    return true;
-                } else if (item.getItemId() == R.id.menu_acervo) {
-                    Intent it2 = new Intent(HomeView.this, CollectionView.class);
-                    startActivity(it2);
-                    return true;
-                } else if(item.getItemId() == R.id.menu_avaliar){
-                    String url = "https://forms.gle/3UxGzdJ3iy5GvRCt7";
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-                }
+        navigationView.setNavigationItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.menu_educacao){
+                Intent it = new Intent(HomeView.this, EducationView.class);
+                startActivity(it);
                 return true;
+            } else if (item.getItemId() == R.id.menu_acervo) {
+                Intent it2 = new Intent(HomeView.this, CollectionView.class);
+                startActivity(it2);
+                return true;
+            } else if(item.getItemId() == R.id.menu_avaliar){
+                String url = "https://forms.gle/3UxGzdJ3iy5GvRCt7";
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
             }
+            return true;
         });
     }
 
@@ -196,7 +189,7 @@ public class HomeView extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 ArrayList<List<Species>> result = new ArrayList<>();
-                List<Species> finalResult = new ArrayList<>();
+                List<Species> finalResult;
                 databaseAcess = new DatabaseAcess(getApplicationContext(), "table_meio_umido");
                 result.add(databaseAcess.searchAll());
                 databaseAcess.close();

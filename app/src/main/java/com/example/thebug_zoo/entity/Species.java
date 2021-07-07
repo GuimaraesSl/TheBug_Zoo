@@ -24,7 +24,6 @@ public class Species implements Parcelable {
     }
 
     public Species(int _id, int id, int armario, int estante, String ordem, String familia, String identificacao, String inf_adicionais, String fonte, String coletor, String _local, String _data, String table){
-
         this._id = _id;
         this.id = id;
         this.armario = armario;
