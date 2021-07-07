@@ -1,26 +1,15 @@
 package com.example.thebug_zoo.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.thebug_zoo.R;
-import com.example.thebug_zoo.adapter.CollectionAdapter;
 import com.example.thebug_zoo.database.DatabaseAcess;
-import com.example.thebug_zoo.entity.Species;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import ru.embersoft.expandabletextview.ExpandableTextView;
 
 public class CollectionView extends AppCompatActivity {
 
@@ -51,22 +40,16 @@ public class CollectionView extends AppCompatActivity {
         orders = (ImageButton) findViewById(R.id.buttonAllOrders);
         familys = (ImageButton) findViewById(R.id.buttonAllFamilys);
 
-        textCollection.setText("Acervo Atual: "+cont+" Espécies");
+        textCollection.setText(getString(R.string.collection_case2, cont));
 
-        orders.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(CollectionView.this, AllOrders.class);
-                startActivity(it);
-            }
+        orders.setOnClickListener(v -> {
+            Intent it = new Intent(CollectionView.this, AllOrders.class);
+            startActivity(it);
         });
 
-        familys.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(CollectionView.this, AllFamilys.class);
-                startActivity(it);
-            }
+        familys.setOnClickListener(v -> {
+            Intent it = new Intent(CollectionView.this, AllFamilys.class);
+            startActivity(it);
         });
 
     }

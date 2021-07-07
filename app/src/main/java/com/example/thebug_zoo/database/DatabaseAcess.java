@@ -15,11 +15,11 @@ import java.util.List;
 public class DatabaseAcess {
 
     //================CONEXÃ0=====================
-    private SQLiteOpenHelper openHelper;
+    private final SQLiteOpenHelper openHelper;
     private SQLiteDatabase database;
     private static DatabaseAcess instance;
     public final String TABLE;
-    public List<String> tables = new ArrayList<>();
+    public final List<String> tables = new ArrayList<>();
 
     public DatabaseAcess(Context context, String TABLE){
         this.openHelper = new BancoController(context);
@@ -72,7 +72,7 @@ public class DatabaseAcess {
     public static final String COLUMN_DATE = "_data";
     public static final String COLUMN_FOTO1 = "foto1";
     public static final String COLUMN_FOTO2 = "foto2";
-    String[] sqlSelect = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE};
+    final String[] sqlSelect = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE};
 
     public List<Species> searchAll(){
         open();
@@ -181,22 +181,22 @@ public class DatabaseAcess {
             aux = list.get(i);
             ArrayList<Integer> ids = new ArrayList<>();
             for(int l = 0; l < aux.size(); l++){
-                if(aux.get(l).ordem.intern().toLowerCase().indexOf(keyword.intern().toLowerCase()) != -1){
+                if(aux.get(l).ordem.intern().toLowerCase().contains(keyword.intern().toLowerCase())){
                     if(!ids.contains(aux.get(l)._id)){
                         ids.add(aux.get(l)._id);
                     }
                 }
-                if(aux.get(l).familia.intern().toLowerCase().indexOf(keyword.intern().toLowerCase()) != -1){
+                if(aux.get(l).familia.intern().toLowerCase().contains(keyword.intern().toLowerCase())){
                     if(!ids.contains(aux.get(l)._id)){
                         ids.add(aux.get(l)._id);
                     }
                 }
-                if(aux.get(l).identificacao.intern().toLowerCase().indexOf(keyword.intern().toLowerCase()) != -1){
+                if(aux.get(l).identificacao.intern().toLowerCase().contains(keyword.intern().toLowerCase())){
                     if(!ids.contains(aux.get(l)._id)){
                         ids.add(aux.get(l)._id);
                     }
                 }
-                if(aux.get(l).inf_adicionais.intern().toLowerCase().indexOf(keyword.intern().toLowerCase()) != -1){
+                if(aux.get(l).inf_adicionais.intern().toLowerCase().contains(keyword.intern().toLowerCase())){
                     if(!ids.contains(aux.get(l)._id)){
                         ids.add(aux.get(l)._id);
                     }
@@ -333,9 +333,9 @@ public class DatabaseAcess {
         try {
             if (cursor.moveToFirst()) {
                 do {
-                    if (type == "first") {
+                    if (type.equals("first")) {
                         result = cursor.getBlob(12);
-                    } else if (type == "second") {
+                    } else if (type.equals("second")) {
                         result = cursor.getBlob(13);
                     }
                 } while (cursor.moveToNext());

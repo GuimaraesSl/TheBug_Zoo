@@ -21,7 +21,7 @@ public class AllFamilys extends AppCompatActivity {
     List<Integer> numbers = new ArrayList<>();
     List<String> familys;
     ImageView back;
-    ArrayList<List<Species>> result = new ArrayList<>();
+    final ArrayList<List<Species>> result = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

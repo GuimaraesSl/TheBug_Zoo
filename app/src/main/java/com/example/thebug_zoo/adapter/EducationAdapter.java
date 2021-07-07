@@ -1,10 +1,8 @@
 package com.example.thebug_zoo.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,12 +18,10 @@ import ru.embersoft.expandabletextview.ExpandableTextView;
 
 public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.ViewHolder> {
 
-    private ArrayList<EducationItem> items;
-    private Context context;
+    private final ArrayList<EducationItem> items;
 
-    public EducationAdapter(ArrayList<EducationItem> items, Context context) {
+    public EducationAdapter(ArrayList<EducationItem> items) {
         this.items = items;
-        this.context = context;
     }
     @NonNull
     @Override
@@ -40,13 +36,10 @@ public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.View
         holder.imageEducation.setImageResource(item.getImageResourse());
         holder.titleEducation.setText(item.getTitle());
         holder.descTextView.setText(item.getDesc());
-        holder.descTextView.setOnStateChangeListener(new ExpandableTextView.OnStateChangeListener() {
-            @Override
-            public void onStateChange(boolean isShrink) {
-                EducationItem contentItem = items.get(position);
-                contentItem.setShrink(isShrink);
-                items.set(position, contentItem);
-            }
+        holder.descTextView.setOnStateChangeListener(isShrink -> {
+            EducationItem contentItem = items.get(position);
+            contentItem.setShrink(isShrink);
+            items.set(position, contentItem);
         });
         holder.descTextView.setText(item.getDesc());
         holder.descTextView.resetState(item.isShrink());
@@ -57,10 +50,10 @@ public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.View
         return items.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageEducation;
-        ExpandableTextView descTextView;
-        TextView titleEducation;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        final ImageView imageEducation;
+        final ExpandableTextView descTextView;
+        final TextView titleEducation;
 
 
         public ViewHolder(@NonNull View itemView) {

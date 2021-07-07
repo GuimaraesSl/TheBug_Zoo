@@ -33,7 +33,7 @@
                 android:layout_height="200dp"
                 android:contentDescription="@string/species_image"
                 android:padding="10dp"
-                android:src="@drawable/image" />
+                android:src="@mipmap/image" />
 
             <TextView
                 android:layout_width="wrap_content"

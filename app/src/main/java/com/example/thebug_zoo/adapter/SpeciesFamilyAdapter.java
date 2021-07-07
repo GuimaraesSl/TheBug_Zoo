@@ -19,10 +19,10 @@ import java.util.List;
 
 public class SpeciesFamilyAdapter extends RecyclerView.Adapter<SpeciesFamilyAdapter.SpeciesViewHolder> implements Filterable {
 
-    Context context;
-    List<String> familyAdded;
-    List<String> familyAddedAll;
-    private ClickListenerFeature listener;
+    final Context context;
+    final List<String> familyAdded;
+    final List<String> familyAddedAll;
+    private final ClickListenerFeature listener;
 
     public SpeciesFamilyAdapter(Context context, List<String> familyAdded, ClickListenerFeature listener){
         this.context = context;
@@ -55,7 +55,7 @@ public class SpeciesFamilyAdapter extends RecyclerView.Adapter<SpeciesFamilyAdap
         return filter;
     }
 
-    Filter filter = new Filter() {
+    final Filter filter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
             List<String> filteredList = new ArrayList<>();
@@ -83,7 +83,7 @@ public class SpeciesFamilyAdapter extends RecyclerView.Adapter<SpeciesFamilyAdap
 
     public class SpeciesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        public TextView family;
+        public final TextView family;
 
         public SpeciesViewHolder(@NonNull View itemView) {
             super(itemView);

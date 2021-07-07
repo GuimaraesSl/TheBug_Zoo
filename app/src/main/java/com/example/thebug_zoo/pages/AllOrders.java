@@ -21,7 +21,7 @@ public class AllOrders extends AppCompatActivity {
     List<Integer> numbers;
     List<String> orders;
     ImageView back;
-    ArrayList<List<Species>> result = new ArrayList<>();
+    final ArrayList<List<Species>> result = new ArrayList<>();
 
 
     @Override

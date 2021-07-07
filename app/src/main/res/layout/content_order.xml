@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@string/home_background"
-        android:src="@drawable/back_default"
+        android:src="@mipmap/back_default"
         android:scaleType="centerCrop"/>
 
     <ImageView
@@ -57,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:queryHint="@string/pesquisar"
-        app:searchIcon="@drawable/icon_search"/>
+        app:searchIcon="@mipmap/icon_search"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleOrderView"

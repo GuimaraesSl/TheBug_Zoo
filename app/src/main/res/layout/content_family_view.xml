@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/family_background"
         android:scaleType="centerCrop"
-        android:src="@drawable/back_default"
+        android:src="@mipmap/back_default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:queryHint="@string/pesquisar"
-        app:searchIcon="@drawable/icon_search">
+        app:searchIcon="@mipmap/icon_search">
 
     </androidx.appcompat.widget.SearchView>
 

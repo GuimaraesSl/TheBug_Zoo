@@ -40,7 +40,7 @@
             android:layout_marginEnd="10dp"
             android:contentDescription="@string/education_example"
             android:scaleType="centerCrop"
-            android:src="@drawable/image"
+            android:src="@mipmap/image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

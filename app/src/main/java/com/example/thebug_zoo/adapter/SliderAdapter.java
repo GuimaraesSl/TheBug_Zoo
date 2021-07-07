@@ -3,7 +3,6 @@ package com.example.thebug_zoo.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +16,10 @@ import java.util.ArrayList;
 
 public class SliderAdapter extends SliderViewAdapter<SliderAdapter.Holder> {
 
-    Species specie;
-    Context context;
-    String type;
-    ArrayList<byte[]> images;
+    final Species specie;
+    final Context context;
+    final String type;
+    final ArrayList<byte[]> images;
 
 
     public SliderAdapter(Species specie, Context context, String type, ArrayList<byte[]> images) {
@@ -44,12 +43,12 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.Holder> {
 
     @Override
     public int getCount() {
-        return type=="single"?1:2;
+        return type.equals("single") ?1:2;
     }
 
-    public class Holder extends SliderViewAdapter.ViewHolder {
-        private ImageView imageView;
-        View itemView;
+    public static class Holder extends SliderViewAdapter.ViewHolder {
+        private final ImageView imageView;
+        final View itemView;
         public Holder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.image_slide);

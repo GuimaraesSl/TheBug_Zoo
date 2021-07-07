@@ -15,9 +15,9 @@ import java.util.List;
 
 public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.ViewHolder> {
 
-    private List<String> orders;
-    List<Integer> numbersOfSpecies;
-    private Context context;
+    private final List<String> orders;
+    final List<Integer> numbersOfSpecies;
+    final Context context;
 
     public CollectionAdapter(List<Integer> numbersOfSpecies, List<String> orders, Context context) {
         this.orders = orders;
@@ -35,7 +35,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
     public void onBindViewHolder(@NonNull CollectionAdapter.ViewHolder holder, int position) {
         final String item = orders.get(position);
         final Integer number = numbersOfSpecies.get(position);
-        holder.orders.setText(item+": "+String.valueOf(number));
+        holder.orders.setText(context.getString(R.string.collection_case, item, number));
     }
 
     @Override
@@ -43,8 +43,8 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
         return orders.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView orders;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        final TextView orders;
 
 
         public ViewHolder(@NonNull View itemView) {

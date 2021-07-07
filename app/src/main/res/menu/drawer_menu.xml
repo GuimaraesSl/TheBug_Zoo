@@ -2,18 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu_home"
         android:icon="@drawable/ic_icon_home"
-        android:title="Home"/>
+        android:title="@string/home"/>
     <item
         android:id="@+id/menu_acervo"
         android:icon="@drawable/ic_icon_collection"
-        android:title="Acervo"/>
+        android:title="@string/acervo"/>
     <item
         android:id="@+id/menu_educacao"
         android:icon="@drawable/ic_icon_educacao"
-        android:title="Educação"/>
+        android:title="@string/educacao"/>
     <item
         android:id="@+id/menu_avaliar"
-        android:title="Avaliar"/>
+        android:title="@string/avaliar"/>
 </menu>

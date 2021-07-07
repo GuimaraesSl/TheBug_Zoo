@@ -1,16 +1,9 @@
 package com.example.thebug_zoo.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.dynamicanimation.animation.DynamicAnimation;
-import androidx.viewpager.widget.ViewPager;
 
-import android.animation.LayoutTransition;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.view.WindowInsetsAnimation;
-import android.view.animation.Animation;
-import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,7 +20,7 @@ import java.util.ArrayList;
 public class InfAdicionais extends AppCompatActivity {
 
     SliderView sliderView;
-    ArrayList<byte[]> images = new ArrayList<>();
+    final ArrayList<byte[]> images = new ArrayList<>();
     SliderAdapter sliderAdapter;
     ImageView imageSeta;
     Species specie;
@@ -80,7 +73,7 @@ public class InfAdicionais extends AppCompatActivity {
         if(specie.table.equals("table_taxidermizados")) {
             Log.d("ENTROU", "SOU IGUAL");
             txtArmario = findViewById(R.id.txtArmario);
-            txtArmario.setText("Bancada");
+            txtArmario.setText(R.string.bancada);
 
             txtPrat = findViewById(R.id.txtPrat);
             txtPrat.setText("");
@@ -92,7 +85,7 @@ public class InfAdicionais extends AppCompatActivity {
         if(specie.table.equals("table_osteologia")) {
             Log.d("ENTROU", "SOU IGUAL");
             txtArmario = findViewById(R.id.txtArmario);
-            txtArmario.setText("Localização");
+            txtArmario.setText(R.string.localizacao);
 
             txtPrat = findViewById(R.id.txtPrat);
             txtPrat.setText("");
@@ -101,7 +94,7 @@ public class InfAdicionais extends AppCompatActivity {
             txtNumPrat.setText("");
         }
 
-    };
+    }
 
     void setSliderViews(){
         for (int i = 0; i<=1; i++){
@@ -133,12 +126,7 @@ public class InfAdicionais extends AppCompatActivity {
 
     void icons(){
         imageSeta = (ImageView) findViewById(R.id.imageSeta2);
-        imageSeta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        imageSeta.setOnClickListener(v -> finish());
 
     }
 }

@@ -3,7 +3,6 @@ package com.example.thebug_zoo.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,10 +21,10 @@ import java.util.List;
 
 public class SpeciesViewAdapter extends RecyclerView.Adapter<SpeciesViewAdapter.SpeciesViewHolder> {
 
-    private Context context;
-    private List<Species> speciesResult;
-    private ClickListenerFeature listener;
-    private String typeAcess;
+    private final Context context;
+    private final List<Species> speciesResult;
+    private final ClickListenerFeature listener;
+    private final String typeAcess;
 
 
     public SpeciesViewAdapter(Context context, List<Species> speciesResult, ClickListenerFeature listener, String typeAcess){
@@ -46,10 +45,10 @@ public class SpeciesViewAdapter extends RecyclerView.Adapter<SpeciesViewAdapter.
     public void onBindViewHolder(@NonNull SpeciesViewHolder holder, int position) {
         holder.speciesTitle.setText(speciesResult.get(position).identificacao);
         byte[] image = new byte[]{};
-        if (typeAcess == "home") {
+        if (typeAcess.equals("home")) {
             DatabaseAcess database = new DatabaseAcess(context, speciesResult.get(position).table);
             image = (database.GetImageByID(String.valueOf(speciesResult.get(position)._id), "first"));
-        } else if (typeAcess == "normal"){
+        } else if (typeAcess.equals("normal")){
             image = (OrderView.database.GetImageByID(String.valueOf(speciesResult.get(position)._id), "first"));
         }
         Bitmap bt = BitmapFactory.decodeByteArray(image, 0, image.length);
@@ -67,8 +66,8 @@ public class SpeciesViewAdapter extends RecyclerView.Adapter<SpeciesViewAdapter.
 
     public class SpeciesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        ImageView speciesImage;
-        TextView speciesTitle;
+        final ImageView speciesImage;
+        final TextView speciesTitle;
 
         public SpeciesViewHolder(@NonNull View itemView) {
             super(itemView);

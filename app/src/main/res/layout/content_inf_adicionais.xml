@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:fitsSystemWindows="true"
@@ -36,11 +32,9 @@
                 app:sliderIndicatorRadius="2dp"
                 app:sliderIndicatorSelectedColor="@color/blue"
                 app:sliderIndicatorUnselectedColor="@color/blue_fort"
-                app:sliderStartAutoCycle="true"
-                />
+                app:sliderStartAutoCycle="true" />
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar2"
                 android:layout_width="wrap_content"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"/>
@@ -61,7 +55,6 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/blue_fort"
@@ -94,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="7dp"
                         android:layout_marginEnd="8dp"
-                        android:paddingLeft="12sp"
+                        android:paddingHorizontal="12sp"
                         android:paddingTop="12sp"
                         android:text="@string/spirophorida"
                         android:textSize="25sp"
@@ -194,7 +187,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="Prateleira"
+                        android:text="@string/prateleira"
                         android:textColor="#006FFF"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -208,7 +201,7 @@
                         android:layout_height="wrap_content"
                         android:focusable="true"
                         android:longClickable="true"
-                        android:text="1"
+                        android:text="@string/teste"
                         android:layout_marginStart="12dp"
                         android:textIsSelectable="true"
                         android:textSize="20sp"
@@ -314,7 +307,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12sp"
                         android:focusable="true"
-                        android:text="Alguma Coisa"
+                        android:text="@string/teste"
                         android:longClickable="true"
                         android:textIsSelectable="true"
                         android:textSize="20sp"
@@ -331,11 +324,10 @@
                     android:layout_marginTop="12dp">
 
                     <ImageView
-                        android:id="@+id/imageRetangle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:contentDescription="@string/divider"
-                        android:src="@drawable/rectangle" />
+                        android:src="@mipmap/rectangle" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

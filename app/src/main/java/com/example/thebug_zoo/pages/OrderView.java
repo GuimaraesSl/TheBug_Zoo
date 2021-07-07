@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.example.thebug_zoo.R;
@@ -32,7 +30,7 @@ public class OrderView extends AppCompatActivity{
     ConstraintLayout layoutSearch;
     RecyclerView recyclerView;
     SpeciesOrdersAdapter adapter;
-    List<String> orderAdded = new ArrayList<>();
+    final List<String> orderAdded = new ArrayList<>();
     private SpeciesOrdersAdapter.ClickListenerFeature listener;
 
     @Override
@@ -62,19 +60,19 @@ public class OrderView extends AppCompatActivity{
             databaseAcess.open();
             database = new DatabaseAcess(this, "table_meio_umido");
             defaultIcon = (ImageView) findViewById(R.id.iconSearch);
-            defaultIcon.setImageResource(R.drawable.icon_meio_umido);
+            defaultIcon.setImageResource(R.mipmap.icon_meio_umido);
         } else if (ID==2){
             final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this, "table_taxidermizados");
             databaseAcess.open();
             database = new DatabaseAcess(this, "table_taxidermizados");
             defaultIcon = (ImageView) findViewById(R.id.iconSearch);
-            defaultIcon.setImageResource(R.drawable.icon_taxidermizados);
+            defaultIcon.setImageResource(R.mipmap.icon_taxidermizados);
         } else if(ID==3){
             final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this, "table_osteologia");
             databaseAcess.open();
             database = new DatabaseAcess(this, "table_osteologia");
             defaultIcon = (ImageView) findViewById(R.id.iconSearch);
-            defaultIcon.setImageResource(R.drawable.icon_osteologia);
+            defaultIcon.setImageResource(R.mipmap.icon_osteologia);
         }
 
         back = (ImageView) findViewById(R.id.imageSeta);
