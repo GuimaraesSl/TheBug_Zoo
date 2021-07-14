@@ -1,10 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name"> TheBug BD - Zoo </string>
-    <string name="title_activity_main"> </string>
+    <string name="title_activity_main">TheBug BD - Zoo</string>
     <!-- Strings used for fragments for navigation -->
 
-    <string name="open">open</string>
-    <string name="close">close</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
     <string name="search">Pesquisar</string>
     <string name="ordens">Ordens</string>
     <string name="title_activity_family_view">FamilyView</string>
@@ -175,7 +175,7 @@
     <string name="filos">Filos</string>
     <string name="prateleira">Prateleira</string>
     <string name="home">Home</string>
-    <string name="acervo">Acervo</string>
+    <string name="acervo">Espécimes</string>
     <string name="educacao">Educação</string>
     <string name="avaliar">Avaliar</string>
     <string name="bancada">Bancada</string>

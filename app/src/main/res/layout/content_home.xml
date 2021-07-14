@@ -183,12 +183,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#000000FF"
+        android:background="#545050FF"
         app:headerLayout="@layout/drawer_header"
         app:itemIconSize="30dp"
         app:itemIconTint="#707070"
         app:itemTextAppearance="@style/DrawerStyle"
-        app:itemTextColor="#707070"
+        app:itemTextColor="#918A8A"
         app:menu="@menu/drawer_menu"/>
 
 

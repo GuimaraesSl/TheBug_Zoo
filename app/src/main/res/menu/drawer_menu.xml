@@ -12,7 +12,4 @@
         android:id="@+id/menu_educacao"
         android:icon="@drawable/ic_icon_educacao"
         android:title="@string/educacao"/>
-    <item
-        android:id="@+id/menu_avaliar"
-        android:title="@string/avaliar"/>
 </menu>

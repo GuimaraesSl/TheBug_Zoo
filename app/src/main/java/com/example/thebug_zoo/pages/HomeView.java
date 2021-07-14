@@ -16,8 +16,10 @@ import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Parcelable;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -58,6 +60,33 @@ public class HomeView extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         icons();
+        //Importando itens para utilização do DrawerMenu
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //Importando layout do DrawerMenu
+        drawerLayout = findViewById(R.id.drawer_menu);
+        navigationView = findViewById(R.id.navigationView);
+
+        //Setando uso do DrawerMenu
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.setDrawerIndicatorEnabled(true);
+        drawerToggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(this, R.color.white));
+        drawerToggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.menu_educacao){
+                Intent it = new Intent(HomeView.this, EducationView.class);
+                startActivity(it);
+                return true;
+            } else if (item.getItemId() == R.id.menu_acervo) {
+                Intent it2 = new Intent(HomeView.this, CollectionView.class);
+                startActivity(it2);
+                return true;
+            }
+            return true;
+        });
         drawerMenu();
         createConection();
     }
@@ -128,36 +157,7 @@ public class HomeView extends AppCompatActivity {
     }
 
     void drawerMenu(){
-        //Importando itens para utilização do DrawerMenu
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        //Importando layout do DrawerMenu
-        drawerLayout = findViewById(R.id.drawer_menu);
-        navigationView = findViewById(R.id.navigationView);
-
-        //Setando uso do DrawerMenu
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
-        drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.setDrawerIndicatorEnabled(true);
-        drawerToggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(this, R.color.white));
-        drawerToggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.menu_educacao){
-                Intent it = new Intent(HomeView.this, EducationView.class);
-                startActivity(it);
-                return true;
-            } else if (item.getItemId() == R.id.menu_acervo) {
-                Intent it2 = new Intent(HomeView.this, CollectionView.class);
-                startActivity(it2);
-                return true;
-            } else if(item.getItemId() == R.id.menu_avaliar){
-                String url = "https://forms.gle/3UxGzdJ3iy5GvRCt7";
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-            }
-            return true;
-        });
     }
 
     void createConection(){
