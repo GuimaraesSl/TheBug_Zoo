@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.adapter.CollectionAdapter;
@@ -13,6 +14,7 @@ import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AllFamilys extends AppCompatActivity {
@@ -21,6 +23,7 @@ public class AllFamilys extends AppCompatActivity {
     List<Integer> numbers = new ArrayList<>();
     List<String> familys;
     ImageView back;
+    TextView allFamilys;
     final ArrayList<List<Species>> result = new ArrayList<>();
 
     @Override
@@ -40,6 +43,11 @@ public class AllFamilys extends AppCompatActivity {
         database.close();
         familys = database.getAllFamilys(result);
         numbers = database.getAllNumbersSpeciesOfFamilys(familys);
+
+        Collections.sort(familys);
+
+        allFamilys = findViewById(R.id.allFamilys);
+        allFamilys.setText(String.valueOf(familys.size()));
 
         RecyclerView recyclerView = findViewById(R.id.recycleFamily);
         recyclerView.setHasFixedSize(false);
