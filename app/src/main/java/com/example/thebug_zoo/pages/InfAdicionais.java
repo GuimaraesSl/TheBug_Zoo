@@ -2,8 +2,16 @@ package com.example.thebug_zoo.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,10 +19,14 @@ import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.adapter.SliderAdapter;
 import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 public class InfAdicionais extends AppCompatActivity {
@@ -33,16 +45,51 @@ public class InfAdicionais extends AppCompatActivity {
         specie = getIntent().getParcelableExtra("selected_specie");
         //Fazendo referência e chamando as funções do SliderView
         sliderView = (SliderView) findViewById(R.id.imageSlider);
-
-
-
+//        FloatingActionButton shareButton = findViewById(R.id.share);
+//        shareButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
         setInformation();
         setSliderViews();
         icons();
     }
 
+    public void shareFunc(View v){
+        Log.d("ENTROU", "COMPARTILHANDO");
+        byte[] image;
+        try {
+            image = (OrderView.database.GetImageByID(String.valueOf(specie._id),"first"));
+        } catch (Exception e) {
+            DatabaseAcess database = new DatabaseAcess(this, specie.table);
+            image = (database.GetImageByID(String.valueOf(specie._id), "first"));
+        }
+
+        Bitmap bt = BitmapFactory.decodeByteArray(image, 0, image.length);
+        File file = new File(getExternalCacheDir()+"/"+getResources().getString(R.string.app_name)+".png");
+        Intent intent;
+        try {
+            FileOutputStream outputStream = new FileOutputStream(file);
+            bt.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+
+            outputStream.flush();
+            outputStream.close();
+
+            intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("image/*");
+            intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+            intent.putExtra(Intent.EXTRA_TEXT,"ORDEM: " + specie.ordem + "\n" + "FAMÍLIA: " + specie.familia + "\n" + "ID: " + specie.id + "\n" + txtArmario.getText() + ": " + specie.armario + "\n" + txtPrat.getText() + " " + txtNumPrat.getText());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
+
+        startActivity(Intent.createChooser(intent, "Share Specie"));
+    }
+
     void setInformation(){
-        Log.d("TBLE", specie.table);
         txtOrdem = findViewById(R.id.txtOrdem);
         txtOrdem.setText(specie.ordem);
         txtFamilia = findViewById(R.id.txtFamilia);
@@ -71,7 +118,6 @@ public class InfAdicionais extends AppCompatActivity {
         txtData2.setText(specie._data);
 
         if(specie.table.equals("table_taxidermizados")) {
-            Log.d("ENTROU", "SOU IGUAL");
             txtArmario = findViewById(R.id.txtArmario);
             txtArmario.setText(R.string.bancada);
 
@@ -83,7 +129,6 @@ public class InfAdicionais extends AppCompatActivity {
         }
 
         if(specie.table.equals("table_osteologia")) {
-            Log.d("ENTROU", "SOU IGUAL");
             txtArmario = findViewById(R.id.txtArmario);
             txtArmario.setText(R.string.localizacao);
 

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.entity.Species;
+import com.ortiz.touchview.TouchImageView;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.Holder> {
     }
 
     public static class Holder extends SliderViewAdapter.ViewHolder {
-        private final ImageView imageView;
+        private final TouchImageView imageView;
         final View itemView;
         public Holder(View itemView) {
             super(itemView);

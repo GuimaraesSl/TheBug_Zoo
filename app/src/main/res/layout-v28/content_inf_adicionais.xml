@@ -223,7 +223,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="@string/ordem"
+                        android:text="@string/ordens"
                         android:textColor="#006FFF"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -513,22 +513,15 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/share"
+        android:id="@+id/favButton"
         android:src="@mipmap/share"
-        android:onClick="shareFunc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:borderWidth="0dp"
-        android:backgroundTint="@color/blue"
-        android:tint="@color/blue_fort"
-        android:foregroundTint="@color/blue_fort"
-        app:rippleColor="@color/blue_fort"
+        android:backgroundTint="@color/blue_parcial"
+        android:outlineAmbientShadowColor="@color/blue_fort"
         android:elevation="6dp"
         app:layout_anchor="@id/appBarLayout"
         app:layout_anchorGravity="bottom|right|end"
-        app:pressedTranslationZ="12dp"
-        android:contentDescription="@string/sharebutton" />
-    
-
+        app:pressedTranslationZ="12dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

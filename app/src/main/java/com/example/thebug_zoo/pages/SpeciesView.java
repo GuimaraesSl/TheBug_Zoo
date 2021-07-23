@@ -57,7 +57,6 @@ public class SpeciesView extends AppCompatActivity {
         listener = (v, position) -> {
             Intent intent = new Intent(getApplicationContext(), InfAdicionais.class);
             intent.putExtra("selected_specie", speciesAdded.get(position));
-            Log.d("Name", speciesAdded.get(position).identificacao);
             startActivity(intent);
         };
     }

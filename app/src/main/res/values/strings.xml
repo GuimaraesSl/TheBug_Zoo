@@ -6,9 +6,11 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="search">Pesquisar</string>
+    <string name="ordem">Ordem</string>
     <string name="ordens">Ordens</string>
     <string name="title_activity_family_view">FamilyView</string>
-    <string name="familias">Famílias</string>
+    <string name="familia">Família</string>
+    <string name="familys">Famílias</string>
     <string name="pesquisar">Pesquisar</string>
     <string name="backarrow">BackArrow</string>
     <string name="search_icon">Search Icon</string>
@@ -25,6 +27,39 @@
     <string name="collection_case2">%1$d</string>
     <string name="osteologia">Osteologia</string>
     <string name="home_background">Home background</string>
+    <string name="btallorders">Relação em Ordens</string>
+    <string name="relacao_em_ordens">Relaçao em Ordens</string>
+    <string name="btallfamilys">Todas as familias</string>
+    <string name="relacao_em_familias">Relação em Famílias</string>
+    <string name="exemplares">Exemplares</string>
+    <string name="back_arrow_infadc">Back Arrow InfAdc</string>
+    <string name="tetilidae">Tetilidae</string>
+    <string name="identificacao">Identificação</string>
+    <string name="coletor">Coletor</string>
+    <string name="fonte">Fonte</string>
+    <string name="id">ID</string>
+    <string name="uma_ordem_de_esponjas_da_classe_demospongiae">é uma ordem de esponjas da classe Demospongiae.</string>
+    <string name="armario">Armário</string>
+    <string name="_1">1</string>
+    <string name="spirophorida">Spirophorida</string>
+    <string name="desconhecido">Desconhecido</string>
+    <string name="informacoes_adicionais">Informações Adicionais</string>
+    <string name="local">Local</string>
+    <string name="data">Data</string>
+    <string name="divider">Divider</string>
+    <string name="title">Title</string>
+    <string name="education_example">Education Example</string>
+    <string name="slider_image">Slider Image</string>
+    <string name="filos">Filos</string>
+    <string name="prateleira">Prateleira</string>
+    <string name="home">Home</string>
+    <string name="acervo">Acervo</string>
+    <string name="educacao">Educação</string>
+    <string name="avaliar">Avaliar</string>
+    <string name="bancada">Bancada</string>
+    <string name="localizacao">Localização</string>
+    <string name="sharebutton">ShareButton</string>
+
     <string name="teste">20</string>
     <!--
     This string is used for square devices and overridden by hello_world in
@@ -145,41 +180,5 @@
         \n  -> Cefalocordados (Protocordados – Exemplo: Anfioxo);
         \n  -> Craniados ou Vertebrados (Peixes, Anfíbios, Répteis, Aves e Mamíferos).
     </string>
-    <string name="btallorders">Relação em Ordens</string>
-    <string name="relacao_em_ordens">Relaçao em Ordens</string>
-    <string name="btallfamilys">Todas as familias</string>
-    <string name="relacao_em_familias">Relação em Famílias</string>
-    <string name="exemplares">Exemplares</string>
-    <string name="OrdersOBS">Ordem: quantidade de especies</string>
-    <string name="familys">Familias</string>
-    <string name="FamillysOBS">Familia: quantidade de especies</string>
-    <string name="back_arrow_infadc">Back Arrow InfAdc</string>
-    <string name="tetilidae">Tetilidae</string>
-    <string name="identificacao">Identificação</string>
-    <string name="coletor">Coletor</string>
-    <string name="fonte">Fonte</string>
-    <string name="id">ID</string>
-    <string name="uma_ordem_de_esponjas_da_classe_demospongiae">é uma ordem de esponjas da classe Demospongiae.</string>
-    <string name="armario">Armário</string>
-    <string name="_1">1</string>
-    <string name="spirophorida">Spirophorida</string>
-    <string name="desconhecido">Desconhecido</string>
-    <string name="familia">Familia</string>
-    <string name="informacoes_adicionais">Informações Adicionais</string>
-    <string name="local">Local</string>
-    <string name="data">Data</string>
-    <string name="divider">Divider</string>
-    <string name="title">Title</string>
-    <string name="education_example">Education Example</string>
-    <string name="slider_image">Slider Image</string>
-    <string name="filos">Filos</string>
-    <string name="prateleira">Prateleira</string>
-    <string name="home">Home</string>
-    <string name="acervo">Acervo</string>
-    <string name="educacao">Educação</string>
-    <string name="avaliar">Avaliar</string>
-    <string name="bancada">Bancada</string>
-    <string name="localizacao">Localização</string>
-
 
 </resources>

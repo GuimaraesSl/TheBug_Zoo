@@ -7,4 +7,5 @@
 
     <include layout="@layout/content_inf_adicionais"/>
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
