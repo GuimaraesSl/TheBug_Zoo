@@ -515,7 +515,6 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/share"
         android:src="@mipmap/share"
-        android:onClick="shareFunc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:borderWidth="0dp"

@@ -36,6 +36,7 @@ public class InfAdicionais extends AppCompatActivity {
     SliderAdapter sliderAdapter;
     ImageView imageSeta;
     Species specie;
+    FloatingActionButton shareButton;
     TextView txtOrdem, txtFamilia, txtNumId, txtNumArmario, txtOrdem3, textFamilia3, txtIdentificacao2, txtInformacoesAd2, txtFont2, txtColetor2, txtLocal2, txtData2, txtArmario, txtPrat, txtNumPrat;
 
     @Override
@@ -45,16 +46,16 @@ public class InfAdicionais extends AppCompatActivity {
         specie = getIntent().getParcelableExtra("selected_specie");
         //Fazendo referência e chamando as funções do SliderView
         sliderView = (SliderView) findViewById(R.id.imageSlider);
-//        FloatingActionButton shareButton = findViewById(R.id.share);
-//        shareButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
         setInformation();
         setSliderViews();
         icons();
+        shareButton = findViewById(R.id.share);
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareFunc(v);
+            }
+        });
     }
 
     public void shareFunc(View v){
@@ -66,13 +67,16 @@ public class InfAdicionais extends AppCompatActivity {
             DatabaseAcess database = new DatabaseAcess(this, specie.table);
             image = (database.GetImageByID(String.valueOf(specie._id), "first"));
         }
-
+        Log.d("IMAGE", "Pegou");
         Bitmap bt = BitmapFactory.decodeByteArray(image, 0, image.length);
+        Log.d("Bitmap", "Pegou");
         File file = new File(getExternalCacheDir()+"/"+getResources().getString(R.string.app_name)+".png");
+        Log.d("FILE", "Pegou");
         Intent intent;
         try {
             FileOutputStream outputStream = new FileOutputStream(file);
             bt.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+            Log.d("Compress", "Pegou");
 
             outputStream.flush();
             outputStream.close();
@@ -80,7 +84,7 @@ public class InfAdicionais extends AppCompatActivity {
             intent = new Intent(Intent.ACTION_SEND);
             intent.setType("image/*");
             intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
-            intent.putExtra(Intent.EXTRA_TEXT,"ORDEM: " + specie.ordem + "\n" + "FAMÍLIA: " + specie.familia + "\n" + "ID: " + specie.id + "\n" + txtArmario.getText() + ": " + specie.armario + "\n" + txtPrat.getText() + " " + txtNumPrat.getText());
+            intent.putExtra(Intent.EXTRA_TEXT,"ORDEM: " + specie.ordem + "\n" + "FAMÍLIA: " + specie.familia + "\n" + "ID: " + specie.id);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         } catch (Exception e){
             throw new RuntimeException(e);
