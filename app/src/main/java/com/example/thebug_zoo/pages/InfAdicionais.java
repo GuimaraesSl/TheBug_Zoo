@@ -1,6 +1,7 @@
 package com.example.thebug_zoo.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -59,7 +60,6 @@ public class InfAdicionais extends AppCompatActivity {
     }
 
     public void shareFunc(View v){
-        Log.d("ENTROU", "COMPARTILHANDO");
         byte[] image;
         try {
             image = (OrderView.database.GetImageByID(String.valueOf(specie._id),"first"));
@@ -67,24 +67,21 @@ public class InfAdicionais extends AppCompatActivity {
             DatabaseAcess database = new DatabaseAcess(this, specie.table);
             image = (database.GetImageByID(String.valueOf(specie._id), "first"));
         }
-        Log.d("IMAGE", "Pegou");
         Bitmap bt = BitmapFactory.decodeByteArray(image, 0, image.length);
-        Log.d("Bitmap", "Pegou");
         File file = new File(getExternalCacheDir()+"/"+getResources().getString(R.string.app_name)+".png");
-        Log.d("FILE", "Pegou");
         Intent intent;
         try {
             FileOutputStream outputStream = new FileOutputStream(file);
             bt.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-            Log.d("Compress", "Pegou");
 
             outputStream.flush();
             outputStream.close();
 
             intent = new Intent(Intent.ACTION_SEND);
             intent.setType("image/*");
-            intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
-            intent.putExtra(Intent.EXTRA_TEXT,"ORDEM: " + specie.ordem + "\n" + "FAMÍLIA: " + specie.familia + "\n" + "ID: " + specie.id);
+            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, this.getApplicationContext().getPackageName() + ".provider", file));
+            intent.putExtra(Intent.EXTRA_TEXT,"ORDEM: " + specie.ordem + "\n" + "FAMÍLIA: " + specie.familia + "\n" + "ID: " + specie.id + "\n" + txtArmario.getText().toString() + ": " +
+                    txtNumArmario.getText().toString() + "\n" + txtPrat.getText().toString() + (txtPrat.getText().toString().equals("")?"":": ") + txtNumPrat.getText().toString());
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         } catch (Exception e){
             throw new RuntimeException(e);
@@ -121,25 +118,20 @@ public class InfAdicionais extends AppCompatActivity {
         txtData2 = findViewById(R.id.txtData2);
         txtData2.setText(specie._data);
 
+        txtArmario = findViewById(R.id.txtArmario);
+        txtPrat = findViewById(R.id.txtPrat);
+        txtNumPrat = findViewById(R.id.txtNumPrat);
+
+
         if(specie.table.equals("table_taxidermizados")) {
-            txtArmario = findViewById(R.id.txtArmario);
             txtArmario.setText(R.string.bancada);
-
-            txtPrat = findViewById(R.id.txtPrat);
             txtPrat.setText("");
-
-            txtNumPrat = findViewById(R.id.txtNumPrat);
             txtNumPrat.setText("");
         }
 
         if(specie.table.equals("table_osteologia")) {
-            txtArmario = findViewById(R.id.txtArmario);
             txtArmario.setText(R.string.localizacao);
-
-            txtPrat = findViewById(R.id.txtPrat);
             txtPrat.setText("");
-
-            txtNumPrat = findViewById(R.id.txtNumPrat);
             txtNumPrat.setText("");
         }
 
