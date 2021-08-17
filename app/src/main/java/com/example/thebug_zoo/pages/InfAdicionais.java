@@ -6,13 +6,8 @@ import androidx.core.content.FileProvider;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,7 +16,6 @@ import com.example.thebug_zoo.adapter.SliderAdapter;
 import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
@@ -46,17 +40,12 @@ public class InfAdicionais extends AppCompatActivity {
         setContentView(R.layout.activity_inf_adicionais);
         specie = getIntent().getParcelableExtra("selected_specie");
         //Fazendo referência e chamando as funções do SliderView
-        sliderView = (SliderView) findViewById(R.id.imageSlider);
+        sliderView = findViewById(R.id.imageSlider);
         setInformation();
         setSliderViews();
         icons();
         shareButton = findViewById(R.id.share);
-        shareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                shareFunc(v);
-            }
-        });
+        shareButton.setOnClickListener(this::shareFunc);
     }
 
     public void shareFunc(View v){
@@ -166,7 +155,7 @@ public class InfAdicionais extends AppCompatActivity {
     }
 
     void icons(){
-        imageSeta = (ImageView) findViewById(R.id.imageSeta2);
+        imageSeta = findViewById(R.id.imageSeta2);
         imageSeta.setOnClickListener(v -> finish());
 
     }

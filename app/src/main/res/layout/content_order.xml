@@ -27,11 +27,8 @@
     <ImageView
         android:id="@+id/iconSearch"
         android:layout_width="0dp"
-        android:layout_height="80dp"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintVertical_weight="2"
-        android:layout_marginHorizontal="174dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
         android:contentDescription="@string/search_icon"
         app:layout_constraintBottom_toTopOf="@+id/textSearch"
         app:layout_constraintEnd_toEndOf="parent"

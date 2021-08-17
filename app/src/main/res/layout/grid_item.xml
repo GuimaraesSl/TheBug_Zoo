@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="0dp"
+    android:background="@color/transparent"
     android:layout_marginHorizontal="10dp">
 
     <androidx.cardview.widget.CardView
@@ -13,7 +14,6 @@
         android:layout_margin="10dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="10dp"
-        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@color/white"
             android:gravity="center"
             android:layout_gravity="center_vertical|center_horizontal"
             >
@@ -34,7 +35,10 @@
                 android:contentDescription="@string/species_image"
                 android:padding="10dp"
                 android:src="@mipmap/image" />
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
