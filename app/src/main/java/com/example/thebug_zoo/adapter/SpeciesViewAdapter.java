@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
+import com.example.thebug_zoo.pages.FiloView;
 import com.example.thebug_zoo.pages.OrderView;
 
 import java.util.List;
@@ -49,7 +50,7 @@ public class SpeciesViewAdapter extends RecyclerView.Adapter<SpeciesViewAdapter.
             DatabaseAcess database = new DatabaseAcess(context, speciesResult.get(position).table);
             image = (database.GetImageByID(String.valueOf(speciesResult.get(position)._id), "first"));
         } else if (typeAcess.equals("normal")){
-            image = (OrderView.database.GetImageByID(String.valueOf(speciesResult.get(position)._id), "first"));
+            image = (FiloView.database.GetImageByID(String.valueOf(speciesResult.get(position)._id), "first"));
         }
         Bitmap bt = BitmapFactory.decodeByteArray(image, 0, image.length);
         holder.speciesImage.setImageBitmap(bt);

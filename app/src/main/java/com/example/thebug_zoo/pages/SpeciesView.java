@@ -36,7 +36,7 @@ public class SpeciesView extends AppCompatActivity {
         RecyclerView speciesRecycler;
         try {
             String family = getIntent().getStringExtra("selected_family");
-            speciesAdded = OrderView.database.searchByFamily(family, FamilyView.order);
+            speciesAdded = FiloView.database.searchByFamily(family, FamilyView.order);
             speciesRecycler = findViewById(R.id.speciesRecycler);
             GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
             speciesRecycler.setLayoutManager(gridLayoutManager);
