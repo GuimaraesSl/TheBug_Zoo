@@ -51,7 +51,7 @@ public class FamilyView extends AppCompatActivity {
     void setSearch(){
         layoutFamily = (ConstraintLayout)findViewById(R.id.layoutFamily);
         icon = (ImageView) findViewById(R.id.iconFamilySearch);
-        icon.setImageDrawable(OrderView.defaultIcon.getDrawable());
+        icon.setImageDrawable(FiloView.defaultIcon.getDrawable());
         back = (ImageView) findViewById(R.id.imageSeta);
         back.setOnClickListener(v -> finish());
     }
@@ -60,7 +60,7 @@ public class FamilyView extends AppCompatActivity {
         setOnClickListener();
         recyclerView = (RecyclerView) findViewById(R.id.recycleViewFamily);
         order = getIntent().getStringExtra("selected_order");
-        familyAdded = OrderView.database.searchByOrder(order);
+        familyAdded = FiloView.database.searchByOrder(order);
         Collections.sort(familyAdded);
         adapter = new SpeciesFamilyAdapter(this, familyAdded, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

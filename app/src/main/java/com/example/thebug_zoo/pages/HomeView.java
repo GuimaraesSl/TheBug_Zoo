@@ -138,20 +138,20 @@ public class HomeView extends AppCompatActivity {
 
         //Setando Clicks
         meioUmido.setOnClickListener(view -> {
-            OrderView.ID = 1;
-            Intent it = new Intent(HomeView.this, OrderView.class);
+            FiloView.ID = 1;
+            Intent it = new Intent(HomeView.this, FiloView.class);
             startActivity(it);
         });
 
         taxidermizados.setOnClickListener(view -> {
-            OrderView.ID = 2;
-            Intent it = new Intent(HomeView.this, OrderView.class);
+            FiloView.ID = 2;
+            Intent it = new Intent(HomeView.this, FiloView.class);
             startActivity(it);
         });
 
         osteologia.setOnClickListener(view -> {
-            OrderView.ID = 3;
-            Intent it = new Intent(HomeView.this, OrderView.class);
+            FiloView.ID = 3;
+            Intent it = new Intent(HomeView.this, FiloView.class);
             startActivity(it);
         });
     }

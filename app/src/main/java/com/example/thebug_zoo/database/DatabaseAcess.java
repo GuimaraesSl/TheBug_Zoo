@@ -72,7 +72,8 @@ public class DatabaseAcess {
     public static final String COLUMN_DATE = "_data";
     public static final String COLUMN_FOTO1 = "foto1";
     public static final String COLUMN_FOTO2 = "foto2";
-    final String[] sqlSelect = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE};
+    public static final String COLUMN_FILO = "filo";
+    final String[] sqlSelect = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE, COLUMN_FILO};
 
     public List<Species> searchAll(){
         open();
@@ -96,9 +97,34 @@ public class DatabaseAcess {
                 species.coletor = cursor.getString((cursor.getColumnIndex(COLUMN_COLLECTOR)));
                 species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                 species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+                species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
+                species.filo = cursor.getString((cursor.getColumnIndex(COLUMN_FILO)));
                 species.table = TABLE;
 
                 result.add(species);
+            }while (cursor.moveToNext());
+            cursor.close();
+            close();
+            return result;
+        } else {
+            cursor.close();
+            close();
+            return null;
+        }
+    }
+
+    public List<String> searchByPhylum(String filo){
+        open();
+        List<String> result = new ArrayList<>();
+        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+        queryBuilder.setTables(TABLE);
+        Cursor cursor = database.query(TABLE, sqlSelect, COLUMN_FILO + " = ?", new String[]{filo}, null, null, null, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                if(!result.contains(cursor.getString(4))) {
+                    result.add(cursor.getString(4));
+                }
             }while (cursor.moveToNext());
             cursor.close();
             close();
