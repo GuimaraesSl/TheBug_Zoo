@@ -4,12 +4,14 @@
 
     <application
         android:icon="@mipmap/ic_launcher"
+        android:installLocation="internalOnly"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:installLocation="internalOnly"
         android:testOnly="false"
         android:theme="@style/Theme.TheBug_Zoo.NoActionBar">
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".pages.FiloView" />
         <activity android:name=".pages.AllFamilys" />
         <activity android:name=".pages.AllOrders" />
         <activity android:name=".pages.CollectionView" />
@@ -33,6 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"

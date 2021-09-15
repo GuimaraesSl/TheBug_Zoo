@@ -8,4 +8,6 @@
     <color name="blue_parcial">#0036DB</color>
     <color name="blue_fort">#00031F</color>#
     <color name="transparent">#000000FF</color>
+    <color name="purple_text">#6200FF</color>
+    <color name="menu_item">#B0AFB3</color>
 </resources>

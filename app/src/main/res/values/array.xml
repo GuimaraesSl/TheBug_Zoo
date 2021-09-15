@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="id_activityScreenTitles">
+        <item></item>
+        <item>Home</item>
+        <item>Acervo</item>
+        <item>Imersão</item>
+        <item>Educação</item>
+    </string-array>
+
+    <array name="id_activityScreenIcons">
+        <item>@drawable/ic_seta_inf_adc</item>
+        <item>@drawable/ic_icon_home</item>
+        <item>@drawable/ic_icon_collection</item>
+        <item>@drawable/ic_icon_search</item>
+        <item>@drawable/ic_icon_educacao</item>
+    </array>
+</resources>

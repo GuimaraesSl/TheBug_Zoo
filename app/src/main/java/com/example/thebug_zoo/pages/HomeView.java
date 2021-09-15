@@ -14,6 +14,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Parcelable;
 import android.view.Gravity;
@@ -26,17 +28,21 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.thebug_zoo.MainActivity;
 import com.example.thebug_zoo.R;
+import com.example.thebug_zoo.adapter.DrawerAdapter;
 import com.example.thebug_zoo.database.BancoController;
 import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class HomeView extends AppCompatActivity {
+public class HomeView extends MainActivity {
 
     ImageButton meioUmido, taxidermizados, osteologia;
     Animation frombottom, frombottom2, frombottom3;
@@ -89,6 +95,31 @@ public class HomeView extends AppCompatActivity {
         });
         drawerMenu();
         createConection();
+
+        slidingRootNav = new SlidingRootNavBuilder(this)
+                .withDragDistance(180)
+                .withRootViewElevation(25)
+                .withRootViewScale(0.75f)
+                .withToolbarMenuToggle(toolbar)
+                .withMenuOpened(false)
+                .withContentClickableWhenMenuOpened(false)
+                .withSavedState(savedInstanceState)
+                .withMenuLayout(R.layout.drawer_menu)
+                .inject();
+
+        DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
+                createItemFor(POS_CLOSE),
+                createItemFor(POS_HOME).setChecked(true),
+                createItemFor(POS_ACERVO),
+                createItemFor(POS_IMERSAO)
+        ));
+
+        adapter.setListener(this);
+
+        RecyclerView list = findViewById(R.id.drawer_list);
+        list.setNestedScrollingEnabled(false);
+        list.setLayoutManager(new LinearLayoutManager(this));
+        list.setAdapter(adapter);
     }
 
     void icons(){

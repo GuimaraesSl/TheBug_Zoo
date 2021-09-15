@@ -58,4 +58,5 @@ dependencies {
     implementation 'com.github.smarteist:autoimageslider:1.4.0'
     implementation 'com.codesgood:justifiedtextview:1.1.0'
     implementation 'com.github.MikeOrtiz:TouchImageView:1.4.1'
+    implementation 'com.yarolegovich:sliding-root-nav:1.1.1'
 }
