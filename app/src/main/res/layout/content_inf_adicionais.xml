@@ -526,7 +526,9 @@
         app:layout_anchor="@id/appBarLayout"
         app:layout_anchorGravity="bottom|right|end"
         app:pressedTranslationZ="12dp"
-        android:contentDescription="@string/sharebutton" />
+        android:contentDescription="@string/sharebutton"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        />
     
 
 

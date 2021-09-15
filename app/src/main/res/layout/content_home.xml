@@ -36,8 +36,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iconMeioUmido"
@@ -96,7 +95,6 @@
             android:textSize="21sp"
             app:layout_constraintBottom_toBottomOf="@+id/buttonTaxidermizados"
             app:layout_constraintEnd_toStartOf="@+id/iconSeta2"
-            app:layout_constraintHorizontal_bias="0.425"
             app:layout_constraintStart_toEndOf="@+id/iconTaxidermizados"
             app:layout_constraintTop_toTopOf="@+id/buttonTaxidermizados" />
 
