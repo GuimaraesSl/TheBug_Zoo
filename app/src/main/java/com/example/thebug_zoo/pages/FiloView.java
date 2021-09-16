@@ -74,11 +74,11 @@ public class FiloView extends AppCompatActivity {
         specie = database.searchAll();
 
         for (int i = 0; i < specie.size(); i++){
-            if (!filoAdded.contains(specie.get(i).filo)){
+            if (!filoAdded.contains(specie.get(i).filo) && specie.get(i).filo != null){
                 filoAdded.add(specie.get(i).filo);
             }
         }
-        Collections.sort(filoAdded);
+//        Collections.sort(filoAdded);
         adapter = new SpeciesOrdersAdapter(this, filoAdded, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);

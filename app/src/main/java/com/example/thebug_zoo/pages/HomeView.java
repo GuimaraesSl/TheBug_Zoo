@@ -93,8 +93,6 @@ public class HomeView extends MainActivity {
             }
             return true;
         });
-        drawerMenu();
-        createConection();
 
         slidingRootNav = new SlidingRootNavBuilder(this)
                 .withDragDistance(180)
@@ -111,7 +109,8 @@ public class HomeView extends MainActivity {
                 createItemFor(POS_CLOSE),
                 createItemFor(POS_HOME).setChecked(true),
                 createItemFor(POS_ACERVO),
-                createItemFor(POS_IMERSAO)
+                createItemFor(POS_IMERSAO),
+                createItemFor(POS_EDUCATION)
         ));
 
         adapter.setListener(this);
@@ -185,30 +184,6 @@ public class HomeView extends MainActivity {
             Intent it = new Intent(HomeView.this, FiloView.class);
             startActivity(it);
         });
-    }
-
-    void drawerMenu(){
-
-    }
-
-    void createConection(){
-        try {
-
-            layoutMenuBar = (ConstraintLayout) findViewById(R.id.layoutHome);
-            bancoController = new BancoController(this);
-            conection = bancoController.getWritableDatabase();
-            Snackbar.make(layoutMenuBar, "Conection", Snackbar.LENGTH_LONG)
-                    .setAction("OK", null).show();
-
-        } catch (SQLException exception){
-
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-            alertDialog.setTitle("Erro");
-            alertDialog.setMessage(exception.getMessage());
-            alertDialog.setNeutralButton("OK", null);
-            alertDialog.show();
-
-        }
     }
 
     @Override

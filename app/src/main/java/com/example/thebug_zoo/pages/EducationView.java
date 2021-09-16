@@ -1,19 +1,24 @@
 package com.example.thebug_zoo.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.example.thebug_zoo.MainActivity;
 import com.example.thebug_zoo.R;
+import com.example.thebug_zoo.adapter.DrawerAdapter;
 import com.example.thebug_zoo.adapter.EducationAdapter;
 import com.example.thebug_zoo.entity.EducationItem;
+import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class EducationView extends AppCompatActivity {
+public class EducationView extends MainActivity {
 
     public ImageView back;
     private final ArrayList<EducationItem> items = new ArrayList<>();
@@ -23,8 +28,34 @@ public class EducationView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_education_view);
 
-        back = (ImageView) findViewById(R.id.imageSeta);
-        back.setOnClickListener(v -> finish());
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        slidingRootNav = new SlidingRootNavBuilder(this)
+                .withDragDistance(180)
+                .withRootViewElevation(25)
+                .withRootViewScale(0.75f)
+                .withToolbarMenuToggle(toolbar)
+                .withMenuOpened(false)
+                .withContentClickableWhenMenuOpened(false)
+                .withSavedState(savedInstanceState)
+                .withMenuLayout(R.layout.drawer_menu)
+                .inject();
+
+        DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
+                createItemFor(POS_CLOSE),
+                createItemFor(POS_HOME),
+                createItemFor(POS_ACERVO),
+                createItemFor(POS_IMERSAO),
+                createItemFor(POS_EDUCATION).setChecked(true)
+        ));
+
+        adapter.setListener(this);
+
+        RecyclerView list = findViewById(R.id.drawer_list);
+        list.setNestedScrollingEnabled(false);
+        list.setLayoutManager(new LinearLayoutManager(this));
+        list.setAdapter(adapter);
 
         RecyclerView recyclerView = findViewById(R.id.educationRecycler);
         recyclerView.setHasFixedSize(true);
