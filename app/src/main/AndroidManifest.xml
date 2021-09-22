@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:testOnly="false"
         android:theme="@style/Theme.TheBug_Zoo.NoActionBar">
-        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".pages.ImmersionView"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:screenOrientation="landscape"
+        />
+        <activity android:name=".MainActivity" />
         <activity android:name=".pages.FiloView" />
         <activity android:name=".pages.AllFamilys" />
         <activity android:name=".pages.AllOrders" />

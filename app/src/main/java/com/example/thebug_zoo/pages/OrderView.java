@@ -22,7 +22,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class OrderView extends AppCompatActivity{
-    public ImageView back;
+    public ImageView back, icon;
     public String filo;
     public static DatabaseAcess database;
     List<String> orders;
@@ -37,7 +37,7 @@ public class OrderView extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         setAdapter();
-        setBack();
+        setSearch();
         SearchView searchView = (SearchView) findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -53,14 +53,16 @@ public class OrderView extends AppCompatActivity{
         });
     }
 
-    void setBack(){
+    void setSearch(){
+        layoutSearch = (ConstraintLayout)findViewById(R.id.layoutOrder);
+        icon = (ImageView) findViewById(R.id.iconSearchOrder);
+        icon.setImageDrawable(FiloView.defaultIcon.getDrawable());
         back = (ImageView) findViewById(R.id.imageSeta);
         back.setOnClickListener(v -> finish());
     }
 
     void setAdapter() {
         setOnClickListener();
-        layoutSearch = (ConstraintLayout)findViewById(R.id.layoutOrder);
         recyclerView = (RecyclerView) findViewById(R.id.recycleOrderView);
 
         filo = getIntent().getStringExtra("selected_filo");

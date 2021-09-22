@@ -29,7 +29,7 @@ public class InfAdicionais extends AppCompatActivity {
     SliderView sliderView;
     final ArrayList<byte[]> images = new ArrayList<>();
     SliderAdapter sliderAdapter;
-    ImageView imageSeta;
+    ImageView imageSeta, imageClose;
     Species specie;
     FloatingActionButton shareButton;
     TextView txtOrdem, txtFamilia, txtNumId, txtNumArmario, txtOrdem3, textFamilia3, txtIdentificacao2, txtInformacoesAd2, txtFont2, txtColetor2, txtLocal2, txtData2, txtArmario, txtPrat, txtNumPrat;
@@ -156,7 +156,15 @@ public class InfAdicionais extends AppCompatActivity {
 
     void icons(){
         imageSeta = findViewById(R.id.imageSeta2);
-        imageSeta.setOnClickListener(v -> finish());
+        imageSeta.setOnClickListener(v -> {
+            finish();
+        });
+        imageClose = findViewById(R.id.imageClose);
+        imageClose.setOnClickListener( v -> {
+            Intent it = new Intent(this, HomeView.class);
+            startActivity(it);
+        }
+        );
 
     }
 }

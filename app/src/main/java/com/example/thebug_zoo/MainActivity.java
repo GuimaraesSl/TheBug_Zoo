@@ -23,6 +23,7 @@ import com.example.thebug_zoo.database.BancoController;
 import com.example.thebug_zoo.pages.CollectionView;
 import com.example.thebug_zoo.pages.EducationView;
 import com.example.thebug_zoo.pages.HomeView;
+import com.example.thebug_zoo.pages.ImmersionView;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -147,6 +148,9 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
             startActivity(it);
         } else if (position == POS_EDUCATION) {
             Intent it = new Intent(this, EducationView.class);
+            startActivity(it);
+        } else if (position == POS_IMERSAO) {
+            Intent it = new Intent(this, ImmersionView.class);
             startActivity(it);
         }
         slidingRootNav.closeMenu();
