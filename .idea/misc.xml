@@ -9,10 +9,11 @@
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout-v28/grid_item.xml" value="0.1911231884057971" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/activity_home.xml" value="0.1911231884057971" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/activity_inf_adicionais.xml" value="0.15670289855072464" />
+        <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/activity_main.xml" value="0.12047101449275362" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/activity_order.xml" value="0.1911231884057971" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/content_all_familys.xml" value="0.1553398058252427" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/content_all_orders.xml" value="0.1" />
-        <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/content_collection.xml" value="0.1" />
+        <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/content_collection.xml" value="0.22" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/content_education.xml" value="0.1911231884057971" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/content_family_view.xml" value="0.1" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/content_home.xml" value="0.1" />
@@ -20,16 +21,20 @@
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/content_order.xml" value="0.1911231884057971" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/content_species_view.xml" value="0.1911231884057971" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/drawer_header.xml" value="0.15670289855072464" />
+        <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/drawer_menu.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/drawer_toolbar.xml" value="0.15670289855072464" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/education_item.xml" value="0.1" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/grid_item.xml" value="0.1" />
+        <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/item_drawer.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/item_slider.xml" value="0.1911231884057971" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/layout_list.xml" value="0.1911231884057971" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/orders_item.xml" value="0.1911231884057971" />
+        <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/menu/drawer_menu.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/menu/search_menu.xml" value="0.22447916666666667" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

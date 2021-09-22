@@ -24,6 +24,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/transparent" />
+        </LinearLayout>
+
         <ImageButton
             android:id="@+id/buttonMeioUmido"
             android:layout_width="0dp"
@@ -170,24 +181,5 @@
             app:srcCompat="@mipmap/icon_seta" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <include
-        layout="@layout/drawer_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="#545050FF"
-        app:headerLayout="@layout/drawer_header"
-        app:itemIconSize="30dp"
-        app:itemIconTint="#707070"
-        app:itemTextAppearance="@style/DrawerStyle"
-        app:itemTextColor="#918A8A"
-        app:menu="@menu/drawer_menu"/>
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

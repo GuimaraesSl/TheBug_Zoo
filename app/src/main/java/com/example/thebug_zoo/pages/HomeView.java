@@ -1,14 +1,10 @@
 package com.example.thebug_zoo.pages;
 
 import android.content.Intent;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -18,10 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Parcelable;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -35,7 +29,6 @@ import com.example.thebug_zoo.database.BancoController;
 import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.util.ArrayList;
@@ -49,15 +42,8 @@ public class HomeView extends MainActivity {
     ImageView iconMeioUmido, iconSeta, iconSeta2, iconSeta3, iconTaxidermizados, iconOsteologia;
     TextView textMeioUmido, textTaxidermizados, textOsteologia;
     OrderView id;
-    SQLiteDatabase conection;
-    BancoController bancoController;
-    ConstraintLayout layoutMenuBar;
     DatabaseAcess databaseAcess;
-
-    DrawerLayout drawerLayout;
-    ActionBarDrawerToggle drawerToggle;
     Toolbar toolbar;
-    NavigationView navigationView;
 
 
     @Override
@@ -65,34 +51,9 @@ public class HomeView extends MainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        icons();
         //Importando itens para utilização do DrawerMenu
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //Importando layout do DrawerMenu
-        drawerLayout = findViewById(R.id.drawer_menu);
-        navigationView = findViewById(R.id.navigationView);
-
-        //Setando uso do DrawerMenu
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
-        drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.setDrawerIndicatorEnabled(true);
-        drawerToggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(this, R.color.white));
-        drawerToggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.menu_educacao){
-                Intent it = new Intent(HomeView.this, EducationView.class);
-                startActivity(it);
-                return true;
-            } else if (item.getItemId() == R.id.menu_acervo) {
-                Intent it2 = new Intent(HomeView.this, CollectionView.class);
-                startActivity(it2);
-                return true;
-            }
-            return true;
-        });
 
         slidingRootNav = new SlidingRootNavBuilder(this)
                 .withDragDistance(180)
@@ -119,6 +80,9 @@ public class HomeView extends MainActivity {
         list.setNestedScrollingEnabled(false);
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(adapter);
+
+        icons();
+
     }
 
     void icons(){

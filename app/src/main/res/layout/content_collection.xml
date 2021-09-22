@@ -31,17 +31,6 @@
             android:background="@color/transparent" />
     </LinearLayout>
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imageSeta"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:contentDescription="@string/backarrow"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:srcCompat="@drawable/ic_icon_seta" />-->
-
     <TextView
         android:id="@+id/textCollection"
         android:layout_width="wrap_content"
@@ -137,6 +126,5 @@
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/buttonAllFamilys"
         app:srcCompat="@mipmap/icon_seta" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
