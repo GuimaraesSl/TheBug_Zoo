@@ -207,6 +207,9 @@ public class DatabaseAcess {
             aux = list.get(i);
             ArrayList<Integer> ids = new ArrayList<>();
             for(int l = 0; l < aux.size(); l++){
+                if(aux.get(l).filo == "" || aux.get(l).filo == null){
+                    aux.get(l).filo = "";
+                }
                 if(aux.get(l).ordem.intern().toLowerCase().contains(keyword.intern().toLowerCase())){
                     if(!ids.contains(aux.get(l)._id)){
                         ids.add(aux.get(l)._id);
@@ -223,6 +226,11 @@ public class DatabaseAcess {
                     }
                 }
                 if(aux.get(l).inf_adicionais.intern().toLowerCase().contains(keyword.intern().toLowerCase())){
+                    if(!ids.contains(aux.get(l)._id)){
+                        ids.add(aux.get(l)._id);
+                    }
+                }
+                if(aux.get(l).filo.intern().toLowerCase().contains(keyword.intern().toLowerCase())){
                     if(!ids.contains(aux.get(l)._id)){
                         ids.add(aux.get(l)._id);
                     }
