@@ -22,7 +22,7 @@
         android:gravity="center"
         android:layout_gravity="start"
         android:text="@string/teste"
-        android:textSize="30sp"
+        android:autoSizeTextType="uniform"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 

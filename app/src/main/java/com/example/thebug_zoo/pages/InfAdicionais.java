@@ -41,9 +41,11 @@ public class InfAdicionais extends AppCompatActivity {
         specie = getIntent().getParcelableExtra("selected_specie");
         //Fazendo referência e chamando as funções do SliderView
         sliderView = findViewById(R.id.imageSlider);
+
         setInformation();
         setSliderViews();
         icons();
+
         shareButton = findViewById(R.id.share);
         shareButton.setOnClickListener(this::shareFunc);
     }
@@ -156,9 +158,7 @@ public class InfAdicionais extends AppCompatActivity {
 
     void icons(){
         imageSeta = findViewById(R.id.imageSeta2);
-        imageSeta.setOnClickListener(v -> {
-            finish();
-        });
+        imageSeta.setOnClickListener(v -> finish());
         imageClose = findViewById(R.id.imageClose);
         imageClose.setOnClickListener( v -> {
             Intent it = new Intent(this, HomeView.class);
