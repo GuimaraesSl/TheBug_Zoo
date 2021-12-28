@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.thebug_zoo">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:icon="@mipmap/ic_launcher"
         android:installLocation="internalOnly"
@@ -9,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="false"
-        android:theme="@style/Theme.TheBug_Zoo.NoActionBar">
+        android:theme="@style/Theme.TheBug_Zoo.NoActionBar"
+        android:allowBackup="true">
         <activity
             android:name=".pages.ImmersionView"
             android:exported="true"
@@ -34,7 +38,8 @@
         <activity
             android:name=".pages.HomeView"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.TheBug_Zoo.NoActionBar">
+            android:theme="@style/Theme.TheBug_Zoo.NoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

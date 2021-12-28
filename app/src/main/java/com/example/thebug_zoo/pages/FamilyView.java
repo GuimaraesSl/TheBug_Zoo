@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.adapter.SpeciesFamilyAdapter;
@@ -19,7 +20,6 @@ import java.util.List;
 public class FamilyView extends AppCompatActivity {
 
     ImageView back, icon;
-    public static int ID;
     static String order;
     ConstraintLayout layoutFamily;
     RecyclerView recyclerView;
@@ -33,7 +33,7 @@ public class FamilyView extends AppCompatActivity {
         setContentView(R.layout.activity_family_view);
         setSearch();
         setAdapter();
-        SearchView searchView = (SearchView) findViewById(R.id.searchFamilyView);
+        SearchView searchView = findViewById(R.id.searchFamilyView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -49,16 +49,16 @@ public class FamilyView extends AppCompatActivity {
     }
 
     void setSearch(){
-        layoutFamily = (ConstraintLayout)findViewById(R.id.layoutFamily);
-        icon = (ImageView) findViewById(R.id.iconFamilySearch);
+        layoutFamily = findViewById(R.id.layoutFamily);
+        icon = findViewById(R.id.iconFamilySearch);
         icon.setImageDrawable(FiloView.defaultIcon.getDrawable());
-        back = (ImageView) findViewById(R.id.imageSeta);
+        back = findViewById(R.id.imageSeta);
         back.setOnClickListener(v -> finish());
     }
 
     void setAdapter() {
         setOnClickListener();
-        recyclerView = (RecyclerView) findViewById(R.id.recycleViewFamily);
+        recyclerView = findViewById(R.id.recycleViewFamily);
         order = getIntent().getStringExtra("selected_order");
         familyAdded = FiloView.database.searchByOrder(order);
         Collections.sort(familyAdded);
@@ -71,6 +71,7 @@ public class FamilyView extends AppCompatActivity {
 
     private void setOnClickListener() {
         listener = (v, position) -> {
+            Toast.makeText(this, "Carregando...", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(getApplicationContext(), SpeciesView.class);
             intent.putExtra("selected_family", familyAdded.get(position));
             startActivity(intent);

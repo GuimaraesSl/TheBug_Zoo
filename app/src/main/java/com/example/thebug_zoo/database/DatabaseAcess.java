@@ -5,15 +5,24 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.net.ConnectivityManager;
 import android.util.Log;
 
+import com.example.thebug_zoo.APIConsume.Methods;
+import com.example.thebug_zoo.APIConsume.Model;
+import com.example.thebug_zoo.APIConsume.RetrofitClient;
 import com.example.thebug_zoo.entity.Species;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Response;
+
 public class DatabaseAcess {
 
+    public static String[] imageUrl;
     //================CONEXÃ0=====================
     private final SQLiteOpenHelper openHelper;
     private SQLiteDatabase database;
@@ -207,7 +216,7 @@ public class DatabaseAcess {
             aux = list.get(i);
             ArrayList<Integer> ids = new ArrayList<>();
             for(int l = 0; l < aux.size(); l++){
-                if(aux.get(l).filo == "" || aux.get(l).filo == null){
+                if(aux.get(l).filo.equals("") || aux.get(l).filo == null){
                     aux.get(l).filo = "";
                 }
                 if(aux.get(l).ordem.intern().toLowerCase().contains(keyword.intern().toLowerCase())){
@@ -355,36 +364,34 @@ public class DatabaseAcess {
         return result;
     }
 
-    public byte[] GetImageByID(String ID, String type) {
-        open();
-        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-        queryBuilder.setTables(TABLE);
+    public String[] GetImageByID (Context context, String _id) {
 
-        String[] sqlSelect1 = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE, COLUMN_FOTO1, COLUMN_FOTO2};
-        Cursor cursor = queryBuilder.query(database, sqlSelect1, COLUMN__ID + "= ?", new String[]{String.valueOf(ID)}, null, null, null);
+        imageUrl = null;
+        Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
+        Call<Model> call = methods.getImage(_id);
 
-        byte[] result = new byte[]{};
-        try {
-            if (cursor.moveToFirst()) {
-                do {
-                    if (type.equals("first")) {
-                        result = cursor.getBlob(12);
-                    } else if (type.equals("second")) {
-                        result = cursor.getBlob(13);
-                    }
-                } while (cursor.moveToNext());
-                cursor.close();
-                close();
-            } else {
-                cursor.close();
-                close();
-                return null;
+        Runnable objRunnable = () -> {
+            try {
+                Response<Model> response = call.execute();
+                imageUrl = response.body().getExemplary().getImages();
+            } catch (IOException e) {
+                imageUrl = new String[]{""};
             }
-            return result;
-        } catch (Exception e){
-            return null;
+        };
+        Thread objThread = new Thread(objRunnable);
+        objThread.start();
+
+        while (imageUrl == null){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+
+        return imageUrl;
     }
+
 
     public List<String> getAllOrders(ArrayList<List<Species>> list){
 
@@ -478,6 +485,11 @@ public class DatabaseAcess {
         }
 
         return numbersSpecies;
+    }
+
+    public boolean isConnected(Context context){
+        ConnectivityManager connectivityManager  = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return connectivityManager.getActiveNetworkInfo()!=null && connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 
 }

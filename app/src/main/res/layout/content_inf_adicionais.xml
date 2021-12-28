@@ -24,17 +24,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:sliderAnimationDuration="800"
-                app:sliderAutoCycleDirection="back_and_forth"
-                app:sliderAutoCycleEnabled="false"
                 app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderAutoCycleEnabled="false"
                 app:sliderIndicatorMargin="15dp"
                 app:sliderIndicatorOrientation="horizontal"
                 app:sliderIndicatorPadding="3dp"
                 app:sliderIndicatorRadius="2dp"
                 app:sliderIndicatorSelectedColor="@color/blue"
-                app:sliderIndicatorUnselectedColor="@color/blue_fort"
-                app:sliderScrollTimeInSec="4"
-                app:sliderStartAutoCycle="true" />
+                app:sliderIndicatorUnselectedColor="@color/blue_fort"/>
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="wrap_content"
@@ -59,7 +56,7 @@
                 android:layout_marginTop="20dp"
                 android:paddingHorizontal="16dp"
                 android:contentDescription="@string/back_arrow_infadc"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 app:srcCompat="@mipmap/close" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

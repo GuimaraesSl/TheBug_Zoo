@@ -12,22 +12,19 @@ import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.entity.Species;
 import com.ortiz.touchview.TouchImageView;
 import com.smarteist.autoimageslider.SliderViewAdapter;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class SliderAdapter extends SliderViewAdapter<SliderAdapter.Holder> {
 
-    final Species specie;
     final Context context;
-    final String type;
-    final ArrayList<byte[]> images;
+    final String[] imageUrl;
 
 
-    public SliderAdapter(Species specie, Context context, String type, ArrayList<byte[]> images) {
-        this.specie = specie;
+    public SliderAdapter(Context context, String[] imageUrl) {
         this.context = context;
-        this.type = type;
-        this.images = images;
+        this.imageUrl = imageUrl;
     }
 
     @Override
@@ -38,13 +35,18 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(Holder viewHolder, int position) {
-        Bitmap bt = BitmapFactory.decodeByteArray(images.get(position), 0, images.get(position).length);
-        viewHolder.imageView.setImageBitmap(bt);
+        if (!imageUrl[0].equals("")){
+            Picasso.get()
+                    .load(imageUrl[position])
+                    .into(viewHolder.imageView);
+        } else {
+            viewHolder.imageView.setImageResource(R.mipmap.image_no_conection);
+        }
     }
 
     @Override
     public int getCount() {
-        return type.equals("single") ?1:2;
+        return imageUrl.length == 1 ? 1:2;
     }
 
     public static class Holder extends SliderViewAdapter.ViewHolder {

@@ -29,27 +29,23 @@ public class SpeciesView extends AppCompatActivity {
         setBackButton();
     }
 
-
     void setAdapter() {
         setOnClickListener();
         SpeciesViewAdapter adapter;
         RecyclerView speciesRecycler;
+
         try {
             String family = getIntent().getStringExtra("selected_family");
             speciesAdded = FiloView.database.searchByFamily(family, FamilyView.order);
-            speciesRecycler = findViewById(R.id.speciesRecycler);
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
-            speciesRecycler.setLayoutManager(gridLayoutManager);
-            speciesRecycler.setHasFixedSize(true);
-            adapter = new SpeciesViewAdapter(this, speciesAdded, listener, "normal");
         } catch (Exception e){
             speciesAdded = getIntent().getParcelableArrayListExtra("species_home");
-            speciesRecycler = findViewById(R.id.speciesRecycler);
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
-            speciesRecycler.setLayoutManager(gridLayoutManager);
-            speciesRecycler.setHasFixedSize(true);
-            adapter = new SpeciesViewAdapter(this, speciesAdded, listener, "home");
         }
+
+        speciesRecycler = findViewById(R.id.speciesRecycler);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
+        speciesRecycler.setLayoutManager(gridLayoutManager);
+        speciesRecycler.setHasFixedSize(true);
+        adapter = new SpeciesViewAdapter(this, speciesAdded, listener);
         speciesRecycler.setAdapter(adapter);
     }
 
@@ -62,7 +58,7 @@ public class SpeciesView extends AppCompatActivity {
     }
 
     void setBackButton(){
-        back = (ImageView) findViewById(R.id.imageSeta);
+        back = findViewById(R.id.imageSeta);
         back.setOnClickListener(v -> finish());
     }
 }

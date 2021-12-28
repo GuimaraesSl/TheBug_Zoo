@@ -3,10 +3,14 @@ package com.example.thebug_zoo.pages;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,13 +23,18 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 public class InfAdicionais extends AppCompatActivity {
 
+    String[] imageUrl;
     SliderView sliderView;
     final ArrayList<byte[]> images = new ArrayList<>();
     SliderAdapter sliderAdapter;
@@ -42,43 +51,67 @@ public class InfAdicionais extends AppCompatActivity {
         //Fazendo referência e chamando as funções do SliderView
         sliderView = findViewById(R.id.imageSlider);
 
+        DatabaseAcess database = new DatabaseAcess(this, "table_arthro");
+        imageUrl = database.GetImageByID(this, String.valueOf(specie._id));
+
         setInformation();
         setSliderViews();
         icons();
 
         shareButton = findViewById(R.id.share);
-        shareButton.setOnClickListener(this::shareFunc);
+        shareButton.setOnClickListener(v -> {
+            try {
+                shareFunc(v);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
-    public void shareFunc(View v){
-        byte[] image;
-        try {
-            image = (OrderView.database.GetImageByID(String.valueOf(specie._id),"first"));
-        } catch (Exception e) {
-            DatabaseAcess database = new DatabaseAcess(this, specie.table);
-            image = (database.GetImageByID(String.valueOf(specie._id), "first"));
-        }
-        Bitmap bt = BitmapFactory.decodeByteArray(image, 0, image.length);
-        File file = new File(getExternalCacheDir()+"/"+getResources().getString(R.string.app_name)+".png");
-        Intent intent;
-        try {
-            FileOutputStream outputStream = new FileOutputStream(file);
-            bt.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+    public void shareFunc(View v) throws IOException {
+        Picasso.get()
+                .load(imageUrl[0])
+                .into(new Target() {
+                    @Override
+                    public void onBitmapLoaded (final Bitmap bt, Picasso.LoadedFrom from){
 
-            outputStream.flush();
-            outputStream.close();
+                        Intent share = new Intent(Intent.ACTION_SEND);
+                        share.setType("image/jpeg");
 
-            intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("image/*");
-            intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, this.getApplicationContext().getPackageName() + ".provider", file));
-            intent.putExtra(Intent.EXTRA_TEXT,"ORDEM: " + specie.ordem + "\n" + "FAMÍLIA: " + specie.familia + "\n" + "ID: " + specie.id + "\n" + txtArmario.getText().toString() + ": " +
-                    txtNumArmario.getText().toString() + "\n" + txtPrat.getText().toString() + (txtPrat.getText().toString().equals("")?"":": ") + txtNumPrat.getText().toString());
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        } catch (Exception e){
-            throw new RuntimeException(e);
-        }
+                        ContentValues values = new ContentValues();
+                        values.put(MediaStore.Images.Media.TITLE, "title");
+                        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+                        Uri uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                                values);
 
-        startActivity(Intent.createChooser(intent, "Share Specie"));
+                        OutputStream outstream;
+                        try {
+                            outstream = getContentResolver().openOutputStream(uri);
+                            bt.compress(Bitmap.CompressFormat.JPEG, 100, outstream);
+                            outstream.close();
+                        } catch (Exception e) {
+                            System.err.println(e.toString());
+                        }
+
+                        share.putExtra(Intent.EXTRA_STREAM, uri);
+                        share.putExtra(Intent.EXTRA_TEXT,"ORDEM: " + specie.ordem + "\n" + "FAMÍLIA: " + specie.familia + "\n" + "ID: " + specie.id + "\n" + txtArmario.getText().toString() + ": " +
+                                txtNumArmario.getText().toString() + "\n" + txtPrat.getText().toString() + (txtPrat.getText().toString().equals("")?"":": ") + txtNumPrat.getText().toString());
+                        startActivity(Intent.createChooser(share, "Share Specie"));
+
+                    }
+
+                    @Override
+                    public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+
+                    }
+
+
+                    @Override
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                    }
+                });
+
     }
 
     void setInformation(){
@@ -129,31 +162,12 @@ public class InfAdicionais extends AppCompatActivity {
     }
 
     void setSliderViews(){
-        for (int i = 0; i<=1; i++){
-            byte[] image;
-            try {
-                image = (OrderView.database.GetImageByID(String.valueOf(specie._id), i==0?"first":"second"));
-            } catch (Exception e) {
-                DatabaseAcess database = new DatabaseAcess(this, specie.table);
-                image = (database.GetImageByID(String.valueOf(specie._id), i==0?"first":"second"));
-            }
-            images.add(image);
-        }
-
-        if (images.get(1)==null){
-            sliderAdapter = new SliderAdapter(specie, this, "single", images);
-        } else {
-            sliderAdapter = new SliderAdapter(specie, this, "double", images);
-        }
-
+        sliderAdapter = new SliderAdapter(this, imageUrl);
         sliderView.setSliderAdapter(sliderAdapter);
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
-        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
         sliderView.setIndicatorAnimationDuration(800);
         sliderView.setSliderAnimationDuration(800);
-        sliderView.setScrollTimeInSec(4);
-        sliderView.startAutoCycle();
     }
 
     void icons(){
