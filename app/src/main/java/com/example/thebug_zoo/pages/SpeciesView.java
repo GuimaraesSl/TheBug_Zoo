@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.adapter.SpeciesViewAdapter;
+import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
 
 import java.util.List;
@@ -27,6 +29,9 @@ public class SpeciesView extends AppCompatActivity {
         setContentView(R.layout.activity_species_view);
         setAdapter();
         setBackButton();
+        if (!FiloView.database.isConnected(this)){
+            Toast.makeText(this, "Sem Conexão com a Internet", Toast.LENGTH_LONG).show();
+        }
     }
 
     void setAdapter() {
@@ -43,8 +48,9 @@ public class SpeciesView extends AppCompatActivity {
 
         speciesRecycler = findViewById(R.id.speciesRecycler);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
-        speciesRecycler.setLayoutManager(gridLayoutManager);
         speciesRecycler.setHasFixedSize(true);
+        speciesRecycler.setItemViewCacheSize(20);
+        speciesRecycler.setLayoutManager(gridLayoutManager);
         adapter = new SpeciesViewAdapter(this, speciesAdded, listener);
         speciesRecycler.setAdapter(adapter);
     }

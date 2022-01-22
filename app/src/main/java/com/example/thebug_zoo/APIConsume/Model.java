@@ -11,7 +11,7 @@ public class Model {
         this.exemplary = exemplary;
     }
 
-    public class exemplary{
+    public static class exemplary{
         String _id;
 
         public String[] getImages() {

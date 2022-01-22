@@ -5,6 +5,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface Methods {
-    @GET("exemplary/{id}")
-    Call<Model> getImage(@Path("id") String _id);
+    @GET("{type}/exemplary/{id}")
+    Call<Model> getImage(@Path("type") String type, @Path("id") String _id);
 }

@@ -51,8 +51,8 @@ public class InfAdicionais extends AppCompatActivity {
         //Fazendo referência e chamando as funções do SliderView
         sliderView = findViewById(R.id.imageSlider);
 
-        DatabaseAcess database = new DatabaseAcess(this, "table_arthro");
-        imageUrl = database.GetImageByID(this, String.valueOf(specie._id));
+        DatabaseAcess database = new DatabaseAcess(this, specie.table);
+        imageUrl = database.GetImageByID(String.valueOf(specie._id), specie.type);
 
         setInformation();
         setSliderViews();

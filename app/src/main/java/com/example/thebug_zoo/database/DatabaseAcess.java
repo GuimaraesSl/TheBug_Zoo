@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.ConnectivityManager;
-import android.util.Log;
 
 import com.example.thebug_zoo.APIConsume.Methods;
 import com.example.thebug_zoo.APIConsume.Model;
@@ -28,6 +27,7 @@ public class DatabaseAcess {
     private SQLiteDatabase database;
     private static DatabaseAcess instance;
     public final String TABLE;
+    public String type;
     public final List<String> tables = new ArrayList<>();
 
     public DatabaseAcess(Context context, String TABLE){
@@ -36,6 +36,14 @@ public class DatabaseAcess {
         tables.add("table_meio_umido");
         tables.add("table_taxidermizados");
         tables.add("table_osteologia");
+
+        if(TABLE.equals(tables.get(0))){
+            type = "umido";
+        } else if(TABLE.equals(tables.get(1))){
+            type = "taxidermizados";
+        } else if(TABLE.equals(tables.get(2))){
+            type = "osteologia";
+        }
     }
 
     /**
@@ -79,8 +87,6 @@ public class DatabaseAcess {
     public static final String COLUMN_COLLECTOR = "coletor";
     public static final String COLUMN_PLACE = "_local";
     public static final String COLUMN_DATE = "_data";
-    public static final String COLUMN_FOTO1 = "foto1";
-    public static final String COLUMN_FOTO2 = "foto2";
     public static final String COLUMN_FILO = "filo";
     final String[] sqlSelect = {COLUMN__ID, COLUMN_ID, COLUMN_WARDROBE, COLUMN_BOOKCASE, COLUMN_ORDER, COLUMN_FAMILY, COLUMN_IDENTIFICATION, COLUMN_INF, COLUMN_SOURCE, COLUMN_COLLECTOR, COLUMN_PLACE, COLUMN_DATE, COLUMN_FILO};
 
@@ -109,6 +115,7 @@ public class DatabaseAcess {
                 species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
                 species.filo = cursor.getString((cursor.getColumnIndex(COLUMN_FILO)));
                 species.table = TABLE;
+                species.type = type;
 
                 result.add(species);
             }while (cursor.moveToNext());
@@ -192,6 +199,7 @@ public class DatabaseAcess {
                 species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                 species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
                 species.table = TABLE;
+                species.type=type;
 
                 if (!result.contains(species)) {
                     result.add(species);
@@ -280,6 +288,7 @@ public class DatabaseAcess {
                     species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                     species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
                     species.table = "table_meio_umido";
+                    species.type = "umido";
 
                     result.add(species);
                 }while (cursor.moveToNext());
@@ -315,6 +324,7 @@ public class DatabaseAcess {
                     species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                     species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
                     species.table = "table_taxidermizados";
+                    species.type = "taxidermizados";
 
                     result.add(species);
                 }while (cursor.moveToNext());
@@ -350,6 +360,7 @@ public class DatabaseAcess {
                     species._local = cursor.getString((cursor.getColumnIndex(COLUMN_PLACE)));
                     species._data = cursor.getString((cursor.getColumnIndex(COLUMN_DATE)));
                     species.table = "table_osteologia";
+                    species.type = "osteologia";
 
                     result.add(species);
                 }while (cursor.moveToNext());
@@ -364,17 +375,18 @@ public class DatabaseAcess {
         return result;
     }
 
-    public String[] GetImageByID (Context context, String _id) {
+    public String[] GetImageByID (String _id, String type) {
 
         imageUrl = null;
         Methods methods = RetrofitClient.getRetrofitInstance().create(Methods.class);
-        Call<Model> call = methods.getImage(_id);
+        Call<Model> call = methods.getImage(type, _id);
 
         Runnable objRunnable = () -> {
             try {
                 Response<Model> response = call.execute();
+                if (response.body() == null) throw new Exception();
                 imageUrl = response.body().getExemplary().getImages();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 imageUrl = new String[]{""};
             }
         };
@@ -401,7 +413,6 @@ public class DatabaseAcess {
             for(int j = 0; j < list.get(i).size(); j++){
                 if(!allOrders.contains(list.get(i).get(j).ordem)){
                     allOrders.add(list.get(i).get(j).ordem);
-                    Log.d("ordens", list.get(i).get(j).ordem);
                 }
             }
         }
@@ -424,15 +435,11 @@ public class DatabaseAcess {
                     do{
                         cont++;
                     }while (cursor.moveToNext());
-                    cursor.close();
-                    close();
-                } else {
-                    cursor.close();
-                    close();
                 }
+                cursor.close();
+                close();
                 if(cont != 0){
                     numbersSpecies.add(cont);
-                    Log.d("cont1", String.valueOf(numbersSpecies.get(i)));
                 }
             }
         }
@@ -448,7 +455,6 @@ public class DatabaseAcess {
             for(int j = 0; j < list.get(i).size(); j++){
                 if(!allFamilys.contains(list.get(i).get(j).familia)){
                     allFamilys.add(list.get(i).get(j).familia);
-                    Log.d("ordens", list.get(i).get(j).familia);
                 }
             }
         }
@@ -471,15 +477,11 @@ public class DatabaseAcess {
                     do{
                         cont++;
                     }while (cursor.moveToNext());
-                    cursor.close();
-                    close();
-                } else {
-                    cursor.close();
-                    close();
                 }
+                cursor.close();
+                close();
                 if(cont != 0){
                     numbersSpecies.add(cont);
-                    Log.d("cont1", String.valueOf(numbersSpecies.get(i)));
                 }
             }
         }
