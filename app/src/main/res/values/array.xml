@@ -6,6 +6,8 @@
         <item>Acervo</item>
         <item>Imersão</item>
         <item>Educação</item>
+        <item>Sobre</item>
+
     </string-array>
 
     <array name="id_activityScreenIcons">
@@ -14,5 +16,6 @@
         <item>@drawable/ic_icon_collection</item>
         <item>@drawable/ic_icon_search</item>
         <item>@drawable/ic_icon_educacao</item>
+        <item>@drawable/ic_icons8_informa__es</item>
     </array>
 </resources>

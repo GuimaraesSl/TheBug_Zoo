@@ -47,7 +47,8 @@ public class EducationView extends MainActivity {
                 createItemFor(POS_HOME),
                 createItemFor(POS_ACERVO),
                 createItemFor(POS_IMERSAO),
-                createItemFor(POS_EDUCATION).setChecked(true)
+                createItemFor(POS_EDUCATION).setChecked(true),
+                createItemFor(POS_ABOUT)
         ));
 
         adapter.setListener(this);

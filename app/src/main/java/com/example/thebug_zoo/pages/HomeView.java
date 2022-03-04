@@ -71,7 +71,8 @@ public class HomeView extends MainActivity {
                 createItemFor(POS_HOME).setChecked(true),
                 createItemFor(POS_ACERVO),
                 createItemFor(POS_IMERSAO),
-                createItemFor(POS_EDUCATION)
+                createItemFor(POS_EDUCATION),
+                createItemFor(POS_ABOUT)
         ));
 
         adapter.setListener(this);

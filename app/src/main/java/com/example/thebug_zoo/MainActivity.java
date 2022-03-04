@@ -20,6 +20,7 @@ import com.example.thebug_zoo.adapter.DrawerAdapter;
 import com.example.thebug_zoo.adapter.DrawerItem;
 import com.example.thebug_zoo.adapter.SimpleIten;
 import com.example.thebug_zoo.database.BancoController;
+import com.example.thebug_zoo.pages.AboutView;
 import com.example.thebug_zoo.pages.CollectionView;
 import com.example.thebug_zoo.pages.EducationView;
 import com.example.thebug_zoo.pages.HomeView;
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     protected static final int POS_ACERVO = 2;
     protected static final int POS_IMERSAO = 3;
     protected static final int POS_EDUCATION = 4;
+    protected static final int POS_ABOUT = 5;
+
 
     protected String[] screenTitles;
     protected Drawable[] screenIcons;
@@ -75,7 +78,8 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
                 createItemFor(POS_HOME).setChecked(true),
                 createItemFor(POS_ACERVO),
                 createItemFor(POS_IMERSAO),
-                createItemFor(POS_EDUCATION)
+                createItemFor(POS_EDUCATION),
+                createItemFor(POS_ABOUT)
         ));
 
         adapter.setListener(this);
@@ -151,6 +155,9 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
             startActivity(it);
         } else if (position == POS_IMERSAO) {
             Intent it = new Intent(this, ImmersionView.class);
+            startActivity(it);
+        } else if (position == POS_ABOUT) {
+            Intent it = new Intent(this, AboutView.class);
             startActivity(it);
         }
         slidingRootNav.closeMenu();

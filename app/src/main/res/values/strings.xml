@@ -189,5 +189,9 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="back_home">Background Home</string>
+    <string name="thebug_enterprise">TheBug-Enterprise</string>
+    <string name="ifto">IFTO - Campus Araguatins</string>
+    <string name="privacy_policy">Políticas de Privacidade</string>
 
 </resources>
