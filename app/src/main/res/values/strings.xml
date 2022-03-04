@@ -67,7 +67,7 @@
     -->
     <string name="species_background">Species Background</string>
     <string name="species_image">Species Image</string>
-    <string name="imagem1">Imagem1</string>
+    <string name="imagem1">Imagem_1</string>
     <string name="family_background">family_background</string>
     <string name="poriferos_title">Poríferos</string>
     <string name="poriferos_desc" tools:ignore="Typos">
@@ -193,5 +193,8 @@
     <string name="thebug_enterprise">TheBug-Enterprise</string>
     <string name="ifto">IFTO - Campus Araguatins</string>
     <string name="privacy_policy">Políticas de Privacidade</string>
+    <string name="background_button">Background Button</string>
+    <string name="right_arrow">Right Arrow</string>
+    <string name="drawer_icon">Drawer Icon</string>
 
 </resources>

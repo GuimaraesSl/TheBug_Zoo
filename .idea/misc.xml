@@ -3,14 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/drawable/bt_privacy.xml" value="0.1005" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/drawable/ic_icon_collection.xml" value="0.240625" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/drawable/ic_icon_educacao.xml" value="0.240625" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/drawable/ic_icon_home.xml" value="0.240625" />
+        <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/drawable/ic_icons8_informa__es.xml" value="0.1005" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.240625" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.240625" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/drawable/ic_seta_inf_adc.xml" value="0.240625" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/drawable/layout_border2.xml" value="0.240625" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout-v28/grid_item.xml" value="0.1911231884057971" />
+        <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/activity_about_view.xml" value="0.1490036231884058" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/activity_family_view.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/activity_filo_view.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/activity_home.xml" value="0.1911231884057971" />
@@ -18,6 +21,8 @@
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/activity_inf_adicionais.xml" value="0.15670289855072464" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/activity_main.xml" value="0.12047101449275362" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/activity_order.xml" value="0.1911231884057971" />
+        <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/activity_privacy_policy.xml" value="0.1490036231884058" />
+        <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/content_about_view.xml" value="0.1490036231884058" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/content_all_familys.xml" value="0.1553398058252427" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/content_all_orders.xml" value="0.1" />
         <entry key="..\:/Users/alsam/StudioProjects/TheBug_Zoo/app/src/main/res/layout/content_collection.xml" value="0.22" />
