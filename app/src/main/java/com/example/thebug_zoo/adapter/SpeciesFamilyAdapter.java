@@ -87,7 +87,7 @@ public class SpeciesFamilyAdapter extends RecyclerView.Adapter<SpeciesFamilyAdap
 
         public SpeciesViewHolder(@NonNull View itemView) {
             super(itemView);
-            family = (TextView)itemView.findViewById(R.id.textList);
+            family = itemView.findViewById(R.id.textList);
             itemView.setOnClickListener(this);
         }
 

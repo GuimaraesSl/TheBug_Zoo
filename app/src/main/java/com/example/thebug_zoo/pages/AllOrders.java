@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -57,7 +56,7 @@ public class AllOrders extends AppCompatActivity {
     }
 
     void setBackButton(){
-        back = (ImageView) findViewById(R.id.imageSeta);
+        back = findViewById(R.id.imageSeta);
         back.setOnClickListener(v -> finish());
     }
 }

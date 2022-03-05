@@ -12,7 +12,6 @@ import com.example.thebug_zoo.APIConsume.Model;
 import com.example.thebug_zoo.APIConsume.RetrofitClient;
 import com.example.thebug_zoo.entity.Species;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

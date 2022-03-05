@@ -24,10 +24,10 @@ public class SpeciesFilosAdapter extends RecyclerView.Adapter<SpeciesFilosAdapte
     final List<String> filosAddedAll;
     private final ClickListenerFeature listener;
 
-    public SpeciesFilosAdapter(Context context, List<String> ordersAdded, ClickListenerFeature listener){
+    public SpeciesFilosAdapter(Context context, List<String> filosAdded, ClickListenerFeature listener){
         this.context = context;
-        this.filosAdded = ordersAdded;
-        this.filosAddedAll = new ArrayList<>(ordersAdded);
+        this.filosAdded = filosAdded;
+        this.filosAddedAll = new ArrayList<>(filosAdded);
         this.listener = listener;
     }
 
@@ -62,9 +62,9 @@ public class SpeciesFilosAdapter extends RecyclerView.Adapter<SpeciesFilosAdapte
             if(charSequence.toString().isEmpty()){
                 filteredList.addAll(filosAddedAll);
             } else {
-                for (String orders: filosAddedAll) {
-                    if (orders.toLowerCase().contains(charSequence.toString().toLowerCase())){
-                        filteredList.add(orders);
+                for (String filos: filosAddedAll) {
+                    if (filos.toLowerCase().contains(charSequence.toString().toLowerCase())){
+                        filteredList.add(filos);
                     }
                 }
             }
@@ -87,7 +87,7 @@ public class SpeciesFilosAdapter extends RecyclerView.Adapter<SpeciesFilosAdapte
 
         public SpeciesViewHolder(@NonNull View itemView) {
             super(itemView);
-            filo = (TextView)itemView.findViewById(R.id.textList);
+            filo = itemView.findViewById(R.id.textList);
             itemView.setOnClickListener(this);
         }
 

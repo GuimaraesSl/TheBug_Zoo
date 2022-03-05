@@ -1,15 +1,11 @@
 package com.example.thebug_zoo.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
-import com.example.thebug_zoo.pages.FiloView;
-import com.example.thebug_zoo.pages.OrderView;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -30,7 +24,7 @@ public class SpeciesViewAdapter extends RecyclerView.Adapter<SpeciesViewAdapter.
     private final List<Species> speciesResult;
     private final ClickListenerFeature listener;
     public String[] imageUrl;
-    public Picasso mPicasso = Picasso.get();
+    public final Picasso mPicasso = Picasso.get();
 
     public SpeciesViewAdapter(Context context, List<Species> speciesResult, ClickListenerFeature listener){
         this.context = context;

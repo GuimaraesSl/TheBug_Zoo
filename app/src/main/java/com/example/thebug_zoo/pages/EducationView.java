@@ -1,12 +1,10 @@
 package com.example.thebug_zoo.pages;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.ImageView;
 
 import com.example.thebug_zoo.MainActivity;
 import com.example.thebug_zoo.R;
@@ -20,7 +18,6 @@ import java.util.Arrays;
 
 public class EducationView extends MainActivity {
 
-    public ImageView back;
     private final ArrayList<EducationItem> items = new ArrayList<>();
 
     @Override

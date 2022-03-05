@@ -56,7 +56,7 @@ public class AllFamilys extends AppCompatActivity {
     }
 
     void setBackButton(){
-        back = (ImageView) findViewById(R.id.imageSeta);
+        back = findViewById(R.id.imageSeta);
         back.setOnClickListener(v -> finish());
     }
 }

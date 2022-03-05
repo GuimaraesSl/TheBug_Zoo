@@ -33,7 +33,6 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener{
 
     BancoController bancoController;
-    SQLiteDatabase conection;
 
     protected static final int POS_CLOSE = 0;
     protected static final int POS_HOME = 1;
@@ -94,7 +93,6 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     void createConection(){
         try {
             bancoController = new BancoController(this);
-            conection = bancoController.getWritableDatabase();
 
         } catch (SQLException exception){
 

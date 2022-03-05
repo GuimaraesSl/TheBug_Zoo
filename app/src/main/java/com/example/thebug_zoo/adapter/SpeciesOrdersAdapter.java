@@ -87,7 +87,7 @@ public class SpeciesOrdersAdapter extends RecyclerView.Adapter<SpeciesOrdersAdap
 
         public SpeciesViewHolder(@NonNull View itemView) {
             super(itemView);
-            order = (TextView)itemView.findViewById(R.id.textList);
+            order = itemView.findViewById(R.id.textList);
             itemView.setOnClickListener(this);
         }
 

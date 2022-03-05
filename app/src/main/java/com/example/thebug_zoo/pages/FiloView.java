@@ -9,16 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.example.thebug_zoo.R;
+import com.example.thebug_zoo.adapter.SpeciesFilosAdapter;
 import com.example.thebug_zoo.adapter.SpeciesOrdersAdapter;
 import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class FiloView extends AppCompatActivity {
@@ -28,11 +27,10 @@ public class FiloView extends AppCompatActivity {
     public static int ID;
     public static DatabaseAcess database;
     List<Species> specie;
-    ConstraintLayout layoutSearch;
     RecyclerView recyclerView;
-    SpeciesOrdersAdapter adapter;
+    SpeciesFilosAdapter adapter;
     final List<String> filoAdded = new ArrayList<>();
-    private SpeciesOrdersAdapter.ClickListenerFeature listener;
+    private SpeciesFilosAdapter.ClickListenerFeature listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +38,7 @@ public class FiloView extends AppCompatActivity {
         setContentView(R.layout.activity_filo_view);
         setTypeSearch();
         setAdapter();
-        SearchView searchView = (SearchView) findViewById(R.id.searchView);
+        SearchView searchView = findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -60,30 +58,29 @@ public class FiloView extends AppCompatActivity {
             final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this, "table_meio_umido");
             databaseAcess.open();
             database = new DatabaseAcess(this, "table_meio_umido");
-            defaultIcon = (ImageView) findViewById(R.id.iconSearch);
+            defaultIcon = findViewById(R.id.iconSearch);
             defaultIcon.setImageResource(R.mipmap.icon_meio_umido);
         } else if (ID==2){
             final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this, "table_taxidermizados");
             databaseAcess.open();
             database = new DatabaseAcess(this, "table_taxidermizados");
-            defaultIcon = (ImageView) findViewById(R.id.iconSearch);
+            defaultIcon = findViewById(R.id.iconSearch);
             defaultIcon.setImageResource(R.mipmap.icon_taxidermizados);
         } else if(ID==3){
             final DatabaseAcess databaseAcess = DatabaseAcess.getInstance(this, "table_osteologia");
             databaseAcess.open();
             database = new DatabaseAcess(this, "table_osteologia");
-            defaultIcon = (ImageView) findViewById(R.id.iconSearch);
+            defaultIcon = findViewById(R.id.iconSearch);
             defaultIcon.setImageResource(R.mipmap.icon_osteologia);
         }
 
-        back = (ImageView) findViewById(R.id.imageSeta);
+        back = findViewById(R.id.imageSeta);
         back.setOnClickListener(v -> finish());
     }
 
     void setAdapter() {
         setOnClickListener();
-        layoutSearch = (ConstraintLayout)findViewById(R.id.layoutFilo);
-        recyclerView = (RecyclerView) findViewById(R.id.recycleFiloView);
+        recyclerView = findViewById(R.id.recycleFiloView);
 
         specie = database.searchAll();
 
@@ -93,7 +90,7 @@ public class FiloView extends AppCompatActivity {
             }
         }
 //        Collections.sort(filoAdded);
-        adapter = new SpeciesOrdersAdapter(this, filoAdded, listener);
+        adapter = new SpeciesFilosAdapter(this, filoAdded, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

@@ -1,6 +1,5 @@
 package com.example.thebug_zoo.pages;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,6 +40,7 @@ public class AboutView extends MainActivity {
                 createItemFor(POS_HOME),
                 createItemFor(POS_ACERVO),
                 createItemFor(POS_IMERSAO),
+                createItemFor(POS_EDUCATION),
                 createItemFor(POS_ABOUT).setChecked(true)
         ));
 

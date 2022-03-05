@@ -1,12 +1,10 @@
 package com.example.thebug_zoo.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,17 +24,13 @@ import com.smarteist.autoimageslider.SliderView;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
 
 public class InfAdicionais extends AppCompatActivity {
 
     String[] imageUrl;
     SliderView sliderView;
-    final ArrayList<byte[]> images = new ArrayList<>();
     SliderAdapter sliderAdapter;
     ImageView imageSeta, imageClose;
     Species specie;
@@ -90,7 +84,7 @@ public class InfAdicionais extends AppCompatActivity {
                             bt.compress(Bitmap.CompressFormat.JPEG, 100, outstream);
                             outstream.close();
                         } catch (Exception e) {
-                            System.err.println(e.toString());
+                            System.err.println(e);
                         }
 
                         share.putExtra(Intent.EXTRA_STREAM, uri);

@@ -1,6 +1,5 @@
 package com.example.thebug_zoo.pages;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.thebug_zoo.MainActivity;
@@ -72,9 +70,9 @@ public class CollectionView extends MainActivity {
         databaseAcess = new DatabaseAcess(this, "table_osteologia");
         cont += databaseAcess.searchAll().size();
         databaseAcess.close();
-        textCollection = (TextView) findViewById(R.id.textCollection);
-        orders = (ImageButton) findViewById(R.id.buttonAllOrders);
-        familys = (ImageButton) findViewById(R.id.buttonAllFamilys);
+        textCollection = findViewById(R.id.textCollection);
+        orders = findViewById(R.id.buttonAllOrders);
+        familys = findViewById(R.id.buttonAllFamilys);
 
         textCollection.setText(getString(R.string.collection_case2, cont));
 

@@ -1,15 +1,10 @@
 package com.example.thebug_zoo.pages;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,10 +20,8 @@ import android.widget.TextView;
 import com.example.thebug_zoo.MainActivity;
 import com.example.thebug_zoo.R;
 import com.example.thebug_zoo.adapter.DrawerAdapter;
-import com.example.thebug_zoo.database.BancoController;
 import com.example.thebug_zoo.database.DatabaseAcess;
 import com.example.thebug_zoo.entity.Species;
-import com.google.android.material.navigation.NavigationView;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.util.ArrayList;
@@ -41,7 +34,6 @@ public class HomeView extends MainActivity {
     Animation frombottom, frombottom2, frombottom3;
     ImageView iconMeioUmido, iconSeta, iconSeta2, iconSeta3, iconTaxidermizados, iconOsteologia;
     TextView textMeioUmido, textTaxidermizados, textOsteologia;
-    OrderView id;
     DatabaseAcess databaseAcess;
     Toolbar toolbar;
 
@@ -87,26 +79,24 @@ public class HomeView extends MainActivity {
     }
 
     void icons(){
-        //Inicializando o objeto da classe Search
-        id = new OrderView();
 
         //Importando os ImageButton da activity home
-        meioUmido = (ImageButton) findViewById(R.id.buttonMeioUmido);
-        taxidermizados = (ImageButton) findViewById(R.id.buttonTaxidermizados);
-        osteologia = (ImageButton) findViewById(R.id.buttonOsteologia);
+        meioUmido = findViewById(R.id.buttonMeioUmido);
+        taxidermizados = findViewById(R.id.buttonTaxidermizados);
+        osteologia = findViewById(R.id.buttonOsteologia);
 
         //Importando os icons da activity home
-        iconMeioUmido = (ImageView) findViewById(R.id.iconMeioUmido);
-        iconSeta = (ImageView) findViewById(R.id.iconSeta);
-        iconSeta2 = (ImageView) findViewById(R.id.iconSeta2);
-        iconSeta3 = (ImageView) findViewById(R.id.iconSeta3);
-        iconTaxidermizados = (ImageView) findViewById(R.id.iconTaxidermizados);
-        iconOsteologia = (ImageView) findViewById(R.id.iconOsteologia);
+        iconMeioUmido = findViewById(R.id.iconMeioUmido);
+        iconSeta = findViewById(R.id.iconSeta);
+        iconSeta2 = findViewById(R.id.iconSeta2);
+        iconSeta3 = findViewById(R.id.iconSeta3);
+        iconTaxidermizados = findViewById(R.id.iconTaxidermizados);
+        iconOsteologia = findViewById(R.id.iconOsteologia);
 
         //Importando os TextView da activity home
-        textMeioUmido = (TextView) findViewById(R.id.text_meio_umido);
-        textTaxidermizados = (TextView) findViewById(R.id.textTaxidermizados);
-        textOsteologia = (TextView) findViewById(R.id.textOsteologia);
+        textMeioUmido = findViewById(R.id.text_meio_umido);
+        textTaxidermizados = findViewById(R.id.textTaxidermizados);
+        textOsteologia = findViewById(R.id.textOsteologia);
 
         //Impotando as animações da activity home
         frombottom = AnimationUtils.loadAnimation(this, R.anim.frombottom);
