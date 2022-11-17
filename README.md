@@ -1,11 +1,11 @@
 # TheBug_Zoo
-Projeto próprio.
-Aplicativo mobile Android para conter, organizar e estudar os espécimes do Laboratório de Zoologia do IFTO-Campus Araguatins.
-O aplicativo contém informações científicas e descrição de todos os espécimes, além de dados quantitativos do acervo, espaço imersivo
-para conhecer o laboratório sistema de localização dos espécimes. Além de auxiliar na organização, manutenção e pesquisas laboratoriais, o aplicativo
-vem como ferramente para auziliar nas aulas em laboratório do campus.
-As etapas para desenvolvimento do projeto se dividiram em pesquisa científicas, organização presencical do laboratório e desenvolvimento
-do aplicativo.
-## Ferramentas
-O aplicativo foi desenvolvido por meio da IDE Android Studio, com Java para Android, banco de dados interno com SQLite e API externa com JavaScript
-para alocação das imagens dos espécimes.
+Personal project.
+Android mobile application to contain, organize and study specimens from the Zoology Laboratory of IFTO - Campus Araguatins.
+The application contains scientific information and description of all specimens, as well as quantitative data from the collection, immersive space
+to learn about the laboratory and specimen location system. In addition to assisting in the organization, maintenance and laboratory research, the application
+comes as a tool to assist in campus laboratory classes.
+The stages for the development of the project were divided into scientific research, face-to-face organization of the laboratory and development
+of the app.
+## Tools
+The application was developed using the Android Studio IDE, with Java for Android, an internal database with SQLite and an external API with JavaScript
+for allocating specimen images.
